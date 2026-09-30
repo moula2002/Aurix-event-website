@@ -92,10 +92,10 @@ const TechnicalServicesPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6 }}
-              className={`bg-white rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col ${isEven ? 'xl:flex-row' : 'xl:flex-row-reverse'} relative mb-24`}
+              className={`bg-white rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} relative mb-16 md:mb-24`}
             >
               {/* Content Side */}
-              <div className="w-full xl:w-1/2 p-8 md:p-14 lg:p-20 relative z-10 flex flex-col justify-center">
+              <div className="w-full md:w-1/2 p-6 md:p-14 lg:p-20 relative z-10 flex flex-col justify-center">
                 <div className="flex items-center gap-4 mb-8">
                   <div className="w-14 h-14 rounded-2xl bg-amber-50 flex items-center justify-center text-[#f59e0b] shadow-sm">
                     <Icon size={28} />
@@ -103,7 +103,7 @@ const TechnicalServicesPage = () => {
                   <h2 className="text-3xl lg:text-4xl font-black text-gray-900 uppercase tracking-tight">{category.title}</h2>
                 </div>
                 
-                <p className="text-gray-600 text-lg leading-relaxed mb-12 font-medium">
+                <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-8 md:mb-12 font-medium">
                   {category.desc}
                 </p>
 
@@ -123,7 +123,7 @@ const TechnicalServicesPage = () => {
               </div>
 
               {/* Image Side */}
-              <div className="w-full xl:w-1/2 relative min-h-[400px] xl:min-h-auto bg-gray-100 overflow-hidden group">
+              <div className="w-full md:w-1/2 relative min-h-[280px] md:min-h-auto bg-gray-100 overflow-hidden group">
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
                 <img 
                   src={category.image} 

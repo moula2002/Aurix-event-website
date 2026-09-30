@@ -77,7 +77,7 @@ const Navbar = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
         className={`fixed left-0 right-0 z-50 transition-all duration-500 flex justify-center ${
-          isScrolled ? 'top-2 px-4' : 'top-12 px-6 lg:px-12'
+          isScrolled ? 'top-2 px-4' : 'top-2 lg:top-12 px-4 lg:px-6'
         }`}
       >
         <div className={`w-full max-w-[1440px] flex items-center justify-between bg-white rounded-full transition-all duration-500 ${
@@ -166,37 +166,86 @@ const Navbar = () => {
         </div>
       </motion.header>
 
-      {/* ── MOBILE MENU OVERLAY ── */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-x-4 top-24 z-40 bg-white rounded-2xl shadow-2xl lg:hidden overflow-hidden border border-gray-100"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: 'tween', duration: 0.35 }}
+            className="fixed inset-0 z-40 bg-white lg:hidden flex flex-col overflow-y-auto"
           >
-            <nav className="flex flex-col p-4">
+            {/* Header */}
+            <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+              <Link to="/" onClick={() => setMobileMenuOpen(false)}>
+                <img src={logo} alt="Aurix Events Logo" className="h-10 w-auto" />
+              </Link>
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-700"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Nav Links */}
+            <nav className="flex flex-col px-6 py-4 flex-1">
               {navLinks.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className={`px-4 py-3 font-bold text-sm tracking-wider border-b border-gray-50 flex justify-between items-center ${
-                    isActive(link.to) ? 'text-[#f59e0b]' : 'text-gray-900'
-                  }`}
-                >
-                  {link.name}
-                  {link.hasDropdown && <ChevronDown size={16} />}
-                </Link>
+                <div key={link.to}>
+                  <Link
+                    to={link.to}
+                    onClick={() => !link.hasDropdown && setMobileMenuOpen(false)}
+                    className={`flex justify-between items-center py-4 text-base font-black tracking-wider border-b border-gray-50 ${
+                      isActive(link.to) || (link.hasDropdown && location.pathname.includes(link.to))
+                        ? 'text-[#f59e0b]'
+                        : 'text-gray-900'
+                    }`}
+                  >
+                    {link.name}
+                    {link.hasDropdown && <ChevronDown size={18} />}
+                  </Link>
+                  {link.hasDropdown && link.dropdownItems && (
+                    <div className="pl-4 pb-2 flex flex-col gap-1">
+                      {link.dropdownItems.map((item, idx) => (
+                        <Link
+                          key={idx}
+                          to={item.to}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className={`py-3 text-sm font-bold tracking-wide border-b border-gray-50 flex items-center gap-2 ${
+                            location.pathname === item.to ? 'text-[#f59e0b]' : 'text-gray-600'
+                          }`}
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#f59e0b] flex-shrink-0" />
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
-              <div className="mt-4 px-4 pb-2">
-                <Link
-                  to="/contact"
-                  className="flex justify-center items-center gap-2 w-full py-3 rounded-full bg-[#f59e0b] font-bold text-xs tracking-widest text-black"
-                >
-                  GET A QUOTE
-                </Link>
-              </div>
             </nav>
+
+            {/* CTA + Contact */}
+            <div className="px-6 py-6 border-t border-gray-100 bg-gray-50 space-y-4">
+              <Link
+                to="/contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex justify-center items-center gap-2 w-full py-4 rounded-full bg-gradient-to-r from-[#f59e0b] to-[#fbbf24] font-black text-sm tracking-widest text-black shadow-[0_8px_20px_rgba(245,158,11,0.3)]"
+              >
+                <Send size={14} className="rotate-45" />
+                GET A QUOTE
+              </Link>
+              <div className="flex flex-col gap-3 pt-2">
+                <a href="tel:+971545745761" className="flex items-center gap-3 text-sm font-semibold text-gray-700">
+                  <Phone size={16} className="text-[#f59e0b]" />
+                  +971 54 574 5761
+                </a>
+                <a href="mailto:info@axaurixevents.com" className="flex items-center gap-3 text-sm font-semibold text-gray-700">
+                  <Mail size={16} className="text-[#f59e0b]" />
+                  info@axaurixevents.com
+                </a>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

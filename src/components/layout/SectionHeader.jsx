@@ -12,7 +12,7 @@ const SectionHeader = ({ title, bgColor = 'bg-[#f59e0b]' }) => {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="relative flex items-center justify-center w-full px-4"
       >
-        <h2 className="relative w-full text-center text-5xl md:text-7xl lg:text-[9rem] font-black text-[#111827] tracking-tighter uppercase z-10 leading-[0.9] break-words">
+        <h2 className="relative w-full text-center text-4xl sm:text-5xl md:text-7xl lg:text-[9rem] font-black text-[#111827] tracking-tighter uppercase z-10 leading-[0.9] break-words">
           
           <span className="relative z-10">
             {title}

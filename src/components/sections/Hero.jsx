@@ -49,7 +49,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative w-full min-h-screen bg-[#fafafa] flex items-center overflow-hidden pt-32"
+      className="relative w-full min-h-screen bg-[#fafafa] flex items-center overflow-hidden pt-24 md:pt-32"
     >
       {/* ── Background Elements ── */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -78,7 +78,7 @@ const Hero = () => {
       <div className="max-w-[1440px] mx-auto px-6 lg:px-14 w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center pb-20">
 
         {/* ── LEFT: Typography ── */}
-        <div className="flex flex-col justify-center mt-10 lg:mt-0">
+        <div className="flex flex-col justify-center mt-6 lg:mt-0">
 
           {/* Years counter badge */}
           <motion.div
@@ -89,7 +89,7 @@ const Hero = () => {
             className="flex items-center gap-4 mb-4"
           >
             <div
-              className="text-[5rem] md:text-[7rem] lg:text-[8.5rem] font-black leading-none tracking-tighter"
+              className="text-[4rem] md:text-[7rem] lg:text-[8.5rem] font-black leading-none tracking-tighter"
               style={{
                 background: 'linear-gradient(180deg, #fbbf24 0%, #d97706 100%)',
                 WebkitBackgroundClip: 'text',
@@ -110,17 +110,17 @@ const Hero = () => {
 
           {/* Headline */}
           <div className="flex flex-col gap-2 mb-6">
-            <h1 className="text-4xl md:text-5xl lg:text-[4.5rem] font-black text-[#111827] uppercase tracking-tight leading-none overflow-hidden pb-2">
+            <h1 className="text-3xl md:text-5xl lg:text-[4.5rem] font-black text-[#111827] uppercase tracking-tight leading-none overflow-hidden pb-2">
               <motion.div variants={lineReveal} initial="hidden" animate="show" custom={0.1} style={{ willChange: "transform" }}>
                 EVENTS
               </motion.div>
             </h1>
-            <h1 className="text-4xl md:text-5xl lg:text-[4.5rem] font-black uppercase tracking-tight leading-none flex gap-4 overflow-hidden pb-2">
+            <h1 className="text-3xl md:text-5xl lg:text-[4.5rem] font-black uppercase tracking-tight leading-none flex gap-4 overflow-hidden pb-2">
               <motion.div variants={lineReveal} initial="hidden" animate="show" custom={0.2} style={{ willChange: "transform" }} className="flex gap-4">
                 <span className="text-[#111827]">THAT</span> <span className="text-[#f59e0b]">CREATE</span>
               </motion.div>
             </h1>
-            <h1 className="text-4xl md:text-5xl lg:text-[4.5rem] font-black text-[#f59e0b] uppercase tracking-tight leading-none overflow-hidden pb-2">
+            <h1 className="text-3xl md:text-5xl lg:text-[4.5rem] font-black text-[#f59e0b] uppercase tracking-tight leading-none overflow-hidden pb-2">
               <motion.div variants={lineReveal} initial="hidden" animate="show" custom={0.3} style={{ willChange: "transform" }}>
                 EXPERIENCES
               </motion.div>
@@ -165,6 +165,22 @@ const Hero = () => {
               </div>
               VIEW GALLERY
             </Link>
+          </motion.div>
+
+          {/* ── MOBILE: Single hero image ── */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            custom={0.6}
+            className="lg:hidden w-full mt-8 rounded-2xl overflow-hidden shadow-xl aspect-video"
+          >
+            <img
+              src={imgHeroCrowd}
+              alt="Event"
+              className="w-full h-full object-cover"
+              fetchpriority="high"
+            />
           </motion.div>
         </div>
 

@@ -62,8 +62,22 @@ const Footer = () => {
         
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-[#333333] flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-[13px] font-semibold text-[#a3a3a3]">
-            Ax Aurix Events, 2026 © All Rights Reserved.
+          <div className="flex flex-col gap-1 text-center md:text-left">
+            <div className="text-[13px] font-semibold text-[#a3a3a3]">
+              Ax Aurix Events, 2026 © All Rights Reserved.
+            </div>
+            <div className="text-[12px] text-gray-600">
+              Part of{' '}
+              <a
+                href="https://axaurix.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#f59e0b] font-bold hover:underline"
+              >
+                Ax Aurix Group
+              </a>
+              {' '}— Events · Dining · Digital
+            </div>
           </div>
           
           {/* Social Icons & WhatsApp */}

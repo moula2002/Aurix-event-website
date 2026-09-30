@@ -1,8 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CalendarCheck, UtensilsCrossed, Globe2, Plus, ArrowUpRight, Star, Building2, ExternalLink } from 'lucide-react';
+import { CalendarCheck, UtensilsCrossed, Globe2, Plus, ArrowUpRight, Star, ExternalLink } from 'lucide-react';
 import SectionHeader from '../layout/SectionHeader';
 import { Link } from 'react-router-dom';
+
+import imgEvents     from '../../assets/images/group/group-events.jpg';
+import imgRestaurant from '../../assets/images/group/group-restaurant.jpg';
+import imgDigital    from '../../assets/images/group/group-digital.jpg';
 
 const divisions = [
   {
@@ -18,8 +22,8 @@ const divisions = [
     badge: 'Active',
     badgeBg: 'bg-amber-500',
     link: '/',
+    image: imgEvents,
     isCurrentSite: true,
-    isExternal: false,
   },
   {
     icon: UtensilsCrossed,
@@ -34,8 +38,8 @@ const divisions = [
     badge: 'Coming Soon',
     badgeBg: 'bg-rose-500',
     link: '#',
+    image: imgRestaurant,
     isCurrentSite: false,
-    isExternal: false,
   },
   {
     icon: Globe2,
@@ -50,8 +54,8 @@ const divisions = [
     badge: 'Coming Soon',
     badgeBg: 'bg-blue-600',
     link: '#',
+    image: imgDigital,
     isCurrentSite: false,
-    isExternal: false,
   },
   {
     icon: Plus,
@@ -66,8 +70,8 @@ const divisions = [
     badge: 'Future',
     badgeBg: 'bg-gray-400',
     link: '#',
+    image: null,
     isCurrentSite: false,
-    isExternal: false,
     isFuture: true,
   },
 ];
@@ -81,7 +85,6 @@ const OurGroupPage = () => {
 
       {/* ── PARENT COMPANY INTRO ── */}
       <div className="w-full py-20 bg-white relative overflow-hidden">
-        {/* Dot pattern */}
         <div
           className="absolute inset-0 pointer-events-none opacity-[0.03]"
           style={{
@@ -97,7 +100,6 @@ const OurGroupPage = () => {
             transition={{ duration: 0.7 }}
             className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12"
           >
-            {/* Left */}
             <div className="flex flex-col gap-4 max-w-xl">
               <span className="text-[#f59e0b] text-xs font-black tracking-[0.3em] uppercase flex items-center gap-2">
                 <span className="w-8 h-px bg-[#f59e0b]" /> Our Parent Company
@@ -111,10 +113,7 @@ const OurGroupPage = () => {
                 <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 uppercase tracking-tight leading-none group-hover:text-[#f59e0b] transition-colors duration-300">
                   Ax Aurix
                 </h2>
-                <ExternalLink
-                  size={28}
-                  className="mb-2 text-gray-300 group-hover:text-[#f59e0b] transition-colors duration-300"
-                />
+                <ExternalLink size={28} className="mb-2 text-gray-300 group-hover:text-[#f59e0b] transition-colors duration-300" />
               </a>
               <div className="flex items-center gap-3">
                 <div className="h-1 w-20 rounded-full bg-[#f59e0b]" />
@@ -122,11 +121,9 @@ const OurGroupPage = () => {
                 <div className="h-1 w-2 rounded-full bg-amber-100" />
               </div>
             </div>
-
-            {/* Right */}
             <div className="flex flex-col gap-6 max-w-lg">
               <p className="text-gray-500 text-xl leading-relaxed">
-                Ax Aurix is a multi-vertical holding group delivering excellence across events, hospitality, and digital — all under one visionary brand.
+                A multi-vertical holding group delivering excellence across events, hospitality, and digital — all under one visionary brand.
               </p>
               <div className="flex flex-wrap gap-3">
                 {['Events', 'Dining', 'Digital', 'And More...'].map((tag, i) => (
@@ -140,11 +137,10 @@ const OurGroupPage = () => {
         </div>
       </div>
 
-      {/* ── DIVISION CARDS (full width stacked) ── */}
+      {/* ── OVERVIEW CARDS ── */}
       <div className="w-full bg-gray-50 py-16">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
             {divisions.map((div, idx) => {
               const Icon = div.icon;
               return (
@@ -156,8 +152,26 @@ const OurGroupPage = () => {
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   className={`group relative rounded-3xl border ${div.borderAccent} bg-white overflow-hidden flex flex-col shadow-sm hover:shadow-xl transition-all duration-500 ${div.isFuture ? 'opacity-50' : ''}`}
                 >
-                  <div className={`h-1.5 w-full bg-gradient-to-r ${div.gradient}`} />
-                  <div className="p-7 flex flex-col gap-5 flex-1">
+                  {/* Image top section */}
+                  {div.image ? (
+                    <div className="relative h-40 overflow-hidden">
+                      <div className={`absolute inset-0 bg-gradient-to-br ${div.gradient} opacity-30 z-10`} />
+                      <img
+                        src={div.image}
+                        alt={div.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                    </div>
+                  ) : (
+                    <div className={`h-40 bg-gradient-to-br ${div.gradient} opacity-20 flex items-center justify-center`}>
+                      <Icon size={48} className="text-gray-400" />
+                    </div>
+                  )}
+
+                  {/* Gradient top stripe */}
+                  <div className={`h-1 w-full bg-gradient-to-r ${div.gradient}`} />
+
+                  <div className="p-6 flex flex-col gap-4 flex-1">
                     <div className="flex items-center justify-between">
                       <span className={`inline-flex items-center gap-1.5 text-xs font-black tracking-wide text-white px-3 py-1 rounded-full ${div.badgeBg}`}>
                         {div.isCurrentSite && <Star size={10} fill="white" />}
@@ -170,18 +184,15 @@ const OurGroupPage = () => {
                         </span>
                       )}
                     </div>
-                    <div className={`w-14 h-14 rounded-2xl ${div.lightBg} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                      <div className={`bg-gradient-to-br ${div.gradient} w-10 h-10 rounded-xl flex items-center justify-center text-white shadow-md`}>
-                        <Icon size={20} />
-                      </div>
-                    </div>
+
                     <div className="flex flex-col gap-1 flex-1">
                       <p className={`text-[10px] font-black tracking-[0.2em] uppercase ${div.textAccent}`}>{div.tagline}</p>
                       <h3 className="text-gray-900 font-black text-xl leading-tight group-hover:text-[#f59e0b] transition-colors duration-300">{div.name}</h3>
-                      <p className="text-gray-400 text-sm leading-relaxed mt-2">{div.desc}</p>
+                      <p className="text-gray-400 text-sm leading-relaxed mt-2 line-clamp-3">{div.desc}</p>
                     </div>
+
                     {!div.isFuture && (
-                      <div className={`mt-2 flex items-center gap-2 text-xs font-bold ${div.textAccent} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
+                      <div className={`flex items-center gap-2 text-xs font-bold ${div.textAccent} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
                         <span>{div.isCurrentSite ? 'Visit site' : 'Coming Soon'}</span>
                         <ArrowUpRight size={14} />
                       </div>
@@ -192,8 +203,8 @@ const OurGroupPage = () => {
             })}
           </div>
 
-          {/* ── DETAIL ROWS (alternating layout per division) ── */}
-          <div className="flex flex-col gap-8">
+          {/* ── DETAIL ROWS (image + content alternating) ── */}
+          <div className="flex flex-col gap-10">
             {divisions.filter(d => !d.isFuture).map((div, idx) => {
               const Icon = div.icon;
               const isEven = idx % 2 === 0;
@@ -204,40 +215,54 @@ const OurGroupPage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-60px' }}
                   transition={{ duration: 0.6, delay: 0.1 }}
-                  className={`bg-white rounded-3xl border ${div.borderAccent} shadow-sm overflow-hidden flex flex-col md:flex-row ${isEven ? '' : 'md:flex-row-reverse'}`}
+                  className={`bg-white rounded-[2rem] shadow-[0_8px_40px_rgba(0,0,0,0.06)] overflow-hidden flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}
                 >
-                  {/* Color accent panel */}
-                  <div className={`w-full md:w-56 bg-gradient-to-br ${div.gradient} flex flex-col items-center justify-center p-10 gap-4 min-h-[180px] md:min-h-0`}>
-                    <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center text-white">
-                      <Icon size={32} />
+                  {/* Image Panel */}
+                  <div className="w-full md:w-1/2 relative min-h-[280px] md:min-h-[420px] overflow-hidden group">
+                    <img
+                      src={div.image}
+                      alt={div.name}
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    {/* Gradient overlay */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${div.gradient} opacity-20`} />
+                    {/* Icon badge */}
+                    <div className="absolute bottom-6 left-6 z-10">
+                      <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${div.gradient} flex items-center justify-center text-white shadow-xl`}>
+                        <Icon size={24} />
+                      </div>
                     </div>
-                    <span className="text-white/90 text-xs font-black tracking-widest uppercase text-center">{div.tagline}</span>
                   </div>
 
-                  {/* Content */}
-                  <div className="flex-1 p-8 md:p-12 flex flex-col gap-6 justify-center">
+                  {/* Content Panel */}
+                  <div className="w-full md:w-1/2 p-8 md:p-14 lg:p-16 flex flex-col justify-center gap-6">
                     <div className="flex items-center gap-3">
                       <span className={`text-xs font-black text-white px-3 py-1 rounded-full ${div.badgeBg}`}>{div.badge}</span>
-                      <h3 className={`text-2xl md:text-3xl font-black text-gray-900 ${div.isCurrentSite ? '' : ''}`}>{div.name}</h3>
+                      <p className={`text-xs font-black tracking-[0.2em] uppercase ${div.textAccent}`}>{div.tagline}</p>
                     </div>
-                    <p className="text-gray-500 text-base leading-relaxed max-w-2xl">{div.desc}</p>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+
+                    <h3 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight">{div.name}</h3>
+
+                    <p className="text-gray-500 text-base md:text-lg leading-relaxed">{div.desc}</p>
+
+                    <div className="grid grid-cols-2 gap-3">
                       {div.features.map((f, fi) => (
                         <div key={fi} className="flex items-center gap-2 text-sm text-gray-600 font-semibold">
-                          <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 bg-gradient-to-br ${div.gradient}`} />
+                          <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${div.badgeBg}`} />
                           {f}
                         </div>
                       ))}
                     </div>
+
                     {div.isCurrentSite ? (
                       <Link
                         to="/"
-                        className={`inline-flex items-center gap-2 text-sm font-black ${div.textAccent} hover:underline`}
+                        className={`inline-flex items-center gap-2 text-sm font-black px-6 py-3 rounded-full bg-gradient-to-r ${div.gradient} text-white w-fit shadow-md hover:shadow-lg transition-shadow`}
                       >
                         Visit Aurix Events <ArrowUpRight size={16} />
                       </Link>
                     ) : (
-                      <span className={`inline-flex items-center gap-2 text-sm font-black ${div.textAccent} opacity-60`}>
+                      <span className={`inline-flex items-center gap-2 text-sm font-black ${div.textAccent} opacity-70`}>
                         Coming Soon — Stay tuned!
                       </span>
                     )}

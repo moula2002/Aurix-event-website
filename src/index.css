@@ -37,6 +37,34 @@ body {
   color: #111111;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+  /* Momentum scrolling on older iOS */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ─── MOBILE PERFORMANCE ─── */
+@media (max-width: 1024px) {
+  /* Remove tap highlight on mobile */
+  * {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: pan-y;
+  }
+
+  /* GPU-accelerate all motion elements */
+  [class*='motion-'],
+  [class*='animate-'] {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* Faster hover transitions on touch */
+  a, button {
+    transition-duration: 150ms !important;
+  }
+
+  /* Prevent overscroll bounce from clipping fixed headers */
+  html {
+    overscroll-behavior-y: none;
+  }
 }
 
 /* ─── SCROLLBAR ─── */

@@ -39,6 +39,18 @@ const Navbar = () => {
       ]
     },
     { name: 'GALLERY',   to: '/gallery' },
+    {
+      name: 'OUR GROUP',
+      to: '/#our-group',
+      hasDropdown: true,
+      isGroup: true,
+      dropdownItems: [
+        { name: 'Events Management',        sub: 'Aurix Events',   badge: 'Active',       color: 'bg-amber-500',   to: '/' },
+        { name: 'Restaurant Management',    sub: 'Aurix Dining',   badge: 'Coming Soon',  color: 'bg-rose-500',    to: '#' },
+        { name: 'Website Design & Dev',     sub: 'Aurix Digital',  badge: 'Coming Soon',  color: 'bg-blue-600',    to: '#' },
+        { name: 'More Coming Soon',         sub: 'Ax Aurix Group', badge: 'Future',       color: 'bg-gray-400',    to: '#' },
+      ]
+    },
     { name: 'CONTACT',   to: '/contact' },
   ];
 
@@ -122,18 +134,40 @@ const Navbar = () => {
 
                 {/* Dropdown Menu */}
                 {link.hasDropdown && (
-                  <div className="absolute top-full left-0 pt-4 opacity-0 translate-y-4 pointer-events-none group-hover/navitem:opacity-100 group-hover/navitem:translate-y-0 group-hover/navitem:pointer-events-auto transition-all duration-300">
-                    <div className="bg-white rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] border border-gray-100 p-3 min-w-[220px] flex flex-col gap-1">
-                      {link.dropdownItems.map((item, idx) => (
-                        <Link
-                          key={idx}
-                          to={item.to}
-                          className="px-4 py-2 text-sm font-bold tracking-wide text-gray-700 hover:text-[#f59e0b] hover:bg-amber-50 rounded-lg transition-colors whitespace-nowrap"
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
+                  <div className="absolute top-full left-0 pt-4 opacity-0 translate-y-4 pointer-events-none group-hover/navitem:opacity-100 group-hover/navitem:translate-y-0 group-hover/navitem:pointer-events-auto transition-all duration-300 z-50">
+                    {link.isGroup ? (
+                      // ── OUR GROUP rich dropdown ──
+                      <div className="bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.12)] border border-gray-100 p-3 min-w-[280px] flex flex-col gap-1">
+                        <p className="text-[10px] font-black tracking-[0.2em] text-[#f59e0b] uppercase px-3 py-1">Ax Aurix Group</p>
+                        {link.dropdownItems.map((item, idx) => (
+                          <Link
+                            key={idx}
+                            to={item.to}
+                            className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-amber-50 transition-colors group/di"
+                          >
+                            <span className={`w-2 h-2 rounded-full flex-shrink-0 ${item.color}`} />
+                            <div className="flex flex-col flex-1 min-w-0">
+                              <span className="text-sm font-black text-gray-900 group-hover/di:text-[#f59e0b] transition-colors leading-tight">{item.name}</span>
+                              <span className="text-[10px] text-gray-400 font-semibold tracking-wide">{item.sub}</span>
+                            </div>
+                            <span className={`text-[9px] font-black text-white px-2 py-0.5 rounded-full ${item.color} whitespace-nowrap`}>{item.badge}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    ) : (
+                      // ── standard dropdown ──
+                      <div className="bg-white rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] border border-gray-100 p-3 min-w-[220px] flex flex-col gap-1">
+                        {link.dropdownItems.map((item, idx) => (
+                          <Link
+                            key={idx}
+                            to={item.to}
+                            className="px-4 py-2 text-sm font-bold tracking-wide text-gray-700 hover:text-[#f59e0b] hover:bg-amber-50 rounded-lg transition-colors whitespace-nowrap"
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

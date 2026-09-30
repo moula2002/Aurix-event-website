@@ -59,7 +59,7 @@ const ApproachPage = () => {
             ))}
           </div>
           
-          <div className="mt-16 text-gray-400 text-sm">Confidential</div>
+
         </div>
 
         {/* Right Image Collage Side with Brush Mask Effect */}

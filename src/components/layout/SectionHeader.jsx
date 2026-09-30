@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const SectionHeader = ({ title, bgColor = 'bg-[#f59e0b]' }) => {
   return (
-    <div className={`w-full ${bgColor} py-16 md:py-24 overflow-hidden relative flex items-center justify-center`}>
+    <div className={`w-full ${bgColor} pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden relative flex items-center justify-center`}>
       {/* Container for the layered text */}
       <motion.div 
         initial={{ opacity: 0, y: 50 }}

@@ -27,6 +27,7 @@ const WhyChooseUs = lazy(() => import('./components/sections/WhyChooseUs'));
 const Clients = lazy(() => import('./components/sections/Clients'));
 const Testimonials = lazy(() => import('./components/sections/Testimonials'));
 const OurGroup = lazy(() => import('./components/sections/OurGroup'));
+const OurGroupPage = lazy(() => import('./components/sections/OurGroupPage'));
 
 /* ── Page transition variants ── */
 const pageVariants = {
@@ -118,6 +119,12 @@ const AnimatedRoutes = () => {
             <PageWrapper>
               <Contact />
               <Location />
+            </PageWrapper>
+          } />
+
+          <Route path="/our-group" element={
+            <PageWrapper addPadding={false}>
+              <OurGroupPage />
             </PageWrapper>
           } />
         </Routes>

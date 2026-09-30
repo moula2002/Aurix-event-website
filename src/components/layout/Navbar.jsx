@@ -39,18 +39,7 @@ const Navbar = () => {
       ]
     },
     { name: 'GALLERY',   to: '/gallery' },
-    {
-      name: 'OUR GROUP',
-      to: '/#our-group',
-      hasDropdown: true,
-      isGroup: true,
-      dropdownItems: [
-        { name: 'Events Management',        sub: 'Aurix Events',   badge: 'Active',       color: 'bg-amber-500',   to: '/' },
-        { name: 'Restaurant Management',    sub: 'Aurix Dining',   badge: 'Coming Soon',  color: 'bg-rose-500',    to: '#' },
-        { name: 'Website Design & Dev',     sub: 'Aurix Digital',  badge: 'Coming Soon',  color: 'bg-blue-600',    to: '#' },
-        { name: 'More Coming Soon',         sub: 'Ax Aurix Group', badge: 'Future',       color: 'bg-gray-400',    to: '#' },
-      ]
-    },
+    { name: 'OUR GROUP',  to: '/our-group' },
     { name: 'CONTACT',   to: '/contact' },
   ];
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CalendarCheck, UtensilsCrossed, Globe2, Plus } from 'lucide-react';
+import { CalendarCheck, UtensilsCrossed, Globe2, Plus, ArrowUpRight, Star } from 'lucide-react';
 
 const divisions = [
   {
@@ -8,9 +8,13 @@ const divisions = [
     name: 'Events Management',
     tagline: 'Aurix Events',
     desc: 'World-class event production, creative experiences, and flawless execution for corporate and entertainment events across the UAE.',
-    color: 'from-amber-400 to-orange-500',
+    gradient: 'from-amber-400 via-orange-400 to-orange-500',
+    lightBg: 'bg-amber-50',
+    textAccent: 'text-amber-600',
+    borderAccent: 'border-amber-300',
     badge: 'Active',
-    link: 'https://axaurixevents.com',
+    badgeBg: 'bg-amber-500',
+    link: '/',
     isCurrentSite: true,
   },
   {
@@ -18,28 +22,40 @@ const divisions = [
     name: 'Restaurant Management',
     tagline: 'Aurix Dining',
     desc: 'Premium restaurant concept development, operations management, and hospitality solutions crafted to deliver unforgettable dining experiences.',
-    color: 'from-rose-400 to-red-600',
+    gradient: 'from-rose-400 via-red-400 to-red-500',
+    lightBg: 'bg-rose-50',
+    textAccent: 'text-rose-600',
+    borderAccent: 'border-rose-200',
     badge: 'Coming Soon',
+    badgeBg: 'bg-rose-500',
     link: '#',
     isCurrentSite: false,
   },
   {
     icon: Globe2,
-    name: 'Website Design & Development',
+    name: 'Website Design & Dev',
     tagline: 'Aurix Digital',
     desc: 'Cutting-edge web design, custom development, and digital solutions for businesses ready to make a powerful online impact.',
-    color: 'from-blue-400 to-indigo-600',
+    gradient: 'from-blue-400 via-indigo-400 to-indigo-600',
+    lightBg: 'bg-blue-50',
+    textAccent: 'text-blue-600',
+    borderAccent: 'border-blue-200',
     badge: 'Coming Soon',
+    badgeBg: 'bg-blue-600',
     link: '#',
     isCurrentSite: false,
   },
   {
     icon: Plus,
-    name: 'More Coming Soon',
+    name: 'More to Come',
     tagline: 'Ax Aurix Group',
-    desc: 'The Ax Aurix Group is continuously growing. More services and business verticals are in development to serve you better.',
-    color: 'from-gray-300 to-gray-400',
+    desc: 'The Ax Aurix Group is continuously growing with new verticals and business opportunities in the pipeline.',
+    gradient: 'from-gray-300 via-gray-400 to-gray-500',
+    lightBg: 'bg-gray-50',
+    textAccent: 'text-gray-500',
+    borderAccent: 'border-gray-200',
     badge: 'Future',
+    badgeBg: 'bg-gray-400',
     link: '#',
     isCurrentSite: false,
     isFuture: true,
@@ -48,120 +64,161 @@ const divisions = [
 
 const OurGroup = () => {
   return (
-    <section className="w-full py-24 bg-[#0d0d0d] relative overflow-hidden">
-      {/* Background amber glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#f59e0b]/10 blur-[120px] rounded-full pointer-events-none" />
+    <section className="w-full bg-white relative overflow-hidden">
 
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
+      {/* ── TOP BAND ── */}
+      <div className="w-full h-[3px] bg-gradient-to-r from-transparent via-[#f59e0b] to-transparent" />
 
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-16"
-        >
-          <p className="text-[#f59e0b] text-xs font-bold tracking-[0.3em] uppercase mb-4">Our Parent Company</p>
+      {/* ── SECTION BODY ── */}
+      <div className="py-24 relative">
 
-          <div className="flex flex-col items-center gap-2 mb-6">
-            <a
-              href="https://axaurix.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight hover:text-[#f59e0b] transition-colors duration-300"
-            >
-              Ax Aurix.com
-            </a>
-            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#f59e0b] to-transparent mt-2" />
-          </div>
+        {/* Faint dot pattern bg */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.035]"
+          style={{
+            backgroundImage: 'radial-gradient(#f59e0b 1.5px, transparent 1.5px)',
+            backgroundSize: '32px 32px',
+          }}
+        />
 
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            Ax Aurix is a multi-vertical holding group delivering excellence across events, hospitality, and digital services — all under one visionary brand.
-          </p>
-        </motion.div>
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
 
-        {/* Connector line — desktop only */}
-        <div className="hidden lg:flex items-center justify-center mb-10">
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#f59e0b]/40" />
-          <div className="mx-6 px-6 py-2 rounded-full border border-[#f59e0b]/40 text-[#f59e0b] text-xs font-bold tracking-widest uppercase bg-[#f59e0b]/5">
-            Our Divisions
-          </div>
-          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#f59e0b]/40" />
-        </div>
+          {/* ── HEADER ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-10 mb-20"
+          >
+            {/* Left: title block */}
+            <div className="flex flex-col gap-3">
+              <span className="text-[#f59e0b] text-xs font-black tracking-[0.3em] uppercase flex items-center gap-2">
+                <span className="w-8 h-px bg-[#f59e0b]" /> Our Parent Company
+              </span>
 
-        {/* Division Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {divisions.map((div, idx) => {
-            const Icon = div.icon;
-            return (
-              <motion.a
-                key={idx}
-                href={div.link}
-                target={div.isCurrentSite || div.isFuture ? '_self' : '_blank'}
+              <a
+                href="https://axaurix.com"
+                target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className={`group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 flex flex-col gap-4 hover:border-white/25 hover:bg-white/8 transition-all duration-400 overflow-hidden ${div.isFuture ? 'opacity-60' : 'cursor-pointer'}`}
+                className="group flex items-end gap-3"
               >
-                {/* Top gradient bar */}
-                <div className={`absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r ${div.color}`} />
+                <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 uppercase tracking-tight leading-none group-hover:text-[#f59e0b] transition-colors duration-300">
+                  Ax Aurix
+                </h2>
+                <ArrowUpRight
+                  size={32}
+                  className="mb-2 text-gray-300 group-hover:text-[#f59e0b] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
+                />
+              </a>
 
-                {/* Badge */}
-                <div className="flex items-center justify-between">
-                  <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r ${div.color} text-white`}>
-                    {div.badge}
-                  </div>
-                  {div.isCurrentSite && (
-                    <div className="flex items-center gap-1.5 text-[10px] font-bold text-[#f59e0b] tracking-widest">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#f59e0b] animate-pulse" />
-                      YOU ARE HERE
+              {/* Underline */}
+              <div className="flex items-center gap-3">
+                <div className="h-1 w-20 rounded-full bg-[#f59e0b]" />
+                <div className="h-1 w-6 rounded-full bg-amber-200" />
+                <div className="h-1 w-2 rounded-full bg-amber-100" />
+              </div>
+            </div>
+
+            {/* Right: description */}
+            <p className="text-gray-500 text-lg leading-relaxed max-w-md lg:text-right">
+              A multi-vertical holding group delivering excellence across events, hospitality, and digital — all under one visionary brand.
+            </p>
+          </motion.div>
+
+          {/* ── DIVISION CARDS ── */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {divisions.map((div, idx) => {
+              const Icon = div.icon;
+              return (
+                <motion.a
+                  key={idx}
+                  href={div.link}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-60px' }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  className={`group relative rounded-3xl border ${div.borderAccent} bg-white overflow-hidden flex flex-col hover:shadow-xl transition-all duration-500 ${div.isFuture ? 'opacity-50' : 'cursor-pointer'}`}
+                >
+                  {/* Colored top stripe */}
+                  <div className={`h-1 w-full bg-gradient-to-r ${div.gradient}`} />
+
+                  <div className="p-7 flex flex-col gap-5 flex-1">
+
+                    {/* Top row: badge + YOU ARE HERE */}
+                    <div className="flex items-center justify-between">
+                      <span className={`inline-flex items-center gap-1.5 text-xs font-black tracking-wide text-white px-3 py-1 rounded-full ${div.badgeBg}`}>
+                        {div.isCurrentSite && <Star size={10} fill="white" />}
+                        {div.badge}
+                      </span>
+                      {div.isCurrentSite && (
+                        <span className="flex items-center gap-1 text-[10px] font-black text-[#f59e0b] tracking-widest">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#f59e0b] animate-pulse" />
+                          HERE
+                        </span>
+                      )}
                     </div>
-                  )}
-                </div>
 
-                {/* Icon */}
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${div.color} flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                  <Icon size={22} />
-                </div>
+                    {/* Icon */}
+                    <div className={`w-14 h-14 rounded-2xl ${div.lightBg} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                      <div className={`bg-gradient-to-br ${div.gradient} w-10 h-10 rounded-xl flex items-center justify-center text-white shadow-md`}>
+                        <Icon size={20} />
+                      </div>
+                    </div>
 
-                {/* Text */}
-                <div>
-                  <p className="text-[#f59e0b] text-xs font-bold tracking-widest uppercase mb-1">{div.tagline}</p>
-                  <h3 className="text-white font-black text-lg leading-tight mb-2 group-hover:text-[#f59e0b] transition-colors">
-                    {div.name}
-                  </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">
-                    {div.desc}
-                  </p>
-                </div>
-              </motion.a>
-            );
-          })}
+                    {/* Text */}
+                    <div className="flex flex-col gap-1 flex-1">
+                      <p className={`text-[10px] font-black tracking-[0.2em] uppercase ${div.textAccent}`}>
+                        {div.tagline}
+                      </p>
+                      <h3 className="text-gray-900 font-black text-xl leading-tight group-hover:text-[#f59e0b] transition-colors duration-300">
+                        {div.name}
+                      </h3>
+                      <p className="text-gray-400 text-sm leading-relaxed mt-2">
+                        {div.desc}
+                      </p>
+                    </div>
+
+                    {/* Arrow */}
+                    {!div.isFuture && (
+                      <div className={`flex items-center gap-2 text-xs font-bold ${div.textAccent} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
+                        <span>{div.isCurrentSite ? 'You are here' : 'Learn more'}</span>
+                        <ArrowUpRight size={14} />
+                      </div>
+                    )}
+                  </div>
+                </motion.a>
+              );
+            })}
+          </div>
+
+          {/* ── FOOTER NOTE ── */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-4 pt-10 border-t border-gray-100"
+          >
+            <p className="text-gray-400 text-sm">
+              All divisions are part of the{' '}
+              <a
+                href="https://axaurix.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#f59e0b] font-bold hover:underline"
+              >
+                Ax Aurix Group
+              </a>
+            </p>
+            <div className="flex items-center gap-2 text-xs text-gray-300 font-semibold uppercase tracking-widest">
+              <span className="w-6 h-px bg-gray-200" />
+              Events · Dining · Digital
+              <span className="w-6 h-px bg-gray-200" />
+            </div>
+          </motion.div>
+
         </div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="text-center mt-14"
-        >
-          <p className="text-gray-600 text-sm">
-            Visit our parent company at{' '}
-            <a
-              href="https://axaurix.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#f59e0b] font-bold hover:underline"
-            >
-              axaurix.com
-            </a>
-          </p>
-        </motion.div>
       </div>
     </section>
   );

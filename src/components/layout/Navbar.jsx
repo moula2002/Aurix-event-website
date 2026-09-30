@@ -142,9 +142,6 @@ const Navbar = () => {
 
           {/* ── DESKTOP CTA ── */}
           <div className="hidden lg:flex items-center gap-6 flex-shrink-0">
-            <button className="text-gray-900 hover:text-[#f59e0b] transition-colors">
-              <Search size={20} />
-            </button>
             <Link
               to="/contact"
               className="relative group flex items-center gap-2 px-6 py-3 rounded-full font-bold text-xs tracking-widest text-black bg-gradient-to-r from-[#f59e0b] to-[#fbbf24] hover:shadow-[0_8px_24px_rgba(245,158,11,0.4)] transition-all duration-300"

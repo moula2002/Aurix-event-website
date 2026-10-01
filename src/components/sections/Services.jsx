@@ -52,7 +52,7 @@ const Services = () => {
               transition={{ duration: 0.6, delay: index * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
-              onClick={() => navigate(service.link)}
+              onClick={() => navigate('/contact', { state: { service: service.title } })}
               className="relative aspect-[4/5] border-8 border-[#f59e0b] overflow-hidden group cursor-pointer bg-white flex flex-col items-center justify-center text-center p-6"
               style={{ willChange: "transform, opacity" }}
             >

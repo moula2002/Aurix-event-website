@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import SectionHeader from '../layout/SectionHeader';
 
 import imgA from '../../assets/images/services/toilet_standard.png';
@@ -21,7 +22,7 @@ import g4 from '../../assets/images/portfolio/work-8.jpg'; // Placeholder for gi
 import g5 from '../../assets/images/portfolio/work-9.jpg'; // Placeholder for hostesses
 
 const SupportServicesPage = () => {
-
+  const navigate = useNavigate();
 
   return (
     <div className="bg-gray-50 min-h-screen pb-24">
@@ -53,7 +54,12 @@ const SupportServicesPage = () => {
               
               {/* Furniture Rentals */}
               <div>
-                <h3 className="font-bold text-gray-900 text-2xl mb-4">Furniture Rentals</h3>
+                <h3 
+                  className="font-bold text-gray-900 text-2xl mb-4 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  onClick={() => navigate('/contact', { state: { service: 'Furniture Rentals' } })}
+                >
+                  Furniture Rentals
+                </h3>
                 <div className="flex flex-col gap-2 mb-6">
                   <a href="https://tiptopevents.ae/furniture-rentals-services/" target="_blank" rel="noopener noreferrer" className="text-[#f59e0b] font-medium underline hover:text-[#d97706] transition-colors text-sm break-words w-fit">
                     https://tiptopevents.ae/furniture-rentals-services/
@@ -77,7 +83,12 @@ const SupportServicesPage = () => {
 
               {/* Florist & Planters */}
               <div>
-                <h3 className="font-bold text-gray-900 text-2xl mb-4">Florist & Planters - Event Design</h3>
+                <h3 
+                  className="font-bold text-gray-900 text-2xl mb-4 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  onClick={() => navigate('/contact', { state: { service: 'Florist & Planters - Event Design' } })}
+                >
+                  Florist & Planters - Event Design
+                </h3>
                 <div className="space-y-4 text-gray-600 text-sm leading-relaxed text-justify">
                   <p>
                     We are here to help make every moment a special one and to provide an experience like no other. From creative concept development to full event design and management, we're a one-stop shop for all your event design and production needs. We truly believe that your event should showcase your style, your message and your image. Our floral designs and produces events of all sizes.
@@ -120,7 +131,12 @@ const SupportServicesPage = () => {
               
               {/* Corporate Gifting */}
               <div>
-                <h3 className="font-bold text-gray-900 text-2xl mb-4">Corporate Gifting</h3>
+                <h3 
+                  className="font-bold text-gray-900 text-2xl mb-4 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  onClick={() => navigate('/contact', { state: { service: 'Corporate Gifting' } })}
+                >
+                  Corporate Gifting
+                </h3>
                 <div className="space-y-4 text-gray-600 text-sm leading-relaxed text-justify">
                   <p>
                     Most organizations opt for personalized gifts to show their appreciation for their clients and employees. It is a great way for corporates to promote, advertise & showcase their brand. We can help save time and energy thinking about gift ideas for your clients or employees by letting us do that for you.
@@ -136,7 +152,12 @@ const SupportServicesPage = () => {
 
               {/* Hosts / Hostesses */}
               <div>
-                <h3 className="font-bold text-gray-900 text-2xl mb-4">Hosts/ Hostesses</h3>
+                <h3 
+                  className="font-bold text-gray-900 text-2xl mb-4 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  onClick={() => navigate('/contact', { state: { service: 'Hosts / Hostesses' } })}
+                >
+                  Hosts/ Hostesses
+                </h3>
                 <div className="space-y-4 text-gray-600 text-sm leading-relaxed text-justify">
                   <p>
                     We specialize in providing experienced, friendly event hosts to ensure that your event runs smoothly. Whether you need an usher, registration staff or models, we have the ideal person for the role!
@@ -221,7 +242,12 @@ const SupportServicesPage = () => {
           <div className="w-full lg:w-7/12 p-8 md:p-12 lg:pl-16 relative z-10 flex flex-col justify-center">
             
             <div className="mb-10">
-              <h2 className="text-3xl font-black text-gray-900 tracking-tight mb-2">Portable Toilets & Hand Wash Stations</h2>
+              <h2 
+                className="text-3xl font-black text-gray-900 tracking-tight mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                onClick={() => navigate('/contact', { state: { service: 'Portable Toilets & Hand Wash Stations' } })}
+              >
+                Portable Toilets & Hand Wash Stations
+              </h2><br/>
               <a href="https://portablesanitationcompany.com/" target="_blank" rel="noopener noreferrer" className="text-[#f59e0b] font-medium underline hover:text-[#d97706] transition-colors">
                 https://portablesanitationcompany.com/
               </a>

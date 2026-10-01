@@ -33,7 +33,7 @@ const Contact = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
   const [focused, setFocused] = useState(null);
-  const [values, setValues] = useState({ name: '', email: '', message: '' });
+  const [values, setValues] = useState({ name: '', email: '', service: location.state?.service || '', message: '' });
 
   const handleChange = (e) => setValues(v => ({ ...v, [e.target.name]: e.target.value }));
 
@@ -121,6 +121,7 @@ const Contact = () => {
               {[
                 { name: 'name', label: 'Full Name', type: 'text' },
                 { name: 'email', label: 'Email Address', type: 'email' },
+                { name: 'service', label: 'Service Inquiry', type: 'text' },
               ].map(({ name, label, type }) => (
                 <div key={name} className="relative">
                   <label

@@ -155,7 +155,8 @@ const Contact = () => {
               ].map(({ name, label, type }) => (
                 <div key={name} className="relative">
                   <label
-                    className={`absolute left-4 transition-all duration-300 font-medium pointer-events-none ${
+                    htmlFor={name}
+                    className={`absolute left-4 transition-all duration-300 font-medium pointer-events-none z-10 ${
                       focused === name || values[name]
                         ? '-top-2.5 text-xs text-[#f59e0b] bg-white px-1'
                         : 'top-4 text-sm text-gray-400'
@@ -164,6 +165,7 @@ const Contact = () => {
                     {label}
                   </label>
                   <input
+                    id={name}
                     type={type}
                     name={name}
                     value={values[name]}
@@ -178,7 +180,8 @@ const Contact = () => {
 
               <div className="relative">
                 <label
-                  className={`absolute left-4 transition-all duration-300 font-medium pointer-events-none ${
+                  htmlFor="message"
+                  className={`absolute left-4 transition-all duration-300 font-medium pointer-events-none z-10 ${
                     focused === 'message' || values.message
                       ? '-top-2.5 text-xs text-[#f59e0b] bg-white px-1'
                       : 'top-4 text-sm text-gray-400'
@@ -187,6 +190,7 @@ const Contact = () => {
                   Your Message
                 </label>
                 <textarea
+                  id="message"
                   name="message"
                   rows="4"
                   value={values.message}

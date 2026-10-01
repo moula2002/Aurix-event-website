@@ -14,14 +14,14 @@ const Portfolio = () => {
   const isHome = location.pathname === '/';
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/gallery')
+    fetch('https://aurix-event-server.onrender.com/api/gallery')
       .then(res => res.json())
       .then(data => {
         const mapped = data.map(item => ({
           id: item._id,
           category: item.category,
           title: item.title,
-          image: item.imageBase64 || (item.imageUrl ? `http://localhost:5000${item.imageUrl}` : '')
+          image: item.imageBase64 || (item.imageUrl ? `https://aurix-event-server.onrender.com${item.imageUrl}` : '')
         }));
         setProjects(mapped);
       })

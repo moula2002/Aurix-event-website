@@ -33,9 +33,38 @@ const Contact = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
   const [focused, setFocused] = useState(null);
-  const [values, setValues] = useState({ name: '', email: '', service: location.state?.service || '', message: '' });
+  const [status, setStatus] = useState('idle');
+  const [values, setValues] = useState({ name: '', email: '', phone: '', service: location.state?.service || '', message: '' });
 
   const handleChange = (e) => setValues(v => ({ ...v, [e.target.name]: e.target.value }));
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!values.name || !values.email) return;
+    setStatus('submitting');
+    try {
+      const formattedDate = new Intl.DateTimeFormat('en-GB', {
+        day: '2-digit', month: 'short', year: 'numeric',
+        hour: '2-digit', minute: '2-digit', hour12: true
+      }).format(new Date());
+
+      const res = await fetch('https://aurix-event-server.onrender.com/api/enquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...values, date: formattedDate })
+      });
+      if (res.ok) {
+        setStatus('success');
+        setValues({ name: '', email: '', phone: '', service: '', message: '' });
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        setStatus('error');
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus('error');
+    }
+  };
 
   return (
     <section id="contact" className={`${isHome ? 'py-24' : 'pb-28'} bg-white relative overflow-hidden`}>
@@ -117,10 +146,11 @@ const Contact = () => {
               Send a Message
             </h3>
 
-            <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
               {[
                 { name: 'name', label: 'Full Name', type: 'text' },
                 { name: 'email', label: 'Email Address', type: 'email' },
+                { name: 'phone', label: 'Phone Number', type: 'tel' },
                 { name: 'service', label: 'Service Inquiry', type: 'text' },
               ].map(({ name, label, type }) => (
                 <div key={name} className="relative">
@@ -141,6 +171,7 @@ const Contact = () => {
                     onFocus={() => setFocused(name)}
                     onBlur={() => setFocused(null)}
                     className={inputClasses}
+                    required={name === 'name' || name === 'email'}
                   />
                 </div>
               ))}
@@ -166,15 +197,27 @@ const Contact = () => {
                 />
               </div>
 
+              {status === 'success' && (
+                <div className="text-green-600 font-bold bg-green-50 p-4 rounded-xl border border-green-200">
+                  Thank you! Your message has been sent successfully. Our team will contact you soon.
+                </div>
+              )}
+              {status === 'error' && (
+                <div className="text-red-600 font-bold bg-red-50 p-4 rounded-xl border border-red-200">
+                  Oops! Something went wrong. Please try again or contact us directly.
+                </div>
+              )}
+
               <motion.button
                 type="submit"
+                disabled={status === 'submitting'}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="group relative w-full bg-gray-900 hover:bg-[#f59e0b] text-white hover:text-black font-bold uppercase tracking-widest py-4 rounded-xl flex items-center justify-center gap-3 transition-colors duration-400 mt-2 overflow-hidden shadow-lg hover:shadow-[0_0_25px_rgba(245,158,11,0.4)]"
+                className="group relative w-full bg-gray-900 hover:bg-[#f59e0b] text-white hover:text-black font-bold uppercase tracking-widest py-4 rounded-xl flex items-center justify-center gap-3 transition-colors duration-400 mt-2 overflow-hidden shadow-lg hover:shadow-[0_0_25px_rgba(245,158,11,0.4)] disabled:opacity-70"
               >
                 <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
-                <span className="relative z-10">Submit Request</span>
-                <Send size={16} className="relative z-10 group-hover:rotate-45 transition-transform duration-300" />
+                <span className="relative z-10">{status === 'submitting' ? 'Sending...' : 'Submit Request'}</span>
+                {status !== 'submitting' && <Send size={16} className="relative z-10 group-hover:rotate-45 transition-transform duration-300" />}
               </motion.button>
             </form>
           </div>

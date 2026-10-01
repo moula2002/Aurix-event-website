@@ -52,6 +52,14 @@ const PageWrapper = ({ children, addPadding = true }) => (
 const AnimatedRoutes = () => {
   const location = useLocation();
 
+  React.useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant'
+    });
+  }, [location.pathname]);
+
   return (
     <Suspense fallback={<div className="flex h-screen w-full items-center justify-center bg-gray-50"><div className="w-10 h-10 border-4 border-[#f59e0b] border-t-transparent rounded-full animate-spin"></div></div>}>
       <AnimatePresence mode="wait">
@@ -68,7 +76,6 @@ const AnimatedRoutes = () => {
               <Team />
               <Clients />
               <Testimonials />
-              <OurGroup />
               <Contact />
             </PageWrapper>
           } />

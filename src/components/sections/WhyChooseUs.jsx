@@ -55,18 +55,38 @@ const WhyChooseUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
-              className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 group"
-              style={{ willChange: "transform, opacity" }}
+              className="relative w-full h-[320px] group [perspective:1000px]"
             >
-              <div className="w-14 h-14 rounded-full border border-gray-100 flex items-center justify-center mb-8 group-hover:border-[#f59e0b] group-hover:bg-amber-50 transition-colors duration-300">
-                {reason.icon}
+              <div className="w-full h-full relative transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                
+                {/* Front Side */}
+                <div className="absolute inset-0 w-full h-full bg-white border border-gray-100 rounded-[2rem] p-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)] [backface-visibility:hidden] flex flex-col items-center justify-center text-center">
+                  <div className="w-20 h-20 rounded-full border border-gray-100 flex items-center justify-center mb-6 bg-gray-50/50 shadow-inner group-hover:shadow-md transition-all duration-300">
+                    {React.cloneElement(reason.icon, { size: 32, className: "text-amber-500" })}
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">
+                    {reason.title}
+                  </h3>
+                  <div className="absolute bottom-8 opacity-50 text-amber-500 font-semibold text-sm flex flex-col items-center gap-1 group-hover:opacity-0 transition-opacity">
+                    <span className="w-1 h-1 rounded-full bg-amber-500 animate-ping" />
+                    Hover
+                  </div>
+                </div>
+
+                {/* Back Side */}
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-amber-500 to-orange-600 rounded-[2rem] p-8 shadow-2xl [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-center text-center text-white">
+                  <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mb-4 backdrop-blur-sm shadow-inner">
+                    {React.cloneElement(reason.icon, { size: 24, className: "text-white drop-shadow-md" })}
+                  </div>
+                  <h3 className="text-lg font-bold mb-4 opacity-90 drop-shadow-sm">
+                    {reason.title}
+                  </h3>
+                  <p className="text-white/95 text-base font-medium leading-relaxed drop-shadow-sm">
+                    {reason.description}
+                  </p>
+                </div>
+
               </div>
-              <h3 className="text-xl font-bold text-[#111827] mb-4 group-hover:text-[#f59e0b] transition-colors duration-300">
-                {reason.title}
-              </h3>
-              <p className="text-gray-500 text-sm font-medium leading-relaxed">
-                {reason.description}
-              </p>
             </motion.div>
           ))}
         </div>

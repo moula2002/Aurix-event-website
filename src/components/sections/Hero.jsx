@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import imgHeroCrowd from '../../assets/images/hero-crowd.jpg';
-import imgHeroConference from '../../assets/images/hero-conference.jpg';
-import imgHeroStage from '../../assets/images/hero-stage.jpg';
+import imgHeroCrowd from '../../assets/images/hero-gala.jpg';
+import imgHeroConference from '../../assets/images/hero-tech.jpg';
+import imgHeroStage from '../../assets/images/hero-concert.jpg';
+import imgHeroBg from '../../assets/images/hero-bg-main.jpg';
 
 const Counter = React.memo(({ from, to, duration }) => {
   const [count, setCount] = useState(from);
@@ -45,40 +46,28 @@ const Hero = () => {
   const y1 = useTransform(scrollY, [0, 800], [0, 40]);
   const y2 = useTransform(scrollY, [0, 800], [0, -30]);
   const y3 = useTransform(scrollY, [0, 800], [0, 20]);
-
   return (
     <section
       id="home"
-      className="relative w-full min-h-screen bg-[#fafafa] flex items-center overflow-hidden pt-24 md:pt-32"
+      className="relative w-full min-h-screen flex items-center pt-24 md:pt-32"
+      style={{
+        backgroundImage: `
+          linear-gradient(to right, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 40%, transparent 100%),
+          linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+          url(${imgHeroBg})
+        `,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+        backgroundRepeat: 'no-repeat'
+      }}
     >
-      {/* ── Background Elements ── */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* Top left wave */}
-        <div className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-gradient-to-br from-[#fef3c7] to-[#fde68a] opacity-50 rounded-full blur-[100px]"></div>
-        {/* Bottom right wave */}
-        <div className="absolute -bottom-32 -right-32 w-[800px] h-[800px] bg-gradient-to-tl from-[#f59e0b] via-[#fbbf24] to-transparent opacity-30 rounded-full blur-[120px]"></div>
-        {/* Subtle dot pattern bottom left */}
-        <div
-          className="absolute bottom-16 left-32 w-32 h-32 opacity-20"
-          style={{
-            backgroundImage: 'radial-gradient(#f59e0b 2px, transparent 2px)',
-            backgroundSize: '20px 20px',
-          }}
-        ></div>
-        {/* Subtle dot pattern top right */}
-        <div
-          className="absolute top-48 right-16 w-32 h-32 opacity-20"
-          style={{
-            backgroundImage: 'radial-gradient(#f59e0b 2px, transparent 2px)',
-            backgroundSize: '20px 20px',
-          }}
-        ></div>
-      </div>
 
       <div className="max-w-[1440px] mx-auto px-6 lg:px-14 w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center pb-20">
 
         {/* ── LEFT: Typography ── */}
         <div className="flex flex-col justify-center mt-6 lg:mt-0">
+
 
           {/* Years counter badge */}
           <motion.div
@@ -89,21 +78,21 @@ const Hero = () => {
             className="flex items-center gap-4 mb-4"
           >
             <div
-              className="text-[4rem] md:text-[7rem] lg:text-[8.5rem] font-black leading-none tracking-tighter"
+              className="text-[3.5rem] md:text-[5.5rem] lg:text-[6.5rem] font-black leading-none tracking-tighter"
               style={{
                 background: 'linear-gradient(180deg, #fbbf24 0%, #d97706 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}
             >
-              <Counter from={0} to={22} duration={1800} />
+              2020
             </div>
             <div className="flex flex-col border-b-2 border-[#f59e0b] pb-2 pt-3">
               <span className="text-xs md:text-sm font-bold tracking-widest uppercase text-gray-500 leading-tight">
-                YEARS OF
+                WE ARE
               </span>
               <span className="text-lg md:text-xl font-black tracking-widest uppercase text-[#f59e0b] leading-tight mt-1">
-                EXCELLENCE
+                FROM
               </span>
             </div>
           </motion.div>

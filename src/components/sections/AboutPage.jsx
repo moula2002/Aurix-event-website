@@ -5,11 +5,13 @@ import About from './About';
 
 const AboutPage = () => {
   const milestones = [
-    { year: '2004', title: 'The Beginning', desc: 'Ax Aurix Events was founded with a vision to revolutionize the event industry in the UAE.' },
-    { year: '2010', title: 'Global Reach', desc: 'Expanded operations to handle international corporate events and exhibitions.' },
-    { year: '2015', title: 'Award Winning', desc: 'Recognized as the Best Event Management Company in the Middle East.' },
-    { year: '2020', title: 'Digital Evolution', desc: 'Pioneered hybrid and virtual event solutions during global shifts.' },
-    { year: '2026', title: '22 Years of Excellence', desc: 'Continuing to set the benchmark for luxury and corporate events globally.' }
+    { year: '2020', title: 'FOUNDATION', desc: 'Started our journey with a strong vision for creating memorable and professionally managed events.' },
+    { year: '2021', title: 'BUILDING MOMENTUM', desc: 'Expanded our event capabilities and strengthened our approach to delivering exceptional experiences.' },
+    { year: '2022', title: 'SERVICE EXPANSION', desc: 'Expanded our range of event services and developed stronger client relationships.' },
+    { year: '2023', title: 'NEW EXPERIENCES', desc: 'Introduced fresh event concepts and continued improving the overall event experience.' },
+    { year: '2024', title: 'GROWING REACH', desc: 'Continued growing our presence and delivering successful events across different requirements.' },
+    { year: '2025', title: 'STRONGER PARTNERSHIPS', desc: 'Built stronger partnerships and continued delivering high-quality event experiences.' },
+    { year: '2026', title: 'CONTINUING THE JOURNEY', desc: 'Continuing to create memorable experiences with innovation, creativity and professional event management.' }
   ];
 
   const strengths = [
@@ -53,7 +55,7 @@ const AboutPage = () => {
       <div className="bg-gray-50 py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
-            <h2 className="text-4xl font-black text-gray-900 uppercase tracking-tighter mb-4">22 Years of Excellence</h2>
+            <h2 className="text-4xl font-black text-gray-900 uppercase tracking-tighter mb-4">6 Years of Excellence</h2>
             <p className="text-gray-600">A timeline of our journey and milestones.</p>
           </div>
           

@@ -25,7 +25,7 @@ const Contact = lazy(() => import('./components/sections/Contact'));
 const Team = lazy(() => import('./components/sections/Team'));
 const WhyChooseUs = lazy(() => import('./components/sections/WhyChooseUs'));
 const Clients = lazy(() => import('./components/sections/Clients'));
-const Testimonials = lazy(() => import('./components/sections/Testimonials'));
+
 const OurGroup = lazy(() => import('./components/sections/OurGroup'));
 const OurGroupPage = lazy(() => import('./components/sections/OurGroupPage'));
 
@@ -75,7 +75,6 @@ const AnimatedRoutes = () => {
               <Portfolio />
               <Team />
               <Clients />
-              <Testimonials />
               <Contact />
             </PageWrapper>
           } />

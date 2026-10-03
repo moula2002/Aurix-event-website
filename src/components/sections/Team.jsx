@@ -26,7 +26,7 @@ const Team = () => {
           </div>
           <div className="max-w-md">
             <p className="text-gray-600 font-medium leading-relaxed text-sm md:text-base">
-              22+ years of experience, driven by a passionate team
+              6+ years of experience, driven by a passionate team
               committed to delivering exceptional event experiences.
             </p>
           </div>

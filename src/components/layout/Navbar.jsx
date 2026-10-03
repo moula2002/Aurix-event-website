@@ -61,11 +61,11 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex items-center gap-6">
-          <div className="flex items-center gap-4 text-gray-800">
-            <a href="#" className="hover:text-[#f59e0b] transition-colors"><Facebook size={16} /></a>
-            <a href="#" className="hover:text-[#f59e0b] transition-colors"><Instagram size={16} /></a>
-            <a href="#" className="hover:text-[#f59e0b] transition-colors"><Linkedin size={16} /></a>
-            <a href="#" className="hover:text-[#f59e0b] transition-colors"><Youtube size={16} /></a>
+          <div className="flex items-center gap-4 text-[#F8B11B]">
+            <a href="#" className="hover:text-white transition-colors"><Facebook size={16} /></a>
+            <a href="#" className="hover:text-white transition-colors"><Instagram size={16} /></a>
+            <a href="#" className="hover:text-white transition-colors"><Linkedin size={16} /></a>
+            <a href="#" className="hover:text-white transition-colors"><Youtube size={16} /></a>
           </div>
           <div className="w-px h-4 bg-gray-300"></div>
           <span className="text-[#f59e0b]">Follow Us</span>

@@ -88,7 +88,7 @@ const Statistics = () => {
                 <Zap size={10} className="text-[#f59e0b]" />
                 AX AURIX EVENTS
                 <span className="text-[#f59e0b]">✦</span>
-                22 YEARS OF EXCELLENCE
+                6 YEARS OF EXCELLENCE
                 <span className="text-[#f59e0b]">✦</span>
                 ABU DHABI UAE
               </span>

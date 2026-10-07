@@ -5,6 +5,7 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import SmoothScroll from './components/layout/SmoothScroll';
 import ScrollProgressBar from './components/layout/ScrollProgressBar';
+import FloatingWhatsApp from './components/layout/FloatingWhatsApp';
 
 // Lazy loading page sections for code splitting and performance optimization
 const Hero = lazy(() => import('./components/sections/Hero'));
@@ -152,6 +153,7 @@ function App() {
             <AnimatedRoutes />
           </main>
           <Footer />
+          <FloatingWhatsApp />
         </div>
       </SmoothScroll>
     </Router>

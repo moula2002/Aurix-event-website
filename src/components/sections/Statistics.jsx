@@ -30,9 +30,9 @@ const Counter = ({ from, to, duration, suffix = '' }) => {
 
 const Statistics = () => {
   const stats = [
-    { number: 1500, suffix: '+', label: 'Events Delivered', icon: '🎪' },
-    { number: 500, suffix: '+', label: 'Happy Clients', icon: '🤝' },
-    { number: 150, suffix: '+', label: 'Trusted Partners', icon: '🌟' },
+    { number: 750, suffix: '+', label: 'Events Delivered', icon: '🎪' },
+    { number: 250, suffix: '+', label: 'Happy Clients', icon: '🤝' },
+    { number: 75, suffix: '+', label: 'Trusted Partners', icon: '🌟' },
   ];
 
   return (

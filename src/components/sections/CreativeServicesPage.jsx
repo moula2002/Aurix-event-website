@@ -14,18 +14,18 @@ import cre_motion from '../../assets/images/creative/cre_motion.jpg';
 import cre_2d3d from '../../assets/images/creative/cre_2d3d.jpg';
 import cre_info from '../../assets/images/creative/cre_info.jpg';
 import cre_holo from '../../assets/images/creative/cre_holo.jpg';
-import cre_projection from '../../assets/images/creative/cre_projection.jpg';
+import cre_projection from '../../assets/images/creative/cre_projection.png';
 import cre_interactive from '../../assets/images/creative/cre_interactive.jpg';
 import cre_uiux from '../../assets/images/creative/cre_uiux.jpg';
 import cre_mobile from '../../assets/images/creative/cre_mobile.jpg';
 import cre_game from '../../assets/images/creative/cre_game.jpg';
-import cre_video from '../../assets/images/creative/cre_video.jpg';
+import cre_video from '../../assets/images/creative/cre_video.png';
 import cre_films from '../../assets/images/creative/cre_films.jpg';
-import cre_tvc from '../../assets/images/creative/cre_tvc.jpg';
+import cre_tvc from '../../assets/images/creative/cre_tvc.png';
 import cre_eventcov from '../../assets/images/creative/cre_eventcov.jpg';
 import cre_concepts from '../../assets/images/creative/cre_concepts.jpg';
 import cre_techdesign from '../../assets/images/creative/cre_techdesign.jpg';
-import cre_exhibition from '../../assets/images/creative/cre_exhibition.jpg';
+import cre_exhibition from '../../assets/images/creative/cre_exhibition.png';
 
 const CreativeServicesPage = () => {
   const navigate = useNavigate();

@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import SectionHeader from '../layout/SectionHeader';
 
-import imgA from '../../assets/images/services/toilet_standard.png';
-import imgB from '../../assets/images/services/toilet_open_1.png';
-import imgC from '../../assets/images/services/toilet_open_2.png';
+import imgA from '../../assets/images/services/toilet_open_1.png';
+import imgB from '../../assets/images/services/toilet_open_2.png';
+import imgC from '../../assets/images/services/toilet_standard.png';
 import imgD from '../../assets/images/services/handwash_stations.png';
 
 import f1 from '../../assets/images/services/furniture_1.png';
@@ -18,8 +18,8 @@ import f6 from '../../assets/images/services/furniture_6.png';
 import g1 from '../../assets/images/services/gift_usb.png';
 import g2 from '../../assets/images/services/gift_keyholder.png';
 import g3 from '../../assets/images/services/gift_luggagetag.png';
-import g4 from '../../assets/images/portfolio/work-8.jpg'; // Placeholder for gift set
-import g5 from '../../assets/images/portfolio/work-9.jpg'; // Placeholder for hostesses
+import g4 from '../../assets/images/services/gift_set_showcase.jpg';
+import g5 from '../../assets/images/services/hostesses_showcase.jpg';
 
 const SupportServicesPage = () => {
   const navigate = useNavigate();
@@ -188,10 +188,10 @@ const SupportServicesPage = () => {
             {/* Bottom Row: 2 images */}
             <div className="grid grid-cols-2 gap-4 mt-4">
               <div className="flex items-center justify-center">
-                <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=800&auto=format&fit=crop" alt="Event Crowd" className="w-full aspect-[4/3] object-cover rounded-xl shadow-md" />
+                <img src={g4} alt="Corporate Gifting Set" className="w-full aspect-[4/3] object-cover rounded-xl shadow-md" />
               </div>
               <div className="flex items-center justify-center">
-                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=800&auto=format&fit=crop" alt="Hostess" className="w-full aspect-[4/3] object-cover rounded-xl shadow-md" />
+                <img src={g5} alt="Event Hostesses" className="w-full aspect-[4/3] object-cover rounded-xl shadow-md" />
               </div>
             </div>
           </div>

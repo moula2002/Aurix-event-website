@@ -13,7 +13,7 @@ import t5 from '../../assets/images/technical/technical-5.jpg';
 import tech_audio from '../../assets/images/technical/tech_audio.jpg';
 import tech_video from '../../assets/images/technical/tech_video.jpg';
 import tech_av from '../../assets/images/technical/tech_av.jpg';
-import tech_lighting from '../../assets/images/technical/tech_lighting.jpg';
+import tech_lighting from '../../assets/images/technical/tech_light.jpg';
 import tech_stage from '../../assets/images/technical/tech_stage.jpg';
 import tech_rigging from '../../assets/images/technical/tech_rigging.jpg';
 import tech_backdrop from '../../assets/images/technical/tech_backdrop.jpg';

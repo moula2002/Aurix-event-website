@@ -53,10 +53,9 @@ const Location = () => {
               <div>
                 <p className="text-xs font-bold text-[#f59e0b] uppercase tracking-widest mb-2">Headquarters</p>
                 <p className="text-gray-600 leading-relaxed text-sm font-medium">
-                  Ax Aurix FZ L.L.C<br />
-                  P.O. Box 769937, Twofour54 Abu Dhabi,<br />
-                  Sheikh Zayed Street, Opposite Khalifa Park,<br />
-                  Abu Dhabi, U.A.E
+                  Ax Aurix Events LLC SPC<br />
+                  Level 5 The Hub WTC Mall,<br />
+                  Abu Dhabi
                 </p>
               </div>
             </div>
@@ -64,7 +63,7 @@ const Location = () => {
             <div className="h-[1px] bg-gray-200 my-1" />
 
             <a
-              href="https://maps.google.com/?q=Twofour54+Abu+Dhabi"
+              href="https://maps.google.com/?q=The+Hub+WTC+Mall+Abu+Dhabi"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#f59e0b] text-xs font-bold uppercase tracking-widest hover:gap-4 transition-all duration-300 group"
@@ -87,7 +86,7 @@ const Location = () => {
           <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#f59e0b] to-transparent z-20" />
 
           <iframe
-            src="https://maps.google.com/maps?q=Twofour54+Abu+Dhabi&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            src="https://maps.google.com/maps?q=The+Hub+WTC+Mall+Abu+Dhabi&t=&z=14&ie=UTF8&iwloc=&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}

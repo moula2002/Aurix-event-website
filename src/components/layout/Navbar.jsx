@@ -38,6 +38,7 @@ const Navbar = () => {
         { name: 'Support Services', to: '/services/support' }
       ]
     },
+    { name: 'EVENTS',    to: '/events' },
     { name: 'GALLERY',   to: '/gallery' },
     { name: 'OUR GROUP',  to: '/our-group' },
     { name: 'CONTACT',   to: '/contact' },
@@ -63,7 +64,7 @@ const Navbar = () => {
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-4 text-[#F8B11B]">
             <a href="#" className="hover:text-white transition-colors"><Facebook size={16} /></a>
-            <a href="#" className="hover:text-white transition-colors"><Instagram size={16} /></a>
+            <a href="https://www.instagram.com/axaurixevents?stkn=aTh5dTEyMDAxaDBn" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><Instagram size={16} /></a>
             <a href="#" className="hover:text-white transition-colors"><Linkedin size={16} /></a>
             <a href="#" className="hover:text-white transition-colors"><Youtube size={16} /></a>
           </div>

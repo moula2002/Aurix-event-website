@@ -4,6 +4,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import SectionHeader from '../layout/SectionHeader';
 import SectionTitle from '../layout/SectionTitle';
 
+import techImage from '../../assets/images/services/service-tech-gen.jpg';
+import creativeImage from '../../assets/images/services/service-creative-gen.jpg';
+import supportImage from '../../assets/images/services/service-support-gen.jpg';
+
 const Services = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const location = useLocation();
@@ -13,20 +17,20 @@ const Services = () => {
   const services = [
     {
       title: "TECHNICAL SERVICES",
-      description: "State-of-the-art event production, live streaming, rigging, audio/video coverage, and stage design to power flawless execution.",
-      image: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=800&auto=format&fit=crop", // Stage/Concert
+      description: "Audio Production • Video Production & LED Displays • Stage Design & Structural Engineering • Rigging & Theatrical Draping • Technical Event Production & Management • Custom Event App Development • Complete Registration & Ticketing Systems • Virtual & Hybrid Event Solutions",
+      image: techImage,
       link: '/services/technical'
     },
     {
       title: "CREATIVE SERVICES",
-      description: "From 3D motion graphics and hologram experiences to UI/UX design and conceptual event themes that captivate your audience.",
-      image: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=800&auto=format&fit=crop", // Design/Creative
+      description: "UI/UX App & Web Design • Brand Identity & Graphic Design • Motion Graphics, 2D & 3D Animation • Digital Content Production • Immersive 3D Projections & Holograms • Presentation & Keynote Design",
+      image: creativeImage,
       link: '/services/creative'
     },
     {
       title: "EVENT SUPPORT SERVICES",
       description: "Comprehensive support including premium furniture rentals, floral design, hostesses, corporate gifting, and luxury sanitation.",
-      image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=800&auto=format&fit=crop", // Elegant Event
+      image: supportImage,
       link: '/services/support'
     }
   ];

@@ -19,11 +19,13 @@ const AboutPreview = lazy(() => import('./components/sections/AboutPreview'));
 const AboutPage = lazy(() => import('./components/sections/AboutPage'));
 const Approach = lazy(() => import('./components/sections/Approach'));
 const ApproachPage = lazy(() => import('./components/sections/ApproachPage'));
-const Experts = lazy(() => import('./components/sections/Experts'));
+
 const Portfolio = lazy(() => import('./components/sections/Portfolio'));
+const SubServicesCarousel = lazy(() => import('./components/sections/SubServicesCarousel'));
 const Location = lazy(() => import('./components/sections/Location'));
 const Contact = lazy(() => import('./components/sections/Contact'));
-const Team = lazy(() => import('./components/sections/Team'));
+const EventsPage = lazy(() => import('./components/sections/EventsPage'));
+
 const WhyChooseUs = lazy(() => import('./components/sections/WhyChooseUs'));
 const Clients = lazy(() => import('./components/sections/Clients'));
 
@@ -74,7 +76,8 @@ const AnimatedRoutes = () => {
               <WhyChooseUs />
               <Approach />
               <Portfolio />
-              <Team />
+              <SubServicesCarousel />
+
               <Clients />
               <Contact />
             </PageWrapper>
@@ -119,6 +122,12 @@ const AnimatedRoutes = () => {
           <Route path="/gallery" element={
             <PageWrapper>
               <Portfolio />
+            </PageWrapper>
+          } />
+
+          <Route path="/events" element={
+            <PageWrapper>
+              <EventsPage />
             </PageWrapper>
           } />
 

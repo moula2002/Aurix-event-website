@@ -46,7 +46,7 @@ const About = () => {
             </div>
 
             <p className="text-[#111827] font-semibold text-sm md:text-[15px] leading-relaxed max-w-lg text-justify mb-10">
-              Ax Aurix Events was created by fusing together our passion for events and business. We bring a refreshing and exceptional approach to the event management industry. With our vision of Revolution, Collaboration and Service we aim to propel the boundaries of audience engagement.
+              Ax Aurix Events delivers event production, technical expertise, creative services, and digital solutions designed to help organizations connect with audiences and communicate their brand messages effectively.
             </p>
 
             {/* Layered Text 2 */}
@@ -68,10 +68,10 @@ const About = () => {
 
             <div className="text-[#111827] font-semibold text-sm md:text-[15px] leading-relaxed max-w-lg text-justify space-y-4">
               <p>
-                In a collaborative and highly productive scenario we wish to work alongside, as an integral and instrumental part of DCT, than just be an external supplier. The reason being that we can better influence and encourage clients to think outside the box to optimize effectiveness of their communication goals for product or brand related events.
+                Build collaborative partnerships with clients, understand their business objectives, and deliver event experiences that support their communication goals.
               </p>
               <p>
-                This cohesive partnership would certainly ensure better prospects of increased revenue streams. Having a well synchronized working relationship will surely enhance the reach and scope of work that can be collectively achieved.
+                Emphasize coordinated planning, effective production, and delivery within agreed budgets.
               </p>
             </div>
           </motion.div>
@@ -117,7 +117,7 @@ const About = () => {
               </h3>
             </div>
             <p className="text-gray-700 font-semibold text-sm md:text-base leading-relaxed text-center mt-2">
-              To be India's most trusted and innovative event management
+              To be the UAE's most trusted and innovative event management
               company, recognized for delivering extraordinary experiences,
               setting new industry benchmarks, and inspiring memorable moments
               through creativity, excellence, and passion.

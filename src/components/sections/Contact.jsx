@@ -10,7 +10,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: 'Visit Us',
-    value: 'Ax Aurix FZ L.L.C\nP.O. Box 769937, Twofour54 Abu Dhabi,\nSheikh Zayed Street, Opposite Khalifa Park,\nAbu Dhabi, U.A.E',
+    value: 'Ax Aurix Events LLC SPC\nLevel 5 The Hub WTC Mall\nAbu Dhabi',
   },
   {
     icon: Phone,

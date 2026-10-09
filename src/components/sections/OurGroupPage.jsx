@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CalendarCheck, UtensilsCrossed, Globe2, Plus, ArrowUpRight, Star, ExternalLink } from 'lucide-react';
+import { CalendarCheck, UtensilsCrossed, Globe2, Plus, ArrowUpRight, Star, ExternalLink, GlassWater } from 'lucide-react';
 import SectionHeader from '../layout/SectionHeader';
 import { Link } from 'react-router-dom';
 
@@ -55,6 +55,22 @@ const divisions = [
     badgeBg: 'bg-blue-600',
     link: '#',
     image: imgDigital,
+    isCurrentSite: false,
+  },
+  {
+    icon: GlassWater,
+    name: 'Catering & Private Events Bartending',
+    tagline: 'AURIX EVENTS',
+    desc: 'Exceptional catering and professional bartending services for private parties, weddings, corporate gatherings, and exclusive celebrations. From beautifully presented food to expertly crafted beverages, we deliver memorable hospitality experiences tailored to every occasion.',
+    features: ['Private Parties', 'Wedding Catering', 'Corporate Gatherings', 'Mixology Services', 'Custom Menus', 'Event Staffing'],
+    gradient: 'from-amber-400 via-orange-400 to-orange-500',
+    lightBg: 'bg-amber-50',
+    textAccent: 'text-amber-600',
+    borderAccent: 'border-amber-200',
+    badge: 'Available',
+    badgeBg: 'bg-amber-500',
+    link: '/contact',
+    image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=800',
     isCurrentSite: false,
   },
   {
@@ -193,7 +209,7 @@ const OurGroupPage = () => {
 
                     {!div.isFuture && (
                       <div className={`flex items-center gap-2 text-xs font-bold ${div.textAccent} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
-                        <span>{div.isCurrentSite ? 'Visit site' : 'Coming Soon'}</span>
+                        <span>{div.isCurrentSite ? 'Visit site' : (div.badge === 'Available' || div.badge === 'Active' ? 'Visit site' : 'Coming Soon')}</span>
                         <ArrowUpRight size={14} />
                       </div>
                     )}
@@ -260,6 +276,13 @@ const OurGroupPage = () => {
                         className={`inline-flex items-center gap-2 text-sm font-black px-6 py-3 rounded-full bg-gradient-to-r ${div.gradient} text-white w-fit shadow-md hover:shadow-lg transition-shadow`}
                       >
                         Visit Aurix Events <ArrowUpRight size={16} />
+                      </Link>
+                    ) : (div.badge === 'Available' || div.badge === 'Active') && div.link ? (
+                      <Link
+                        to={div.link}
+                        className={`inline-flex items-center gap-2 text-sm font-black px-6 py-3 rounded-full bg-gradient-to-r ${div.gradient} text-white w-fit shadow-md hover:shadow-lg transition-shadow`}
+                      >
+                        Visit site <ArrowUpRight size={16} />
                       </Link>
                     ) : (
                       <span className={`inline-flex items-center gap-2 text-sm font-black ${div.textAccent} opacity-70`}>

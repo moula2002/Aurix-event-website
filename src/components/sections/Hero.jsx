@@ -168,7 +168,7 @@ const Hero = () => {
               src={imgHeroCrowd}
               alt="Event"
               className="w-full h-full object-cover"
-              fetchpriority="high"
+              fetchPriority="high"
             />
           </motion.div>
         </div>
@@ -190,7 +190,7 @@ const Hero = () => {
               <img
                 src={imgHeroCrowd}
                 alt="Event Crowd"
-                fetchpriority="high"
+                fetchPriority="high"
                 decoding="async"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 will-change-transform"
               />

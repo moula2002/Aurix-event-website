@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, Lightbulb, BarChart3 } from 'lucide-react';
 import SectionTitle from '../layout/SectionTitle';
-import aboutImg from '../../assets/images/portfolio/work-1.jpg'; // Placeholder
+import aboutImg from '../../assets/images/about_us_corporate.jpg';
 
 const AboutPreview = () => {
   return (
@@ -24,14 +24,13 @@ const AboutPreview = () => {
               className="mb-12"
             >
               <div className="mb-8">
-                <SectionTitle subtitle="OUR" title="ABOUT US" />
+                <SectionTitle subtitle="BRINGING IDEAS TO LIFE" title="THROUGH EXCEPTIONAL EVENTS" />
               </div>
+              <p className="text-slate-600 leading-relaxed font-medium mb-4">
+                Ax Aurix Events delivers event production, technical expertise, creative services, and digital solutions designed to help organizations connect with audiences and communicate their brand messages effectively.
+              </p>
               <p className="text-slate-600 leading-relaxed font-medium">
-                Ax Aurix Events was created by fusing together our passion for
-                events and business. We bring a refreshing and exceptional approach
-                to the event management industry. With our vision of Revolution,
-                Collaboration and Service we aim to propel the boundaries of
-                audience engagement.
+                <strong>Our Goal:</strong> Build collaborative partnerships with clients, understand their business objectives, and deliver event experiences that support their communication goals. Emphasize coordinated planning, effective production, and delivery within agreed budgets.
               </p>
             </motion.div>
 

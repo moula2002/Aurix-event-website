@@ -7,6 +7,7 @@ import AnimatedSection, { AnimatedItem } from '../layout/AnimatedSection';
 import SectionHeader from '../layout/SectionHeader';
 import SectionTitle from '../layout/SectionTitle';
 
+
 const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [projects, setProjects] = useState([]);

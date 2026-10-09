@@ -12,15 +12,15 @@ const ApproachPage = () => {
   const steps = [
     {
       title: 'We Explore',
-      desc: 'We understand the ethos of your company, its mission and the long-term strategic plans. We are a part of your team! Our model works best when we become more than the "hired help" and become event management collaborators. So the first step for us is getting to know you and your business.'
+      desc: 'We begin by understanding the ethos of your company, its mission and long-term strategic plans. Our approach is built around collaboration: we aim to become an integral part of your team rather than simply an external supplier. By understanding your business, audience and objectives, we can help shape event concepts that support your communication goals and create meaningful connections with your clients.'
     },
     {
       title: 'We Build',
-      desc: 'The time taken to learn about your business and the goals of your event, enables us to be on target and in line with your goals. Leave the planning and management to us. Let us look after the details and the heavy lifting that comes with planning a professional event. Our network of preferred vendors, industry connections and years of experience, guarantee a full-service event management experience.'
+      desc: 'Once we understand your business and event objectives, we develop a clear plan aligned with your goals. We coordinate event planning, technical requirements, suppliers, resources and production details, taking care of the preparation and management involved in delivering a professional event. Our collaborative approach helps keep the project organized, focused and aligned with the agreed budget.'
     },
     {
       title: 'We Deliver',
-      desc: 'Conclusively, this is where our event management expertise comes into play. From scrupulous management of facility details to AV to on-site supervision, we ensure every detail is looked after. Managing your event using a goal-oriented overall plan and a methodical management approach allows you to rest easy. Knowing that every minute last detail is looked after will allow you to focus on your attendees and stakeholders at the event.'
+      desc: 'This is where our event management and production expertise comes together. From venue and facility coordination to audiovisual systems, lighting, staging and on-site supervision, we pay attention to every detail. By following a goal-oriented plan and a methodical management approach, we help ensure that the event runs smoothly, allowing you to focus on your attendees, clients and stakeholders.'
     }
   ];
 

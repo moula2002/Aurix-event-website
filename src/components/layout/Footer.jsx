@@ -34,9 +34,11 @@ const Footer = () => {
             <ul className="grid grid-cols-2 gap-y-5 gap-x-4 text-white text-sm font-bold tracking-wide uppercase">
               <li><a className="hover:text-[#f59e0b] transition-colors" href="/">HOME</a></li>
               <li><a className="hover:text-[#f59e0b] transition-colors" href="/about">ABOUT</a></li>
+              <li><a className="hover:text-[#f59e0b] transition-colors" href="/approach">APPROACH</a></li>
               <li><a className="hover:text-[#f59e0b] transition-colors" href="/services">SERVICES</a></li>
-              <li><a className="hover:text-[#f59e0b] transition-colors" href="/gallery">PORTFOLIO</a></li>
-              <li><a className="hover:text-[#f59e0b] transition-colors" href="/ips">OUR IP'S</a></li>
+              <li><a className="hover:text-[#f59e0b] transition-colors" href="/events">EVENTS</a></li>
+              <li><a className="hover:text-[#f59e0b] transition-colors" href="/gallery">GALLERY</a></li>
+              <li><a className="hover:text-[#f59e0b] transition-colors" href="/our-group">OUR GROUP</a></li>
               <li><a className="hover:text-[#f59e0b] transition-colors" href="/contact">CONTACT</a></li>
             </ul>
           </div>
@@ -46,7 +48,7 @@ const Footer = () => {
             <h3 className="text-[#f59e0b] text-sm font-bold uppercase tracking-widest mb-6">OUR LOCATION</h3>
             <div className="w-full h-40 rounded-xl overflow-hidden border border-[#333333]">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3630.938927902996!2d54.46939527618059!3d24.41814697822557!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e423bb0d9a695%3A0xc0c8fc0280ebdbd2!2sTwofour54!5e0!3m2!1sen!2sae!4v1707054359483!5m2!1sen!2sae" 
+                src="https://maps.google.com/maps?q=The+Hub+WTC+Mall+Abu+Dhabi&t=&z=14&ie=UTF8&iwloc=&output=embed" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 

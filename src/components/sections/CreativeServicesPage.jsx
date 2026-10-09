@@ -120,9 +120,7 @@ const CreativeServicesPage = () => {
               </div>
             </div>
             
-            <div className="relative group rounded-2xl overflow-hidden shadow-lg mt-2 flex-1 min-h-[220px]">
-              <img src={c1} alt="Creative Studio" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            </div>
+
           </div>
         </motion.div>
       </div>

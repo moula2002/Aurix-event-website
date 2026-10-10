@@ -64,13 +64,27 @@ const divisions = [
 
 const OurGroup = () => {
   return (
-    <section className="w-full bg-white relative overflow-hidden">
+    <section className="w-full bg-[#fefefe] relative overflow-hidden">
+
+      {/* ── Premium Background Decorations (Unique Design) ── */}
+      <div className="absolute top-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-gradient-to-bl from-[#ffedd5]/80 to-transparent opacity-80 z-0 pointer-events-none rounded-full blur-[100px]" />
+      <div className="absolute top-[20%] left-[-10%] w-[50vw] h-[70vh] bg-gradient-to-tr from-[#fbd38d]/20 via-transparent to-transparent z-0 pointer-events-none rounded-[100%] rotate-45" />
+      <div className="absolute bottom-[-10%] right-[10%] w-[40vw] h-[40vw] bg-gradient-to-tl from-[#ffedd5]/70 to-transparent z-0 pointer-events-none rounded-full blur-[80px]" />
+      
+      {/* Delicate horizontal wavy lines */}
+      <svg className="absolute top-[30%] w-full h-[200px] z-0 pointer-events-none opacity-20" preserveAspectRatio="none" viewBox="0 0 1440 320">
+        <path fill="none" stroke="#f59e0b" strokeWidth="1" strokeDasharray="5,5" d="M0,160L48,170.7C96,181,192,203,288,197.3C384,192,480,160,576,165.3C672,171,768,213,864,224C960,235,1056,213,1152,186.7C1248,160,1344,128,1392,112L1440,96"></path>
+      </svg>
+      <svg className="absolute bottom-[20%] w-full h-[200px] z-0 pointer-events-none opacity-10" preserveAspectRatio="none" viewBox="0 0 1440 320">
+        <path fill="none" stroke="#f59e0b" strokeWidth="1.5" d="M0,96L60,112C120,128,240,160,360,154.7C480,149,600,107,720,117.3C840,128,960,192,1080,208C1200,224,1320,192,1380,176L1440,160"></path>
+      </svg>
+      <div className="absolute top-[60%] left-12 z-0 opacity-20 pointer-events-none hidden xl:block" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 2px, transparent 2px)', backgroundSize: '32px 32px', width: '200px', height: '200px' }}></div>
 
       {/* ── TOP BAND ── */}
-      <div className="w-full h-[3px] bg-gradient-to-r from-transparent via-[#f59e0b] to-transparent" />
+      <div className="relative z-10 w-full h-[3px] bg-gradient-to-r from-transparent via-[#f59e0b] to-transparent" />
 
       {/* ── SECTION BODY ── */}
-      <div className="py-24 relative">
+      <div className="py-24 relative z-10">
 
         {/* Faint dot pattern bg */}
         <div

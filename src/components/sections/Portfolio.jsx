@@ -33,13 +33,20 @@ const Portfolio = () => {
 
   return (
     <>
-      <section id="gallery" className={`py-12 bg-gray-50 relative overflow-hidden ${!isHome ? 'pt-0' : ''}`}>
+      <section id="gallery" className={`py-12 bg-[#fefefe] relative overflow-hidden ${!isHome ? 'pt-0' : ''}`}>
+        
+        {/* ── Premium Background Decorations ── */}
+        <div className="absolute top-0 right-0 w-[45vw] h-[45vw] bg-gradient-to-bl from-[#fff7ed] to-transparent opacity-90 z-0 pointer-events-none rounded-bl-[100%]" />
+        <div className="absolute bottom-[10%] left-[-5%] w-[40vw] h-[60vh] bg-gradient-to-tr from-[#ffedd5] via-[#ffedd5]/50 to-transparent z-0 pointer-events-none rounded-tr-[100%] rounded-br-[20%]" />
+        <div className="absolute top-[40%] right-12 z-0 opacity-40 pointer-events-none hidden md:block" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1.5px, transparent 1.5px)', backgroundSize: '24px 24px', width: '150px', height: '150px' }}></div>
+        <div className="absolute bottom-[20%] left-12 z-0 opacity-20 pointer-events-none hidden lg:block" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1.5px, transparent 1.5px)', backgroundSize: '24px 24px', width: '100px', height: '100px' }}></div>
+
         {isHome ? (
-          <div className="max-w-7xl mx-auto px-6 pt-12 mb-14">
+          <div className="max-w-7xl mx-auto px-6 pt-12 mb-14 relative z-10">
             <SectionTitle subtitle="OUR" title="GALLERY" />
           </div>
         ) : (
-          <div className="mb-14">
+          <div className="mb-14 relative z-10">
             <SectionHeader title="GALLERY" />
           </div>
         )}

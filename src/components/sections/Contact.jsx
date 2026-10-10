@@ -67,28 +67,25 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className={`${isHome ? 'py-24' : 'pb-28'} bg-white relative overflow-hidden`}>
-      {isHome ? (
-        <div className="max-w-7xl mx-auto px-6 mb-16">
-          <SectionTitle subtitle="GET IN" title="TOUCH" />
-        </div>
-      ) : (
-        <SectionHeader title="CONTACT" />
-      )}
-      {/* Slanted bg accent */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-amber-50 -z-10 transform skew-x-12 translate-x-32 hidden lg:block" />
-      {/* Dot pattern top-left */}
-      <div
-        className="absolute left-6 top-6 opacity-[0.07] pointer-events-none"
-        style={{
-          backgroundImage: 'radial-gradient(#f59e0b 1.5px, transparent 1.5px)',
-          backgroundSize: '22px 22px',
-          width: '160px',
-          height: '160px',
-        }}
-      />
+    <section id="contact" className={`${isHome ? 'py-24' : 'pb-28'} bg-[#fefefe] relative overflow-hidden`}>
+      
+      {/* ── Premium Background Decorations ── */}
+      <div className="absolute top-0 right-0 w-[45vw] h-[45vw] bg-gradient-to-bl from-[#fff7ed] to-transparent opacity-90 z-0 pointer-events-none rounded-bl-[100%]" />
+      <div className="absolute bottom-[10%] left-[-5%] w-[40vw] h-[60vh] bg-gradient-to-tr from-[#ffedd5] via-[#ffedd5]/50 to-transparent z-0 pointer-events-none rounded-tr-[100%] rounded-br-[20%]" />
+      <div className="absolute top-[40%] right-12 z-0 opacity-40 pointer-events-none hidden md:block" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1.5px, transparent 1.5px)', backgroundSize: '24px 24px', width: '150px', height: '150px' }}></div>
+      <div className="absolute bottom-[20%] left-12 z-0 opacity-20 pointer-events-none hidden lg:block" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1.5px, transparent 1.5px)', backgroundSize: '24px 24px', width: '100px', height: '100px' }}></div>
 
-      <div className={`max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${!isHome ? 'mt-20' : ''}`}>
+      <div className="relative z-10">
+        {isHome ? (
+          <div className="max-w-7xl mx-auto px-6 mb-16 pt-12">
+            <SectionTitle subtitle="GET IN" title="TOUCH" />
+          </div>
+        ) : (
+          <SectionHeader title="CONTACT" />
+        )}
+      </div>
+
+      <div className={`max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10 ${!isHome ? 'mt-20' : ''}`}>
 
         {/* Left info */}
         <motion.div

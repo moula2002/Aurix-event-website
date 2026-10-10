@@ -94,13 +94,29 @@ const divisions = [
 
 const OurGroupPage = () => {
   return (
-    <div className="w-full bg-white min-h-screen">
+    <div className="w-full bg-[#fefefe] min-h-screen relative overflow-hidden">
+      
+      {/* ── Premium Background Decorations (Unique Design) ── */}
+      <div className="absolute top-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-gradient-to-bl from-[#ffedd5]/80 to-transparent opacity-80 z-0 pointer-events-none rounded-full blur-[100px]" />
+      <div className="absolute top-[20%] left-[-10%] w-[50vw] h-[70vh] bg-gradient-to-tr from-[#fbd38d]/20 via-transparent to-transparent z-0 pointer-events-none rounded-[100%] rotate-45" />
+      <div className="absolute bottom-[-10%] right-[10%] w-[40vw] h-[40vw] bg-gradient-to-tl from-[#ffedd5]/70 to-transparent z-0 pointer-events-none rounded-full blur-[80px]" />
+      
+      {/* Delicate horizontal wavy lines */}
+      <svg className="absolute top-[30%] w-full h-[200px] z-0 pointer-events-none opacity-20" preserveAspectRatio="none" viewBox="0 0 1440 320">
+        <path fill="none" stroke="#f59e0b" strokeWidth="1" strokeDasharray="5,5" d="M0,160L48,170.7C96,181,192,203,288,197.3C384,192,480,160,576,165.3C672,171,768,213,864,224C960,235,1056,213,1152,186.7C1248,160,1344,128,1392,112L1440,96"></path>
+      </svg>
+      <svg className="absolute bottom-[20%] w-full h-[200px] z-0 pointer-events-none opacity-10" preserveAspectRatio="none" viewBox="0 0 1440 320">
+        <path fill="none" stroke="#f59e0b" strokeWidth="1.5" d="M0,96L60,112C120,128,240,160,360,154.7C480,149,600,107,720,117.3C840,128,960,192,1080,208C1200,224,1320,192,1380,176L1440,160"></path>
+      </svg>
+      <div className="absolute top-[60%] left-12 z-0 opacity-20 pointer-events-none hidden xl:block" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 2px, transparent 2px)', backgroundSize: '32px 32px', width: '200px', height: '200px' }}></div>
 
-      {/* ── PAGE HEADER BANNER ── */}
-      <SectionHeader title="OUR GROUP" />
+      <div className="relative z-10">
+        {/* ── PAGE HEADER BANNER ── */}
+        <SectionHeader title="OUR GROUP" />
+      </div>
 
       {/* ── PARENT COMPANY INTRO ── */}
-      <div className="w-full py-20 bg-white relative overflow-hidden">
+      <div className="w-full py-20 relative overflow-hidden z-10">
         <div
           className="absolute inset-0 pointer-events-none opacity-[0.03]"
           style={{
@@ -154,7 +170,7 @@ const OurGroupPage = () => {
       </div>
 
       {/* ── OVERVIEW CARDS ── */}
-      <div className="w-full bg-gray-50 py-16">
+      <div className="w-full py-16 relative z-10">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
             {divisions.map((div, idx) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { Search, Settings, Truck } from 'lucide-react';
 
 import process1 from '../../assets/images/portfolio/work-1.jpg';
@@ -7,6 +7,11 @@ import process2 from '../../assets/images/portfolio/work-2.jpg';
 import process3 from '../../assets/images/portfolio/work-3.jpg';
 
 const ApproachPage = () => {
+  const { ref: sectionRef, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   const steps = [
     {
       title: 'We Explore',
@@ -24,6 +29,12 @@ const ApproachPage = () => {
       desc: 'This is where our event management and production expertise comes together. From venue and facility coordination to audiovisual systems, lighting, staging and on-site supervision, we pay attention to every detail. By following a goal-oriented plan and a methodical management approach, we help ensure that the event runs smoothly, allowing you to focus on your attendees, clients and stakeholders.'
     }
   ];
+
+  const getStepClass = (idx) => {
+    if (idx === 0) return inView ? 'approach-step1-entrance' : 'approach-step1-initial';
+    if (idx === 1) return inView ? 'approach-step2-entrance' : 'approach-step2-initial';
+    return inView ? 'approach-step3-entrance' : 'approach-step3-initial';
+  };
 
   return (
     <div className="relative min-h-screen bg-[#fefefe] overflow-hidden pt-24 pb-24">
@@ -65,18 +76,15 @@ const ApproachPage = () => {
       }}></div>
 
       {/* ── Main Content Container ── */}
-      <div className="max-w-[1600px] mx-auto w-full min-h-[85vh] relative z-10 flex flex-col lg:flex-row shadow-[0_20px_60px_rgba(0,0,0,0.08)] bg-white rounded-3xl overflow-hidden mb-12">
+      <div 
+        ref={sectionRef} 
+        className="max-w-[1600px] mx-auto w-full min-h-[85vh] relative z-10 flex flex-col lg:flex-row shadow-[0_20px_60px_rgba(0,0,0,0.08)] bg-white rounded-3xl overflow-hidden mb-12"
+      >
         
         {/* ── Left Column (Text Content) ── */}
         <div className="w-full lg:w-[48%] p-10 md:p-14 lg:p-20 xl:p-24 relative bg-white z-10 flex flex-col justify-center">
           
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="mb-14 relative"
-          >
+          <div className={`mb-14 relative ${inView ? 'approach-heading-entrance' : 'approach-heading-initial'}`}>
             <div className="absolute left-0 top-1 bottom-1 w-[3px] bg-[#f59e0b]"></div>
             <div className="pl-6">
               <span className="text-[#f59e0b] font-black text-xl md:text-2xl uppercase tracking-wider mb-1 block">OUR</span>
@@ -84,17 +92,13 @@ const ApproachPage = () => {
                 APPROACH
               </h2>
             </div>
-          </motion.div>
+          </div>
 
           <div className="space-y-12">
             {steps.map((step, idx) => (
-              <motion.div 
+              <div 
                 key={idx}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.15 }}
-                className="flex gap-6 relative"
+                className={`flex gap-6 relative ${getStepClass(idx)}`}
               >
                 {/* Connecting subtle line */}
                 {idx !== steps.length - 1 && (
@@ -115,7 +119,7 @@ const ApproachPage = () => {
                     {step.desc}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
@@ -131,25 +135,43 @@ const ApproachPage = () => {
               {/* White mask for the wave */}
               <path d="M-10,0 C80,250 -40,500 60,750 C110,900 -10,1000 -10,1000 L-20,1000 L-20,0 Z" fill="currentColor"></path>
               {/* Thin orange stroke accent */}
-              <path d="M-10,0 C80,250 -40,500 60,750 C110,900 -10,1000 -10,1000" fill="none" stroke="#f59e0b" strokeWidth="4"></path>
+              <path 
+                d="M-10,0 C80,250 -40,500 60,750 C110,900 -10,1000 -10,1000" 
+                fill="none" 
+                stroke="#f59e0b" 
+                strokeWidth="4"
+                className={inView ? 'approach-curve-entrance' : 'approach-curve-initial'}
+              ></path>
             </svg>
           </div>
 
           {/* Collage Layout */}
           <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 h-full bg-white border-l-4 lg:border-l-0 border-white">
             {/* Top Left Image (Conference/Audience) */}
-            <div className="relative w-full h-full border-r-[3px] border-b-[3px] border-white">
-              <img src={process1} alt="Explore Audience" className="absolute inset-0 w-full h-full object-cover" />
+            <div className="relative w-full h-full border-r-[3px] border-b-[3px] border-white overflow-hidden">
+              <img 
+                src={process1} 
+                alt="Explore Audience" 
+                className={`absolute inset-0 w-full h-full object-cover ${inView ? 'approach-img-tl-entrance' : 'approach-img-tl-initial'}`} 
+              />
             </div>
             
             {/* Top Right Image (Tech/Production) */}
-            <div className="relative w-full h-full border-l-[3px] border-b-[3px] border-white">
-              <img src={process2} alt="Build Tech" className="absolute inset-0 w-full h-full object-cover" />
+            <div className="relative w-full h-full border-l-[3px] border-b-[3px] border-white overflow-hidden">
+              <img 
+                src={process2} 
+                alt="Build Tech" 
+                className={`absolute inset-0 w-full h-full object-cover ${inView ? 'approach-img-tr-entrance' : 'approach-img-tr-initial'}`} 
+              />
             </div>
             
             {/* Bottom Full Width Image (Event Setup/Delivery) */}
-            <div className="relative w-full h-full col-span-2 border-t-[3px] border-white">
-              <img src={process3} alt="Deliver Event" className="absolute inset-0 w-full h-full object-cover object-center" />
+            <div className="relative w-full h-full col-span-2 border-t-[3px] border-white overflow-hidden">
+              <img 
+                src={process3} 
+                alt="Deliver Event" 
+                className={`absolute inset-0 w-full h-full object-cover object-center ${inView ? 'approach-img-b-entrance' : 'approach-img-b-initial'}`} 
+              />
             </div>
           </div>
 

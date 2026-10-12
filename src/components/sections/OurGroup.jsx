@@ -165,12 +165,6 @@ const OurGroup = () => {
                         {div.isCurrentSite && <Star size={10} fill="white" />}
                         {div.badge}
                       </span>
-                      {div.isCurrentSite && (
-                        <span className="flex items-center gap-1 text-[10px] font-black text-[#f59e0b] tracking-widest">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#f59e0b] animate-pulse" />
-                          HERE
-                        </span>
-                      )}
                     </div>
 
                     {/* Icon */}

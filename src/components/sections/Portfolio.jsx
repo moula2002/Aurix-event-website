@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { Search, ExternalLink } from 'lucide-react';
 import { useLocation, Link } from 'react-router-dom';
 import AnimatedSection, { AnimatedItem } from '../layout/AnimatedSection';
@@ -13,6 +14,30 @@ const Portfolio = () => {
   const [projects, setProjects] = useState([]);
   const location = useLocation();
   const isHome = location.pathname === '/';
+
+  const { ref: gridRef, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.15,
+  });
+
+  const galleryAnimationClasses = [
+    {
+      initial: 'gallery-card-initial-left',
+      entrance: 'gallery-card-entrance-left',
+    },
+    {
+      initial: 'gallery-card-initial-bottom',
+      entrance: 'gallery-card-entrance-bottom',
+    },
+    {
+      initial: 'gallery-card-initial-top',
+      entrance: 'gallery-card-entrance-top',
+    },
+    {
+      initial: 'gallery-card-initial-right',
+      entrance: 'gallery-card-entrance-right',
+    },
+  ];
 
   useEffect(() => {
     fetch('https://aurix-event-server.onrender.com/api/gallery')
@@ -52,80 +77,75 @@ const Portfolio = () => {
         )}
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          
-
 
           {/* Grid */}
-          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <AnimatePresence mode="popLayout">
-              {displayProjects.map((project, idx) => (
-                <motion.div
-                  layout
-                  key={project.id}
-                  layoutId={`project-container-${project.id}`}
-                  onClick={() => setSelectedProject(project)}
-                  initial={{ opacity: 0, scale: 0.95, y: 30 }}
-                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                  transition={{ duration: 0.6, delay: idx * 0.05, ease: [0.21, 0.47, 0.32, 0.98] }}
-                  style={{ willChange: "transform, opacity" }}
-                  className="group relative aspect-square overflow-hidden rounded-2xl cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-500"
+          <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {displayProjects.map((project, idx) => {
+              const anim = isHome && idx < 4 ? galleryAnimationClasses[idx] : null;
+              return (
+                <div
+                  key={project.id || idx}
+                  className={`w-full ${anim ? (inView ? anim.entrance : anim.initial) : ''}`}
                 >
-                  {/* Image bg placeholder */}
-                  <div className="absolute inset-0">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                      loading="lazy"
-                    />
-                    {/* Subtle dark overlay for readability */}
-                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500"></div>
-                  </div>
-
-                  {/* Category pill */}
-                  <div className="absolute top-4 left-4 z-20">
-                    <span className="px-3 py-1 rounded-full bg-black/40 backdrop-blur-sm text-white/80 text-[0.6rem] font-bold uppercase tracking-widest border border-white/10">
-                      {project.category}
-                    </span>
-                  </div>
-
-                  {/* Hover overlay */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute inset-0 bg-[#f59e0b]/85 flex flex-col items-center justify-center p-6 z-10"
+                  <div
+                    onClick={() => setSelectedProject(project)}
+                    className="group relative aspect-square overflow-hidden rounded-2xl cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 [transform:translateZ(0)]"
                   >
-                    <motion.div
-                      initial={{ scale: 0, opacity: 0 }}
-                      whileHover={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.3, delay: 0.05 }}
-                      className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4"
-                    >
-                      <Search size={20} className="text-black" />
-                    </motion.div>
-                    <h3 className="font-black text-xl uppercase tracking-wider text-black text-center mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-xs font-bold tracking-widest uppercase text-black/60">
-                      {project.category}
-                    </p>
-                    <div className="mt-4 flex items-center gap-1.5 text-black/70 text-xs font-bold uppercase tracking-wider hover:text-black transition-colors group/link">
-                      <span>View Project</span>
-                      <ExternalLink size={12} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                    {/* Image bg placeholder */}
+                    <div className="absolute inset-0">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                        loading="lazy"
+                      />
+                      {/* Subtle dark overlay for readability */}
+                      <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500"></div>
                     </div>
-                  </motion.div>
 
-                  {/* Bottom gradient text */}
-                  <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/70 to-transparent z-5 translate-y-0 group-hover:translate-y-full transition-transform duration-400">
-                    <h3 className="font-bold text-white text-sm uppercase tracking-wide">{project.title}</h3>
+                    {/* Category pill */}
+                    <div className="absolute top-4 left-4 z-20">
+                      <span className="px-3 py-1 rounded-full bg-black/40 backdrop-blur-sm text-white/80 text-[0.6rem] font-bold uppercase tracking-widest border border-white/10">
+                        {project.category}
+                      </span>
+                    </div>
+
+                    {/* Hover overlay */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                      className="absolute inset-0 bg-[#f59e0b]/85 flex flex-col items-center justify-center p-6 z-10"
+                    >
+                      <motion.div
+                        initial={{ scale: 0, opacity: 0 }}
+                        whileHover={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.3, delay: 0.05 }}
+                        className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4"
+                      >
+                        <Search size={20} className="text-black" />
+                      </motion.div>
+                      <h3 className="font-black text-xl uppercase tracking-wider text-black text-center mb-2">
+                        {project.title}
+                      </h3>
+                      <p className="text-xs font-bold tracking-widest uppercase text-black/60">
+                        {project.category}
+                      </p>
+                      <div className="mt-4 flex items-center gap-1.5 text-black/70 text-xs font-bold uppercase tracking-wider hover:text-black transition-colors group/link">
+                        <span>View Project</span>
+                        <ExternalLink size={12} className="group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                      </div>
+                    </motion.div>
+
+                    {/* Bottom gradient text */}
+                    <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/70 to-transparent z-5 translate-y-0 group-hover:translate-y-full transition-transform duration-400">
+                      <h3 className="font-bold text-white text-sm uppercase tracking-wide">{project.title}</h3>
+                    </div>
                   </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+                </div>
+              );
+            })}
+          </div>
 
           {/* CTA */}
           {isHome && (

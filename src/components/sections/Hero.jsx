@@ -42,7 +42,6 @@ const Hero = () => {
           backgroundImage: `url(${imgHeroBg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
           backgroundRepeat: 'no-repeat'
         }}
       />
@@ -83,17 +82,17 @@ const Hero = () => {
           {/* Headline */}
           <div className="flex flex-col mb-4">
             <h1 className="text-4xl md:text-6xl lg:text-[5rem] font-black text-[#111827] uppercase tracking-tighter leading-[0.95] overflow-hidden pb-1">
-              <motion.div variants={lineReveal} initial="hidden" animate="show" custom={0.1} style={{ willChange: "transform" }}>
+              <motion.div variants={lineReveal} initial="hidden" animate="show" custom={0.1}>
                 EVENTS
               </motion.div>
             </h1>
             <h1 className="text-4xl md:text-6xl lg:text-[5rem] font-black uppercase tracking-tighter leading-[0.95] flex gap-3 overflow-hidden pb-1">
-              <motion.div variants={lineReveal} initial="hidden" animate="show" custom={0.2} style={{ willChange: "transform" }} className="flex gap-3">
+              <motion.div variants={lineReveal} initial="hidden" animate="show" custom={0.2} className="flex gap-3">
                 <span className="text-[#111827]">THAT</span> <span className="text-[#f59e0b]">CREATE</span>
               </motion.div>
             </h1>
             <h1 className="text-4xl md:text-6xl lg:text-[5rem] font-black text-[#f59e0b] uppercase tracking-tighter leading-[0.95] overflow-hidden pb-1">
-              <motion.div variants={lineReveal} initial="hidden" animate="show" custom={0.3} style={{ willChange: "transform" }}>
+              <motion.div variants={lineReveal} initial="hidden" animate="show" custom={0.3}>
                 EXPERIENCES
               </motion.div>
             </h1>
@@ -106,7 +105,6 @@ const Hero = () => {
             animate="show"
             custom={0.4}
             className="text-slate-800 text-lg md:text-xl leading-relaxed mb-8 max-w-md font-medium"
-            style={{ willChange: "transform, opacity" }}
           >
             From concept to celebration, we craft extraordinary events that leave a lasting impact.
           </motion.p>
@@ -118,7 +116,6 @@ const Hero = () => {
             animate="show"
             custom={0.5}
             className="flex flex-wrap items-center gap-4"
-            style={{ willChange: "transform, opacity" }}
           >
             <Link
               to="/services"
@@ -158,64 +155,70 @@ const Hero = () => {
         </div>
 
         {/* ── RIGHT: Image collage ── */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate="show"
-          custom={0.4}
-          className="hidden lg:block relative h-[500px] xl:h-[650px] w-full mt-4"
-        >
+        <div className="hidden lg:block relative h-[500px] xl:h-[650px] w-full mt-4 [perspective:1200px]">
           {/* Main big image (Top Right) */}
           <motion.div
-            style={{ y: y1, willChange: "transform" }}
+            style={{ y: y1 }}
             className="absolute top-[5%] right-[0%] w-[75%] h-[50%] z-10 group"
           >
-            <div className="w-full h-full overflow-hidden rounded-[2.5rem] border-[4px] border-slate-900 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] transform transition-transform duration-700 hover:scale-[1.02] will-change-transform">
-              <img
-                src={imgHeroCrowd}
-                alt="Gala Dinner"
-                fetchPriority="high"
-                decoding="async"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 rounded-[2.5rem] shadow-[inset_0_0_0_2px_rgba(245,158,11,0.7)] pointer-events-none"></div>
+            <div className="w-full h-full hero-card-entrance-top-right">
+              <div className="w-full h-full hero-card-float-1">
+                <div className="w-full h-full overflow-hidden rounded-[2.5rem] border-[4px] border-slate-900 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] transform transition-transform duration-700 hover:scale-[1.02]">
+                  <img
+                    src={imgHeroCrowd}
+                    alt="Gala Dinner"
+                    fetchPriority="high"
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 rounded-[2.5rem] shadow-[inset_0_0_0_2px_rgba(245,158,11,0.7)] pointer-events-none"></div>
+                </div>
+              </div>
             </div>
           </motion.div>
 
           {/* Bottom Left Image */}
           <motion.div
-            style={{ y: y2, willChange: "transform" }}
+            style={{ y: y2 }}
             className="absolute bottom-[20%] left-[0%] w-[55%] h-[40%] z-20 group"
           >
-            <div className="w-full h-full overflow-hidden rounded-[2rem] border-[4px] border-slate-900 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] transform transition-transform duration-700 hover:scale-[1.02] will-change-transform">
-              <img
-                src={imgHeroConference}
-                alt="Corporate Conference"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 rounded-[2rem] shadow-[inset_0_0_0_2px_rgba(245,158,11,0.7)] pointer-events-none"></div>
+            <div className="w-full h-full hero-card-entrance-middle-left">
+              <div className="w-full h-full hero-card-float-2">
+                <div className="w-full h-full overflow-hidden rounded-[2rem] border-[4px] border-slate-900 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] transform transition-transform duration-700 hover:scale-[1.02]">
+                  <img
+                    src={imgHeroConference}
+                    alt="Corporate Conference"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 rounded-[2rem] shadow-[inset_0_0_0_2px_rgba(245,158,11,0.7)] pointer-events-none"></div>
+                </div>
+              </div>
             </div>
           </motion.div>
 
           {/* Bottom Right Image */}
           <motion.div
-            style={{ y: y3, willChange: "transform" }}
+            style={{ y: y3 }}
             className="absolute bottom-[0%] right-[5%] w-[60%] h-[45%] z-30 group"
           >
-            <div className="w-full h-full overflow-hidden rounded-[2.5rem] border-[4px] border-slate-900 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] transform transition-transform duration-700 hover:scale-[1.02] will-change-transform">
-              <img
-                src={imgHeroStage}
-                alt="Concert Stage"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 rounded-[2.5rem] shadow-[inset_0_0_0_2px_rgba(245,158,11,0.7)] pointer-events-none"></div>
+            <div className="w-full h-full hero-card-entrance-bottom-right">
+              <div className="w-full h-full hero-card-float-3">
+                <div className="w-full h-full overflow-hidden rounded-[2.5rem] border-[4px] border-slate-900 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] transform transition-transform duration-700 hover:scale-[1.02]">
+                  <img
+                    src={imgHeroStage}
+                    alt="Concert Stage"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 rounded-[2.5rem] shadow-[inset_0_0_0_2px_rgba(245,158,11,0.7)] pointer-events-none"></div>
+                </div>
+              </div>
             </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

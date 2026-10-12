@@ -1,7 +1,8 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { useNavigate } from 'react-router-dom';
 import SectionHeader from '../layout/SectionHeader';
+import AnimatedServiceCard from '../common/AnimatedServiceCard';
 
 import imgA from '../../assets/images/services/toilet_open_1.png';
 import imgB from '../../assets/images/services/toilet_open_2.png';
@@ -23,26 +24,25 @@ import g5 from '../../assets/images/services/hostesses_showcase.jpg';
 
 const SupportServicesPage = () => {
   const navigate = useNavigate();
+  const { ref: introRef, inView: introInView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
     <div className="bg-gray-50 min-h-screen pb-24">
       <SectionHeader title="SUPPORT SERVICES" />
       
-      <div className="max-w-4xl mx-auto text-center px-6 mt-20 mb-16">
+      <div 
+        ref={introRef}
+        className={`max-w-4xl mx-auto text-center px-6 mt-20 mb-16 ${
+          introInView ? 'service-hero-intro-entrance' : 'service-hero-intro-initial'
+        }`}
+      >
         <p className="text-xl text-gray-600 leading-relaxed">
           The difference between a good event and a great one lies in the details. Our comprehensive support services ensure that every aspect of your event—from VIP comfort to logistical necessities—is handled with uncompromising premium quality.
         </p>
       </div>
 
       {/* Featured Service: Furniture Rentals & Floral Design */}
-      <div className="max-w-[1600px] mx-auto px-6 mb-24">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col xl:flex-row relative"
-        >
+      <AnimatedServiceCard>
           {/* Left Side: Text Content */}
           <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pr-16 relative z-10 flex flex-col justify-center">
             
@@ -111,19 +111,10 @@ const SupportServicesPage = () => {
             <img src={f5} alt="Event Setup" className="w-full h-full object-cover rounded-sm" />
             <img src={f6} alt="Event Setup" className="w-full h-full object-cover rounded-sm" />
           </div>
-
-        </motion.div>
-      </div>
+      </AnimatedServiceCard>
 
       {/* Featured Service: Corporate Gifting & Hostesses */}
-      <div className="max-w-[1600px] mx-auto px-6 mb-24">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col xl:flex-row relative"
-        >
+      <AnimatedServiceCard>
           {/* Left Side: Text Content */}
           <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pr-16 relative z-10 flex flex-col justify-center">
 
@@ -195,19 +186,10 @@ const SupportServicesPage = () => {
               </div>
             </div>
           </div>
-
-        </motion.div>
-      </div>
+      </AnimatedServiceCard>
 
       {/* Featured Service: Portable Toilets Detailed Section */}
-      <div className="max-w-7xl mx-auto px-6 mt-24">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col lg:flex-row relative"
-        >
+      <AnimatedServiceCard mediaFirst containerClassName="max-w-7xl mx-auto px-6 mt-24">
           {/* Subtle background decoration */}
           <div className="absolute right-0 top-0 w-1/2 h-full bg-gray-100/50 pointer-events-none rounded-l-full blur-3xl opacity-50"></div>
 
@@ -298,9 +280,7 @@ const SupportServicesPage = () => {
 
             </div>
           </div>
-          
-        </motion.div>
-      </div>
+      </AnimatedServiceCard>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SectionHeader from '../layout/SectionHeader';
 import SectionTitle from '../layout/SectionTitle';
@@ -13,6 +13,11 @@ const Services = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const isHome = location.pathname === '/';
+
+  const { ref: gridRef, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.15,
+  });
 
   const services = [
     {
@@ -35,6 +40,21 @@ const Services = () => {
     }
   ];
 
+  const serviceAnimationClasses = [
+    {
+      initial: 'service-card-initial-left',
+      entrance: 'service-card-entrance-left',
+    },
+    {
+      initial: 'service-card-initial-center',
+      entrance: 'service-card-entrance-center',
+    },
+    {
+      initial: 'service-card-initial-right',
+      entrance: 'service-card-entrance-right',
+    },
+  ];
+
   return (
     <section id="services" className={`relative ${isHome ? 'py-24' : 'pb-24'} bg-white overflow-hidden`}>
       {isHome ? (
@@ -46,35 +66,35 @@ const Services = () => {
       )}
 
       <div className={`max-w-[1440px] mx-auto px-6 lg:px-12 ${!isHome ? 'mt-20' : ''}`}>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              onClick={() => {
-                navigate(service.link);
-                window.scrollTo(0, 0);
-              }}
-              className="relative aspect-[4/5] border-8 border-[#f59e0b] overflow-hidden group cursor-pointer bg-white flex flex-col items-center justify-center text-center p-6"
-              style={{ willChange: "transform, opacity" }}
-            >
-              {/* Background Image Layer */}
-              <div 
-                className={`absolute inset-0 transition-opacity duration-500 z-0 ${
-                  hoveredIndex === index ? 'opacity-0' : 'opacity-100'
-                }`}
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {services.map((service, index) => {
+            const anim = serviceAnimationClasses[index];
+            return (
+              <div
+                key={index}
+                className={`w-full ${inView ? anim.entrance : anim.initial}`}
               >
-                <img 
-                  src={service.image} 
-                  alt={service.title}
-                  className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700"
-                />
-              </div>
+              <div
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                onClick={() => {
+                  navigate(service.link);
+                  window.scrollTo(0, 0);
+                }}
+                className="relative aspect-[4/5] border-8 border-[#f59e0b] overflow-hidden group cursor-pointer bg-white flex flex-col items-center justify-center text-center p-6 transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_20px_35px_-10px_rgba(245,158,11,0.25)] will-change-transform"
+              >
+                {/* Background Image Layer */}
+                <div 
+                  className={`absolute inset-0 transition-opacity duration-500 z-0 ${
+                    hoveredIndex === index ? 'opacity-0' : 'opacity-100'
+                  }`}
+                >
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-full object-cover scale-100 group-hover:scale-108 transition-transform duration-700 ease-out"
+                  />
+                </div>
 
               {/* Hover Solid Color Layer */}
               <div 
@@ -110,8 +130,10 @@ const Services = () => {
                   </h3>
                 </div>
               </div>
-            </motion.div>
-          ))}
+            </div>
+          </div>
+        );
+      })}
         </div>
       </div>
     </section>

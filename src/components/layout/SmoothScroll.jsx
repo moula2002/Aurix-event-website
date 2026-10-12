@@ -22,16 +22,13 @@ const SmoothScroll = ({ children }) => {
     const lenis = new Lenis(
       touch
         ? {
-            // ── MOBILE: fast, native-feeling, minimal lag ──
+            // ── MOBILE: native, zero lag touch scrolling ──
             duration: 0.6,
-            easing: (t) => 1 - Math.pow(1 - t, 3),   // cubic ease-out — quick deceleration
             orientation: 'vertical',
             gestureOrientation: 'vertical',
-            smoothWheel: false,       // wheel not used on touch devices
-            touchMultiplier: 1.8,     // how fast finger drag scrolls
+            smoothWheel: false,
             infinite: false,
-            syncTouch: true,          // sync directly to touch events for zero lag
-            syncTouchLerp: 0.1,       // very low lerp = almost instant sync
+            syncTouch: false,          // preserve 120Hz native touch momentum without rAF hijacking
           }
         : {
             // ── DESKTOP: luxurious smooth scroll ──

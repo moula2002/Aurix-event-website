@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { CalendarCheck, UtensilsCrossed, Globe2, Plus, ArrowUpRight, Star, ExternalLink, GlassWater } from 'lucide-react';
 import SectionHeader from '../layout/SectionHeader';
 import { Link } from 'react-router-dom';
@@ -92,7 +93,105 @@ const divisions = [
   },
 ];
 
+const AnimatedServiceDetailRow = ({ div, idx }) => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.15,
+    rootMargin: '-50px',
+  });
+
+  const Icon = div.icon;
+  const isEven = idx % 2 === 0;
+  // idx 0 & 2: left tilt (-7deg); idx 1 & 3: right tilt (+7deg)
+  const isTiltLeft = idx % 2 === 0;
+
+  return (
+    <div
+      ref={ref}
+      className={`w-full ${
+        isTiltLeft
+          ? (inView ? `ourgroup-3d-left-entrance ourgroup-3d-card-${idx}` : 'ourgroup-3d-left-initial')
+          : (inView ? `ourgroup-3d-right-entrance ourgroup-3d-card-${idx}` : 'ourgroup-3d-right-initial')
+      }`}
+    >
+      <div
+        className={`bg-white rounded-[2rem] shadow-[0_8px_40px_rgba(0,0,0,0.06)] overflow-hidden flex flex-col ${
+          isEven ? 'md:flex-row' : 'md:flex-row-reverse'
+        }`}
+      >
+        {/* Image Panel */}
+        <div className="w-full md:w-1/2 relative min-h-[280px] md:min-h-[420px] overflow-hidden group">
+          <img
+            src={div.image}
+            alt={div.name}
+            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          />
+          {/* Gradient overlay */}
+          <div className={`absolute inset-0 bg-gradient-to-br ${div.gradient} opacity-20`} />
+          {/* Icon badge */}
+          <div className="absolute bottom-6 left-6 z-10">
+            <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${div.gradient} flex items-center justify-center text-white shadow-xl`}>
+              <Icon size={24} />
+            </div>
+          </div>
+        </div>
+
+        {/* Content Panel */}
+        <div className="w-full md:w-1/2 p-8 md:p-14 lg:p-16 flex flex-col justify-center gap-6">
+          <div className="flex items-center gap-3">
+            <span className={`text-xs font-black text-white px-3 py-1 rounded-full ${div.badgeBg}`}>{div.badge}</span>
+            <p className={`text-xs font-black tracking-[0.2em] uppercase ${div.textAccent}`}>{div.tagline}</p>
+          </div>
+
+          <h3 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight">{div.name}</h3>
+
+          <p className="text-gray-500 text-base md:text-lg leading-relaxed">{div.desc}</p>
+
+          <div className="grid grid-cols-2 gap-3">
+            {div.features.map((f, fi) => (
+              <div key={fi} className="flex items-center gap-2 text-sm text-gray-600 font-semibold">
+                <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${div.badgeBg}`} />
+                {f}
+              </div>
+            ))}
+          </div>
+
+          {div.isCurrentSite ? (
+            <Link
+              to="/"
+              className={`inline-flex items-center gap-2 text-sm font-black px-6 py-3 rounded-full bg-gradient-to-r ${div.gradient} text-white w-fit shadow-md hover:shadow-lg transition-shadow`}
+            >
+              Visit Aurix Events <ArrowUpRight size={16} />
+            </Link>
+          ) : (div.badge === 'Available' || div.badge === 'Active') && div.link ? (
+            <Link
+              to={div.link}
+              className={`inline-flex items-center gap-2 text-sm font-black px-6 py-3 rounded-full bg-gradient-to-r ${div.gradient} text-white w-fit shadow-md hover:shadow-lg transition-shadow`}
+            >
+              Visit site <ArrowUpRight size={16} />
+            </Link>
+          ) : (
+            <span className={`inline-flex items-center gap-2 text-sm font-black ${div.textAccent} opacity-70`}>
+              Coming Soon — Stay tuned!
+            </span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const OurGroupPage = () => {
+  const { ref: introRef, inView: introInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.15,
+  });
+
+  const { ref: cardsRef, inView: cardsInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   return (
     <div className="w-full bg-[#fefefe] min-h-screen relative overflow-hidden">
       
@@ -116,7 +215,7 @@ const OurGroupPage = () => {
       </div>
 
       {/* ── PARENT COMPANY INTRO ── */}
-      <div className="w-full py-20 relative overflow-hidden z-10">
+      <div ref={introRef} className="w-full py-20 relative overflow-hidden z-10">
         <div
           className="absolute inset-0 pointer-events-none opacity-[0.03]"
           style={{
@@ -125,16 +224,10 @@ const OurGroupPage = () => {
           }}
         />
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12"
-          >
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12">
             <div className="flex flex-col gap-4 max-w-xl">
               <span className="text-[#f59e0b] text-xs font-black tracking-[0.3em] uppercase flex items-center gap-2">
-                <span className="w-8 h-px bg-[#f59e0b]" /> Our Parent Company
+                <span className={`h-px bg-[#f59e0b] ${introInView ? 'ourgroup-line-entrance' : 'ourgroup-line-initial'}`} /> Our Parent Company
               </span>
               <a
                 href="https://axaurix.com"
@@ -142,10 +235,19 @@ const OurGroupPage = () => {
                 rel="noopener noreferrer"
                 className="group flex items-end gap-3"
               >
-                <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 uppercase tracking-tight leading-none group-hover:text-[#f59e0b] transition-colors duration-300">
-                  Ax Aurix
-                </h2>
-                <ExternalLink size={28} className="mb-2 text-gray-300 group-hover:text-[#f59e0b] transition-colors duration-300" />
+                <div className="overflow-hidden">
+                  <h2 className={`text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 uppercase tracking-tight leading-none group-hover:text-[#f59e0b] transition-colors duration-300 ${
+                    introInView ? 'ourgroup-title-entrance' : 'ourgroup-title-initial'
+                  }`}>
+                    Ax Aurix
+                  </h2>
+                </div>
+                <ExternalLink 
+                  size={28} 
+                  className={`mb-2 text-gray-300 group-hover:text-[#f59e0b] transition-all duration-300 ${
+                    introInView ? 'ourgroup-icon-entrance' : 'ourgroup-icon-initial'
+                  }`} 
+                />
               </a>
               <div className="flex items-center gap-3">
                 <div className="h-1 w-20 rounded-full bg-[#f59e0b]" />
@@ -154,161 +256,109 @@ const OurGroupPage = () => {
               </div>
             </div>
             <div className="flex flex-col gap-6 max-w-lg">
-              <p className="text-gray-500 text-xl leading-relaxed">
+              <p className={`text-gray-500 text-xl leading-relaxed ${
+                introInView ? 'ourgroup-desc-entrance' : 'ourgroup-desc-initial'
+              }`}>
                 A multi-vertical holding group delivering excellence across events, hospitality, and digital — all under one visionary brand.
               </p>
               <div className="flex flex-wrap gap-3">
                 {['Events', 'Dining', 'Digital', 'And More...'].map((tag, i) => (
-                  <span key={i} className="px-4 py-1.5 rounded-full bg-amber-50 text-amber-700 text-xs font-black tracking-widest uppercase border border-amber-200">
+                  <span 
+                    key={i} 
+                    className={`px-4 py-1.5 rounded-full bg-amber-50 text-amber-700 text-xs font-black tracking-widest uppercase border border-amber-200 ${
+                      introInView ? `ourgroup-tag-${i}` : 'ourgroup-badge-initial'
+                    }`}
+                  >
                     {tag}
                   </span>
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 
       {/* ── OVERVIEW CARDS ── */}
-      <div className="w-full py-16 relative z-10">
+      <div ref={cardsRef} className="w-full py-16 relative z-10 overflow-hidden">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
             {divisions.map((div, idx) => {
               const Icon = div.icon;
+              const isCard5 = idx === 4;
+              const cardNum = idx + 1;
+
               return (
-                <motion.div
+                <div
                   key={idx}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-40px' }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className={`group relative rounded-3xl border ${div.borderAccent} bg-white overflow-hidden flex flex-col shadow-sm hover:shadow-xl transition-all duration-500 ${div.isFuture ? 'opacity-50' : ''}`}
+                  className={`${
+                    isCard5
+                      ? (cardsInView ? 'ourgroup-card-5-entrance' : 'ourgroup-card5-initial')
+                      : (cardsInView ? `ourgroup-card-${cardNum}-entrance` : 'ourgroup-card-initial')
+                  }`}
                 >
-                  {/* Image top section */}
-                  {div.image ? (
-                    <div className="relative h-40 overflow-hidden">
-                      <div className={`absolute inset-0 bg-gradient-to-br ${div.gradient} opacity-30 z-10`} />
-                      <img
-                        src={div.image}
-                        alt={div.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
-                    </div>
-                  ) : (
-                    <div className={`h-40 bg-gradient-to-br ${div.gradient} opacity-20 flex items-center justify-center`}>
-                      <Icon size={48} className="text-gray-400" />
-                    </div>
-                  )}
-
-                  {/* Gradient top stripe */}
-                  <div className={`h-1 w-full bg-gradient-to-r ${div.gradient}`} />
-
-                  <div className="p-6 flex flex-col gap-4 flex-1">
-                    <div className="flex items-center justify-between">
-                      <span className={`inline-flex items-center gap-1.5 text-xs font-black tracking-wide text-white px-3 py-1 rounded-full ${div.badgeBg}`}>
-                        {div.isCurrentSite && <Star size={10} fill="white" />}
-                        {div.badge}
-                      </span>
-                      {div.isCurrentSite && (
-                        <span className="flex items-center gap-1 text-[10px] font-black text-[#f59e0b] tracking-widest">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#f59e0b] animate-pulse" />
-                          YOU ARE HERE
-                        </span>
-                      )}
-                    </div>
-
-                    <div className="flex flex-col gap-1 flex-1">
-                      <p className={`text-[10px] font-black tracking-[0.2em] uppercase ${div.textAccent}`}>{div.tagline}</p>
-                      <h3 className="text-gray-900 font-black text-xl leading-tight group-hover:text-[#f59e0b] transition-colors duration-300">{div.name}</h3>
-                      <p className="text-gray-400 text-sm leading-relaxed mt-2 line-clamp-3">{div.desc}</p>
-                    </div>
-
-                    {!div.isFuture && (
-                      <div className={`flex items-center gap-2 text-xs font-bold ${div.textAccent} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
-                        <span>{div.isCurrentSite ? 'Visit site' : (div.badge === 'Available' || div.badge === 'Active' ? 'Visit site' : 'Coming Soon')}</span>
-                        <ArrowUpRight size={14} />
+                  <div
+                    className={`group relative rounded-3xl border ${div.borderAccent} bg-white overflow-hidden flex flex-col shadow-sm hover:shadow-xl transition-all duration-500`}
+                  >
+                    {/* Image top section */}
+                    {div.image ? (
+                      <div className="relative h-40 overflow-hidden">
+                        <div className={`absolute inset-0 bg-gradient-to-br ${div.gradient} opacity-30 z-10`} />
+                        <div className={`w-full h-full ${
+                          cardsInView ? `ourgroup-img-${cardNum}-entrance` : 'ourgroup-img-initial'
+                        }`}>
+                          <img
+                            src={div.image}
+                            alt={div.name}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                          />
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="relative h-40 bg-gray-50 flex items-center justify-center overflow-hidden">
+                        <div className={`absolute inset-0 bg-gradient-to-br ${div.gradient} opacity-30`} />
+                        <Icon size={48} className="text-gray-500 relative z-10" />
                       </div>
                     )}
+
+                    {/* Gradient top stripe */}
+                    <div className={`h-1 w-full bg-gradient-to-r ${div.gradient}`} />
+
+                    <div className="p-6 flex flex-col gap-4 flex-1">
+                      <div className={`flex items-center justify-between ${
+                        cardsInView ? `ourgroup-badge-${cardNum}-entrance` : 'ourgroup-badge-initial'
+                      }`}>
+                        <span className={`inline-flex items-center gap-1.5 text-xs font-black tracking-wide text-white px-3 py-1 rounded-full ${div.badgeBg}`}>
+                          {div.isCurrentSite && <Star size={10} fill="white" />}
+                          {div.badge}
+                        </span>
+                      </div>
+
+                      <div className={`flex flex-col gap-1 flex-1 ${
+                        cardsInView ? `ourgroup-content-${cardNum}-entrance` : 'ourgroup-content-initial'
+                      }`}>
+                        <p className={`text-[10px] font-black tracking-[0.2em] uppercase ${div.textAccent}`}>{div.tagline}</p>
+                        <h3 className="text-gray-900 font-black text-xl leading-tight group-hover:text-[#f59e0b] transition-colors duration-300">{div.name}</h3>
+                        <p className="text-gray-400 text-sm leading-relaxed mt-2 line-clamp-3">{div.desc}</p>
+                      </div>
+
+                      {!div.isFuture && (
+                        <div className={`flex items-center gap-2 text-xs font-bold ${div.textAccent} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
+                          <span>{div.isCurrentSite ? 'Visit site' : (div.badge === 'Available' || div.badge === 'Active' ? 'Visit site' : 'Coming Soon')}</span>
+                          <ArrowUpRight size={14} />
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
           </div>
 
           {/* ── DETAIL ROWS (image + content alternating) ── */}
           <div className="flex flex-col gap-10">
-            {divisions.filter(d => !d.isFuture).map((div, idx) => {
-              const Icon = div.icon;
-              const isEven = idx % 2 === 0;
-              return (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-60px' }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                  className={`bg-white rounded-[2rem] shadow-[0_8px_40px_rgba(0,0,0,0.06)] overflow-hidden flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-                >
-                  {/* Image Panel */}
-                  <div className="w-full md:w-1/2 relative min-h-[280px] md:min-h-[420px] overflow-hidden group">
-                    <img
-                      src={div.image}
-                      alt={div.name}
-                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                    {/* Gradient overlay */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${div.gradient} opacity-20`} />
-                    {/* Icon badge */}
-                    <div className="absolute bottom-6 left-6 z-10">
-                      <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${div.gradient} flex items-center justify-center text-white shadow-xl`}>
-                        <Icon size={24} />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Content Panel */}
-                  <div className="w-full md:w-1/2 p-8 md:p-14 lg:p-16 flex flex-col justify-center gap-6">
-                    <div className="flex items-center gap-3">
-                      <span className={`text-xs font-black text-white px-3 py-1 rounded-full ${div.badgeBg}`}>{div.badge}</span>
-                      <p className={`text-xs font-black tracking-[0.2em] uppercase ${div.textAccent}`}>{div.tagline}</p>
-                    </div>
-
-                    <h3 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight">{div.name}</h3>
-
-                    <p className="text-gray-500 text-base md:text-lg leading-relaxed">{div.desc}</p>
-
-                    <div className="grid grid-cols-2 gap-3">
-                      {div.features.map((f, fi) => (
-                        <div key={fi} className="flex items-center gap-2 text-sm text-gray-600 font-semibold">
-                          <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${div.badgeBg}`} />
-                          {f}
-                        </div>
-                      ))}
-                    </div>
-
-                    {div.isCurrentSite ? (
-                      <Link
-                        to="/"
-                        className={`inline-flex items-center gap-2 text-sm font-black px-6 py-3 rounded-full bg-gradient-to-r ${div.gradient} text-white w-fit shadow-md hover:shadow-lg transition-shadow`}
-                      >
-                        Visit Aurix Events <ArrowUpRight size={16} />
-                      </Link>
-                    ) : (div.badge === 'Available' || div.badge === 'Active') && div.link ? (
-                      <Link
-                        to={div.link}
-                        className={`inline-flex items-center gap-2 text-sm font-black px-6 py-3 rounded-full bg-gradient-to-r ${div.gradient} text-white w-fit shadow-md hover:shadow-lg transition-shadow`}
-                      >
-                        Visit site <ArrowUpRight size={16} />
-                      </Link>
-                    ) : (
-                      <span className={`inline-flex items-center gap-2 text-sm font-black ${div.textAccent} opacity-70`}>
-                        Coming Soon — Stay tuned!
-                      </span>
-                    )}
-                  </div>
-                </motion.div>
-              );
-            })}
+            {divisions.filter(d => !d.isFuture).map((div, idx) => (
+              <AnimatedServiceDetailRow key={idx} div={div} idx={idx} />
+            ))}
           </div>
 
           {/* Footer */}

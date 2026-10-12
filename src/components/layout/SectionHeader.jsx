@@ -1,24 +1,44 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 const SectionHeader = ({ title, bgColor = 'bg-[#f59e0b]' }) => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const words = typeof title === 'string' ? title.split(' ') : [title];
+
+  const getWordClass = (index) => {
+    if (!inView) return 'section-header-word-initial';
+    if (index === 0) return 'section-header-word-entrance-0';
+    if (index === 1) return 'section-header-word-entrance-1';
+    return 'section-header-word-entrance-2';
+  };
+
+  const renderWords = () =>
+    words.map((word, i) => (
+      <React.Fragment key={i}>
+        <span className={`inline-block ${getWordClass(i)}`}>
+          {word}
+        </span>
+        {i < words.length - 1 && ' '}
+      </React.Fragment>
+    ));
+
   return (
-    <div className={`w-full ${bgColor} pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden relative flex items-center justify-center`}>
+    <div ref={ref} className={`w-full ${bgColor} pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden relative flex items-center justify-center`}>
       {/* Container for the layered text */}
-      <motion.div 
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="relative flex items-center justify-center w-full px-4"
-      >
+      <div className="relative flex items-center justify-center w-full px-4">
         <h2 className="relative w-full text-center text-4xl sm:text-5xl md:text-7xl lg:text-[9rem] font-black text-[#111827] tracking-tighter uppercase z-10 leading-[0.9] break-words">
           
           <span className="relative z-10">
-            {title}
+            {renderWords()}
             {/* Decorative Apostrophe / Comma symbol */}
             <span 
-              className="ml-2 md:ml-4 lg:ml-6 inline-block"
+              className={`ml-2 md:ml-4 lg:ml-6 inline-block ${
+                inView ? 'section-header-quote-entrance' : 'section-header-quote-initial'
+              }`}
               style={{
                 color: 'white',
                 WebkitTextStroke: '3px #111827',
@@ -39,14 +59,15 @@ const SectionHeader = ({ title, bgColor = 'bg-[#f59e0b]' }) => {
               transform: 'translate(8px, 12px)'
             }}
           >
-            {title}
+            {renderWords()}
             <span className="ml-2 md:ml-4 lg:ml-6 inline-block opacity-0">,</span>
           </span>
 
         </h2>
-      </motion.div>
+      </div>
     </div>
   );
 };
 
 export default SectionHeader;
+

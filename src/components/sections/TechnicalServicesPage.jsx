@@ -1,7 +1,9 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { useNavigate } from 'react-router-dom';
 import SectionHeader from '../layout/SectionHeader';
+import AnimatedServiceCard from '../common/AnimatedServiceCard';
+import AnimatedServiceCta from '../common/AnimatedServiceCta';
 import { Send, ArrowRight } from 'lucide-react';
 
 import t1 from '../../assets/images/technical/technical-1.jpg';
@@ -30,27 +32,26 @@ import tech_mobileapp from '../../assets/images/technical/tech_mobileapp.jpg';
 
 const TechnicalServicesPage = () => {
   const navigate = useNavigate();
+  const { ref: introRef, inView: introInView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
     <div className="bg-gray-50 min-h-screen pb-24">
       <SectionHeader title="TECHNICAL EXPERTISE" />
 
       {/* Hero Intro */}
-      <div className="max-w-4xl mx-auto text-center px-6 mt-12 mb-16">
+      <div 
+        ref={introRef}
+        className={`max-w-4xl mx-auto text-center px-6 mt-12 mb-16 ${
+          introInView ? 'service-hero-intro-entrance' : 'service-hero-intro-initial'
+        }`}
+      >
         <p className="text-xl text-gray-600 leading-relaxed font-normal">
           The backbone of any spectacular event is flawless technical execution. Our dedicated technical division houses the industry's most advanced equipment and the brightest engineering minds to guarantee your event runs perfectly from the first cue to the final curtain call.
         </p>
       </div>
 
       {/* 1. Audio & Visual Production */}
-      <div className="max-w-[1600px] mx-auto px-6 mb-24">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col xl:flex-row relative"
-        >
+      <AnimatedServiceCard>
           {/* Left Side: Text Content */}
           <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pr-16 relative z-10 flex flex-col justify-center">
             <div className="mb-10">
@@ -152,18 +153,10 @@ const TechnicalServicesPage = () => {
               <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors" />
             </div>
           </div>
-        </motion.div>
-      </div>
+      </AnimatedServiceCard>
 
       {/* 2. Stage & Structural Engineering */}
-      <div className="max-w-[1600px] mx-auto px-6 mb-24">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col xl:flex-row-reverse relative"
-        >
+      <AnimatedServiceCard reverse>
           {/* Left Side: Text Content */}
           <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pl-16 relative z-10 flex flex-col justify-center">
             <div className="mb-10">
@@ -257,18 +250,10 @@ const TechnicalServicesPage = () => {
               </div>
             </div>
           </div>
-        </motion.div>
-      </div>
+      </AnimatedServiceCard>
 
       {/* 3. Broadcasting & Live Streaming */}
-      <div className="max-w-[1600px] mx-auto px-6 mb-24">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col xl:flex-row relative"
-        >
+      <AnimatedServiceCard>
           {/* Left Side: Text Content */}
           <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pr-16 relative z-10 flex flex-col justify-center">
             <div className="mb-10">
@@ -328,18 +313,10 @@ const TechnicalServicesPage = () => {
               </div>
             </div>
           </div>
-        </motion.div>
-      </div>
+      </AnimatedServiceCard>
 
       {/* 4. Project & Production Management */}
-      <div className="max-w-[1600px] mx-auto px-6 mb-24">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col xl:flex-row-reverse relative"
-        >
+      <AnimatedServiceCard reverse>
           {/* Left Side: Text Content */}
           <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pl-16 relative z-10 flex flex-col justify-center">
             <div className="mb-10">
@@ -439,18 +416,10 @@ const TechnicalServicesPage = () => {
               <img src={t4} alt="Production Control" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             </div>
           </div>
-        </motion.div>
-      </div>
+      </AnimatedServiceCard>
 
       {/* 5. Digital & Web Infrastructure */}
-      <div className="max-w-[1600px] mx-auto px-6 mb-24">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col xl:flex-row relative"
-        >
+      <AnimatedServiceCard>
           {/* Left Side: Text Content */}
           <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pr-16 relative z-10 flex flex-col justify-center">
             <div className="mb-10">
@@ -525,30 +494,17 @@ const TechnicalServicesPage = () => {
               <img src={t5} alt="Digital Technology" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             </div>
           </div>
-        </motion.div>
-      </div>
+      </AnimatedServiceCard>
 
       {/* Bottom CTA Banner */}
-      <div className="max-w-[1600px] mx-auto px-6">
-        <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-black rounded-[2rem] p-10 md:p-16 text-center text-white relative overflow-hidden shadow-2xl border border-amber-500/20">
-          <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center gap-6">
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight">
-              Ready to Elevate Your Event's Technical Standards?
-            </h2>
-            <p className="text-gray-300 text-base md:text-lg">
-              Partner with our expert technical engineers to bring precision, reliability, and cutting-edge AV power to your next activation.
-            </p>
-            <button
-              onClick={() => navigate('/contact', { state: { service: 'Technical Services Consultation' } })}
-              className="mt-4 inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-sm tracking-widest text-black bg-gradient-to-r from-[#f59e0b] to-[#fbbf24] hover:shadow-[0_8px_24px_rgba(245,158,11,0.5)] transition-all duration-300 transform hover:scale-105"
-            >
-              <Send size={16} className="rotate-45" />
-              <span>REQUEST TECHNICAL QUOTE</span>
-              <ArrowRight size={16} />
-            </button>
-          </div>
-        </div>
-      </div>
+      <AnimatedServiceCta
+        title="Ready to Elevate Your Event's Technical Standards?"
+        description="Partner with our expert technical engineers to bring precision, reliability, and cutting-edge AV power to your next activation."
+        buttonText="REQUEST TECHNICAL QUOTE"
+        onButtonClick={() => navigate('/contact', { state: { service: 'Technical Services Consultation' } })}
+        iconLeft={<Send size={16} className="rotate-45" />}
+        iconRight={<ArrowRight size={16} />}
+      />
     </div>
   );
 };

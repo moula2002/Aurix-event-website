@@ -61,7 +61,6 @@ const Statistics = () => {
               whileHover={{ y: -5 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: idx * 0.15, ease: [0.21, 0.47, 0.32, 0.98] }}
-              style={{ willChange: "transform, opacity" }}
               className={`flex flex-col items-center justify-center py-5 px-6 relative group cursor-pointer
                 ${idx < stats.length - 1 ? 'md:border-r border-b md:border-b-0 border-gray-100' : ''}`}
             >

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { useNavigate } from 'react-router-dom';
 import SectionTitle from '../layout/SectionTitle';
 
@@ -24,7 +25,18 @@ import supportToilets from '../../assets/images/services/toilet_standard.png';
 
 const SubServicesCarousel = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [hasEntered, setHasEntered] = useState(false);
   const navigate = useNavigate();
+
+  const { ref: sectionRef, inView } = useInView({
+    threshold: 0.05,
+  });
+
+  React.useEffect(() => {
+    if (inView) {
+      setHasEntered(true);
+    }
+  }, [inView]);
 
   const baseServices = [
     // Technical
@@ -51,73 +63,79 @@ const SubServicesCarousel = () => {
   const carouselServices = [...baseServices, ...baseServices];
 
   return (
-    <section className="relative py-24 bg-white overflow-hidden border-t border-gray-100">
+    <section ref={sectionRef} className="relative py-24 bg-white overflow-hidden border-t border-gray-100">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 mb-16 relative z-20">
         <SectionTitle subtitle="EXPLORE" title="OUR CAPABILITIES" />
       </div>
 
       {/* Carousel Container */}
       <div className="w-full relative overflow-hidden">
-        <motion.div 
-          className="flex gap-6 w-max px-4 hover:[animation-play-state:paused]"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ repeat: Infinity, ease: "linear", duration: 80 }}
-          style={{ willChange: "transform" }}
+        <div 
+          className={`capability-marquee-track ${!inView ? 'capability-marquee-paused' : ''}`}
         >
           {carouselServices.map((service, index) => (
             <div
               key={index}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              onClick={() => {
-                navigate(service.link);
-                window.scrollTo(0, 0);
-              }}
-              // aspect-square to make it a square card type
-              // aspect-square to make it a square card type
-              className="relative w-[75vw] sm:w-[300px] md:w-[350px] shrink-0 aspect-square overflow-hidden group cursor-pointer bg-white flex flex-col items-center justify-center text-center shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgba(245,158,11,0.2)] transition-shadow duration-300 border border-gray-100"
+              className="relative w-[75vw] sm:w-[300px] md:w-[350px] shrink-0 aspect-square"
             >
-              {/* Background Image Layer */}
-              <div 
-                className="w-full h-[80%] relative overflow-hidden bg-white"
+              <div
+                className={`w-full h-full ${hasEntered ? 'capability-card-entrance' : 'capability-card-initial'}`}
+                style={{
+                  animationDelay: hasEntered ? `${Math.min(index, 6) * 150}ms` : '0ms',
+                }}
               >
-                <img 
-                  src={service.image} 
-                  alt={service.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                
-                {/* Hover Solid Color Layer over image */}
-                <div 
-                  className={`absolute inset-0 bg-[#f59e0b] transition-opacity duration-500 z-10 ${
-                    hoveredIndex === index ? 'opacity-90' : 'opacity-0'
-                  }`}
-                />
+                <div
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={() => {
+                    navigate(service.link);
+                    window.scrollTo(0, 0);
+                  }}
+                  className="w-full h-full relative overflow-hidden group cursor-pointer bg-white flex flex-col items-center justify-center text-center shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgba(245,158,11,0.2)] transition-shadow duration-300 border border-gray-100"
+                >
+                  {/* Background Image Layer */}
+                  <div 
+                    className="w-full h-[80%] relative overflow-hidden bg-white"
+                  >
+                    <img 
+                      src={service.image} 
+                      alt={service.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    
+                    {/* Hover Solid Color Layer over image */}
+                    <div 
+                      className={`absolute inset-0 bg-[#f59e0b] transition-opacity duration-500 z-10 ${
+                        hoveredIndex === index ? 'opacity-90' : 'opacity-0'
+                      }`}
+                    />
 
-                {/* Text Content (shown on hover over image) */}
-                <div className={`absolute inset-0 z-20 flex flex-col items-center justify-center transition-all duration-500 px-4 ${
-                  hoveredIndex === index ? 'translate-y-0 opacity-100 text-white' : 'translate-y-4 opacity-0 text-white'
-                }`}>
-                  <h3 className="text-xl md:text-2xl font-black uppercase leading-tight drop-shadow-md">
-                    {service.title.split(' ').map((word, i) => (
-                      <React.Fragment key={i}>
-                        {word} <br />
-                      </React.Fragment>
-                    ))}
-                  </h3>
+                    {/* Text Content (shown on hover over image) */}
+                    <div className={`absolute inset-0 z-20 flex flex-col items-center justify-center transition-all duration-500 px-4 ${
+                      hoveredIndex === index ? 'translate-y-0 opacity-100 text-white' : 'translate-y-4 opacity-0 text-white'
+                    }`}>
+                      <h3 className="text-xl md:text-2xl font-black uppercase leading-tight drop-shadow-md">
+                        {service.title.split(' ').map((word, i) => (
+                          <React.Fragment key={i}>
+                            {word} <br />
+                          </React.Fragment>
+                        ))}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* Default Title (always at the bottom) */}
+                  <div className="w-full h-[20%] bg-[#f8f9fa] border-t border-gray-100 px-4 flex items-center justify-center text-center relative z-10">
+                    <h3 className="text-[11px] md:text-sm font-black uppercase text-gray-800 tracking-wider">
+                      {service.title}
+                    </h3>
+                  </div>
                 </div>
-              </div>
-
-              {/* Default Title (always at the bottom) */}
-              <div className="w-full h-[20%] bg-[#f8f9fa] border-t border-gray-100 px-4 flex items-center justify-center text-center relative z-10">
-                <h3 className="text-[11px] md:text-sm font-black uppercase text-gray-800 tracking-wider">
-                  {service.title}
-                </h3>
               </div>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

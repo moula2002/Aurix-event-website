@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { Send, Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import AnimatedSection from '../layout/AnimatedSection';
@@ -32,6 +33,12 @@ const inputClasses =
 const Contact = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
+
+  const { ref: sectionRef, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.15,
+  });
+
   const [focused, setFocused] = useState(null);
   const [status, setStatus] = useState('idle');
   const [values, setValues] = useState({ name: '', email: '', phone: '', service: location.state?.service || '', message: '' });
@@ -67,7 +74,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className={`${isHome ? 'py-24' : 'pb-28'} bg-[#fefefe] relative overflow-hidden`}>
+    <section ref={sectionRef} id="contact" className={`${isHome ? 'py-24' : 'pb-28'} bg-[#fefefe] relative overflow-hidden`}>
       
       {/* ── Premium Background Decorations ── */}
       <div className="absolute top-0 right-0 w-[45vw] h-[45vw] bg-gradient-to-bl from-[#fff7ed] to-transparent opacity-90 z-0 pointer-events-none rounded-bl-[100%]" />
@@ -77,7 +84,7 @@ const Contact = () => {
 
       <div className="relative z-10">
         {isHome ? (
-          <div className="max-w-7xl mx-auto px-6 mb-16 pt-12">
+          <div className={`max-w-7xl mx-auto px-6 mb-16 pt-12 ${inView ? 'contact-heading-entrance' : 'contact-heading-initial'}`}>
             <SectionTitle subtitle="GET IN" title="TOUCH" />
           </div>
         ) : (
@@ -88,26 +95,19 @@ const Contact = () => {
       <div className={`max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10 ${!isHome ? 'mt-20' : ''}`}>
 
         {/* Left info */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col justify-center"
-        >
-          <p className="text-gray-500 text-lg mb-12 leading-relaxed max-w-lg mt-10">
+        <div className="flex flex-col justify-center">
+          <p className={`text-gray-500 text-lg mb-12 leading-relaxed max-w-lg mt-10 ${inView ? 'contact-desc-entrance' : 'contact-desc-initial'}`}>
             Let's create an unforgettable experience together. Reach out to our team of experts and let's discuss your vision.
           </p>
 
           <div className="flex flex-col gap-6">
             {contactInfo.map(({ icon: Icon, label, value, isLink }, idx) => (
-              <motion.div
+              <div
                 key={idx}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.15 * idx + 0.3, duration: 0.6 }}
-                className="flex items-start gap-5 group cursor-pointer"
+                className={`flex items-start gap-5 group cursor-pointer ${inView ? 'contact-item-entrance' : 'contact-item-initial'}`}
+                style={{
+                  animationDelay: inView ? `${0.32 + idx * 0.17}s` : '0s',
+                }}
               >
                 <div className="w-14 h-14 shrink-0 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-[#f59e0b] group-hover:bg-[#f59e0b] group-hover:text-black transition-all duration-300 shadow-sm group-hover:shadow-[0_8px_20px_rgba(245,158,11,0.3)]">
                   <Icon size={22} />
@@ -122,18 +122,16 @@ const Contact = () => {
                     <p className="text-base font-bold text-gray-900 whitespace-pre-line leading-relaxed">{value}</p>
                   )}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Right form */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="bg-white rounded-2xl shadow-[0_25px_70px_rgba(0,0,0,0.08)] border border-gray-100 relative overflow-hidden"
+        <div
+          className={`bg-white rounded-2xl shadow-[0_25px_70px_rgba(0,0,0,0.08)] border border-gray-100 relative overflow-hidden ${
+            inView ? 'contact-form-entrance' : 'contact-form-initial'
+          }`}
         >
           {/* Gold top bar */}
           <div className="h-1.5 w-full bg-gradient-to-r from-[#f59e0b] via-[#fbbf24] to-[#d97706]" />
@@ -222,7 +220,7 @@ const Contact = () => {
               </motion.button>
             </form>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

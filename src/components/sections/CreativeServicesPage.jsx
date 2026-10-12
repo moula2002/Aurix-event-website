@@ -1,7 +1,9 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { useNavigate } from 'react-router-dom';
 import SectionHeader from '../layout/SectionHeader';
+import AnimatedServiceCard from '../common/AnimatedServiceCard';
+import AnimatedServiceCta from '../common/AnimatedServiceCta';
 import { Send, ArrowRight } from 'lucide-react';
 
 import c1 from '../../assets/images/creative/creative-1.jpg';
@@ -29,27 +31,26 @@ import cre_exhibition from '../../assets/images/creative/cre_exhibition.png';
 
 const CreativeServicesPage = () => {
   const navigate = useNavigate();
+  const { ref: introRef, inView: introInView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
     <div className="bg-gray-50 min-h-screen pb-24">
       <SectionHeader title="CREATIVE SERVICES" />
 
       {/* Hero Intro */}
-      <div className="max-w-4xl mx-auto text-center px-6 mt-12 mb-16">
+      <div 
+        ref={introRef}
+        className={`max-w-4xl mx-auto text-center px-6 mt-12 mb-16 ${
+          introInView ? 'service-hero-intro-entrance' : 'service-hero-intro-initial'
+        }`}
+      >
         <p className="text-xl text-gray-600 leading-relaxed font-normal">
           Our award-winning creative studio pushes the boundaries of imagination. We combine artistic vision with cutting-edge digital technology to craft compelling narratives, stunning visuals, and interactive experiences that leave a lasting impression.
         </p>
       </div>
 
       {/* 1. Content & Animation */}
-      <div className="max-w-[1600px] mx-auto px-6 mb-24">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col xl:flex-row relative"
-        >
+      <AnimatedServiceCard>
           {/* Left Side: Text Content */}
           <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pr-16 relative z-10 flex flex-col justify-center">
             <div className="mb-10">
@@ -119,21 +120,11 @@ const CreativeServicesPage = () => {
                 <span className="text-[0.7rem] font-bold text-gray-600 text-center">Infographics</span>
               </div>
             </div>
-            
-
           </div>
-        </motion.div>
-      </div>
+      </AnimatedServiceCard>
 
       {/* 2. Interactive Technology */}
-      <div className="max-w-[1600px] mx-auto px-6 mb-24">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col xl:flex-row-reverse relative"
-        >
+      <AnimatedServiceCard reverse>
           {/* Left Side: Text Content */}
           <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pl-16 relative z-10 flex flex-col justify-center">
             <div className="mb-10">
@@ -208,18 +199,10 @@ const CreativeServicesPage = () => {
               </div>
             </div>
           </div>
-        </motion.div>
-      </div>
+      </AnimatedServiceCard>
 
       {/* 3. App & Game Development */}
-      <div className="max-w-[1600px] mx-auto px-6 mb-24">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col xl:flex-row relative"
-        >
+      <AnimatedServiceCard>
           {/* Left Side: Text Content */}
           <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pr-16 relative z-10 flex flex-col justify-center">
             <div className="mb-10">
@@ -294,18 +277,10 @@ const CreativeServicesPage = () => {
               <img src={c3} alt="Digital App Design" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             </div>
           </div>
-        </motion.div>
-      </div>
+      </AnimatedServiceCard>
 
       {/* 4. Cinematography & Production */}
-      <div className="max-w-[1600px] mx-auto px-6 mb-24">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col xl:flex-row-reverse relative"
-        >
+      <AnimatedServiceCard reverse>
           {/* Left Side: Text Content */}
           <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pl-16 relative z-10 flex flex-col justify-center">
             <div className="mb-10">
@@ -399,18 +374,10 @@ const CreativeServicesPage = () => {
               </div>
             </div>
           </div>
-        </motion.div>
-      </div>
+      </AnimatedServiceCard>
 
       {/* 5. Creative & Technical Design */}
-      <div className="max-w-[1600px] mx-auto px-6 mb-24">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col xl:flex-row relative"
-        >
+      <AnimatedServiceCard>
           {/* Left Side: Text Content */}
           <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pr-16 relative z-10 flex flex-col justify-center">
             <div className="mb-10">
@@ -485,30 +452,17 @@ const CreativeServicesPage = () => {
               <img src={c5} alt="Creative Architectural Design" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             </div>
           </div>
-        </motion.div>
-      </div>
+      </AnimatedServiceCard>
 
       {/* Bottom CTA Banner */}
-      <div className="max-w-[1600px] mx-auto px-6">
-        <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-black rounded-[2rem] p-10 md:p-16 text-center text-white relative overflow-hidden shadow-2xl border border-amber-500/20">
-          <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center gap-6">
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight">
-              Ready to Bring Your Creative Vision to Life?
-            </h2>
-            <p className="text-gray-300 text-base md:text-lg">
-              Let our creative directors, animators, and immersive tech specialists craft an extraordinary experience for your brand.
-            </p>
-            <button
-              onClick={() => navigate('/contact', { state: { service: 'Creative Services Consultation' } })}
-              className="mt-4 inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-sm tracking-widest text-black bg-gradient-to-r from-[#f59e0b] to-[#fbbf24] hover:shadow-[0_8px_24px_rgba(245,158,11,0.5)] transition-all duration-300 transform hover:scale-105"
-            >
-              <Send size={16} className="rotate-45" />
-              <span>REQUEST CREATIVE QUOTE</span>
-              <ArrowRight size={16} />
-            </button>
-          </div>
-        </div>
-      </div>
+      <AnimatedServiceCta
+        title="Ready to Bring Your Creative Vision to Life?"
+        description="Let our creative directors, animators, and immersive tech specialists craft an extraordinary experience for your brand."
+        buttonText="REQUEST CREATIVE QUOTE"
+        onButtonClick={() => navigate('/contact', { state: { service: 'Creative Services Consultation' } })}
+        iconLeft={<Send size={16} className="rotate-45" />}
+        iconRight={<ArrowRight size={16} />}
+      />
     </div>
   );
 };

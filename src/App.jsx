@@ -32,6 +32,21 @@ const Clients = lazy(() => import('./components/sections/Clients'));
 const OurGroup = lazy(() => import('./components/sections/OurGroup'));
 const OurGroupPage = lazy(() => import('./components/sections/OurGroupPage'));
 
+import RouteSkeleton from './components/skeleton/RouteSkeleton';
+import HomeSkeleton from './components/skeleton/HomeSkeleton';
+import AboutSkeleton from './components/skeleton/AboutSkeleton';
+import ApproachSkeleton from './components/skeleton/ApproachSkeleton';
+import {
+  ServicePageSkeleton,
+  TechnicalServicesSkeleton,
+  CreativeServicesSkeleton,
+  SupportServicesSkeleton
+} from './components/skeleton/ServicesSkeleton';
+import EventsSkeleton from './components/skeleton/EventsSkeleton';
+import GallerySkeleton from './components/skeleton/GallerySkeleton';
+import OurGroupSkeleton from './components/skeleton/OurGroupSkeleton';
+import ContactSkeleton from './components/skeleton/ContactSkeleton';
+
 /* ── Page transition variants ── */
 const pageVariants = {
   initial: { opacity: 0, y: 24 },
@@ -64,84 +79,106 @@ const AnimatedRoutes = () => {
   }, [location.pathname]);
 
   return (
-    <Suspense fallback={<div className="flex h-screen w-full items-center justify-center bg-gray-50"><div className="w-10 h-10 border-4 border-[#f59e0b] border-t-transparent rounded-full animate-spin"></div></div>}>
+    <Suspense fallback={<RouteSkeleton pathname={location.pathname} />}>
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={
-            <PageWrapper addPadding={false}>
-              <Hero />
-              <Statistics />
-              <Services />
-              <AboutPreview />
-              <WhyChooseUs />
-              <Approach />
-              <Portfolio />
-              <SubServicesCarousel />
+            <Suspense fallback={<HomeSkeleton />}>
+              <PageWrapper addPadding={false}>
+                <Hero />
+                <Statistics />
+                <Services />
+                <AboutPreview />
+                <WhyChooseUs />
+                <Approach />
+                <Portfolio />
+                <SubServicesCarousel />
 
-              <Clients />
-              <Contact />
-            </PageWrapper>
+                <Clients />
+                <Contact />
+              </PageWrapper>
+            </Suspense>
           } />
 
           <Route path="/about" element={
-            <PageWrapper>
-              <AboutPage />
-            </PageWrapper>
+            <Suspense fallback={<PageWrapper><AboutSkeleton /></PageWrapper>}>
+              <PageWrapper>
+                <AboutPage />
+              </PageWrapper>
+            </Suspense>
           } />
 
           <Route path="/approach" element={
-            <PageWrapper>
-              <ApproachPage />
-            </PageWrapper>
+            <Suspense fallback={<PageWrapper><ApproachSkeleton /></PageWrapper>}>
+              <PageWrapper>
+                <ApproachPage />
+              </PageWrapper>
+            </Suspense>
           } />
 
           <Route path="/services" element={
-            <PageWrapper>
-              <Services />
-            </PageWrapper>
+            <Suspense fallback={<PageWrapper><ServicePageSkeleton title="SERVICES" /></PageWrapper>}>
+              <PageWrapper>
+                <Services />
+              </PageWrapper>
+            </Suspense>
           } />
 
           <Route path="/services/technical" element={
-            <PageWrapper>
-              <TechnicalServicesPage />
-            </PageWrapper>
+            <Suspense fallback={<PageWrapper><TechnicalServicesSkeleton /></PageWrapper>}>
+              <PageWrapper>
+                <TechnicalServicesPage />
+              </PageWrapper>
+            </Suspense>
           } />
 
           <Route path="/services/creative" element={
-            <PageWrapper>
-              <CreativeServicesPage />
-            </PageWrapper>
+            <Suspense fallback={<PageWrapper><CreativeServicesSkeleton /></PageWrapper>}>
+              <PageWrapper>
+                <CreativeServicesPage />
+              </PageWrapper>
+            </Suspense>
           } />
 
           <Route path="/services/support" element={
-            <PageWrapper>
-              <SupportServicesPage />
-            </PageWrapper>
+            <Suspense fallback={<PageWrapper><SupportServicesSkeleton /></PageWrapper>}>
+              <PageWrapper>
+                <SupportServicesPage />
+              </PageWrapper>
+            </Suspense>
           } />
 
           <Route path="/gallery" element={
-            <PageWrapper>
-              <Portfolio />
-            </PageWrapper>
+            <Suspense fallback={<PageWrapper><GallerySkeleton /></PageWrapper>}>
+              <PageWrapper>
+                <Portfolio />
+              </PageWrapper>
+            </Suspense>
           } />
 
           <Route path="/events" element={
-            <PageWrapper>
-              <EventsPage />
-            </PageWrapper>
+            <Suspense fallback={<PageWrapper><EventsSkeleton /></PageWrapper>}>
+              <PageWrapper>
+                <EventsPage />
+              </PageWrapper>
+            </Suspense>
           } />
 
           <Route path="/contact" element={
-            <PageWrapper>
-              <Contact />
-              <Location />
-            </PageWrapper>
+            <Suspense fallback={<PageWrapper><ContactSkeleton /></PageWrapper>}>
+              <PageWrapper>
+                <Contact />
+                <Location />
+              </PageWrapper>
+            </Suspense>
           } />
 
           <Route path="/our-group" element={
-            <PageWrapper addPadding={false}>
-              <OurGroupPage />
-            </PageWrapper>
+            <Suspense fallback={<PageWrapper addPadding={false}><OurGroupSkeleton /></PageWrapper>}>
+              <PageWrapper addPadding={false}>
+                <OurGroupPage />
+              </PageWrapper>
+            </Suspense>
           } />
         </Routes>
       </AnimatePresence>

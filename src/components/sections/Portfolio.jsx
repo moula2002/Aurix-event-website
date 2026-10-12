@@ -7,11 +7,12 @@ import AnimatedSection, { AnimatedItem } from '../layout/AnimatedSection';
 
 import SectionHeader from '../layout/SectionHeader';
 import SectionTitle from '../layout/SectionTitle';
-
+import { GalleryGridSkeleton } from '../skeleton/GallerySkeleton';
 
 const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [projects, setProjects] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
   const isHome = location.pathname === '/';
 
@@ -40,7 +41,17 @@ const Portfolio = () => {
   ];
 
   useEffect(() => {
-    fetch('https://aurix-event-server.onrender.com/api/gallery')
+    // If already cached, use immediately to avoid loading flicker and redundant network calls
+    if (window.__AURIX_GALLERY_CACHE__ && window.__AURIX_GALLERY_CACHE__.length > 0) {
+      setProjects(window.__AURIX_GALLERY_CACHE__);
+      setIsLoading(false);
+      return;
+    }
+
+    const controller = new AbortController();
+    setIsLoading(true);
+
+    fetch('https://aurix-event-server.onrender.com/api/gallery', { signal: controller.signal })
       .then(res => res.json())
       .then(data => {
         const mapped = data.map(item => ({
@@ -49,10 +60,23 @@ const Portfolio = () => {
           title: item.title,
           image: item.imageBase64 || (item.imageUrl ? `https://aurix-event-server.onrender.com${item.imageUrl}` : '')
         }));
+        window.__AURIX_GALLERY_CACHE__ = mapped;
         setProjects(mapped);
       })
-      .catch(err => console.error('Failed to fetch gallery:', err));
+      .catch(err => {
+        if (err.name !== 'AbortError') {
+          console.error('Failed to fetch gallery:', err);
+        }
+      })
+      .finally(() => {
+        if (!controller.signal.aborted) {
+          setIsLoading(false);
+        }
+      });
+
+    return () => controller.abort();
   }, []);
+
 
   const displayProjects = isHome ? projects.slice(0, 4) : projects;
 
@@ -77,16 +101,19 @@ const Portfolio = () => {
         )}
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
+          {isLoading && projects.length === 0 ? (
+            <GalleryGridSkeleton count={isHome ? 4 : 8} />
+          ) : (
+            /* Grid */
+            <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {displayProjects.map((project, idx) => {
+                const anim = isHome && idx < 4 ? galleryAnimationClasses[idx] : null;
+                return (
+                  <div
+                    key={project.id || idx}
+                    className={`w-full ${anim ? (inView ? anim.entrance : anim.initial) : ''}`}
+                  >
 
-          {/* Grid */}
-          <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {displayProjects.map((project, idx) => {
-              const anim = isHome && idx < 4 ? galleryAnimationClasses[idx] : null;
-              return (
-                <div
-                  key={project.id || idx}
-                  className={`w-full ${anim ? (inView ? anim.entrance : anim.initial) : ''}`}
-                >
                   <div
                     onClick={() => setSelectedProject(project)}
                     className="group relative aspect-square overflow-hidden rounded-2xl cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 [transform:translateZ(0)]"
@@ -146,6 +173,7 @@ const Portfolio = () => {
               );
             })}
           </div>
+        )}
 
           {/* CTA */}
           {isHome && (

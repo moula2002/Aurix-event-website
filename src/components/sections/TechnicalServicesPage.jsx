@@ -35,7 +35,7 @@ const TechnicalServicesPage = () => {
   const { ref: introRef, inView: introInView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <div className="bg-gray-50 min-h-screen pb-24">
+    <div className="bg-[#000000] min-h-screen pb-24">
       <SectionHeader title="TECHNICAL EXPERTISE" />
 
       {/* Hero Intro */}
@@ -45,7 +45,7 @@ const TechnicalServicesPage = () => {
           introInView ? 'service-hero-intro-entrance' : 'service-hero-intro-initial'
         }`}
       >
-        <p className="text-xl text-gray-600 leading-relaxed font-normal">
+        <p className="text-xl text-gray-300 leading-relaxed font-normal">
           The backbone of any spectacular event is flawless technical execution. Our dedicated technical division houses the industry's most advanced equipment and the brightest engineering minds to guarantee your event runs perfectly from the first cue to the final curtain call.
         </p>
       </div>
@@ -55,7 +55,7 @@ const TechnicalServicesPage = () => {
           {/* Left Side: Text Content */}
           <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pr-16 relative z-10 flex flex-col justify-center">
             <div className="mb-10">
-              <h2 className="text-4xl font-black text-gray-900 tracking-tight mb-2">
+              <h2 className="text-4xl font-black text-white tracking-tight mb-2">
                 Audio & Visual Production
               </h2>
               <p className="text-[#f59e0b] font-semibold text-sm tracking-wide uppercase">
@@ -67,12 +67,12 @@ const TechnicalServicesPage = () => {
               {/* Audio Production */}
               <div>
                 <h3 
-                  className="font-bold text-gray-900 text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Audio Production' } })}
                 >
                   Audio Production
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed text-justify">
+                <p className="text-gray-400 text-sm leading-relaxed text-justify">
                   Crystal clear line-array sound systems and acoustic engineering designed for venues of any scale. We deliver immersive audio clarity that ensures every speaker, performance, and announcement reaches every attendee perfectly.
                 </p>
               </div>
@@ -80,12 +80,12 @@ const TechnicalServicesPage = () => {
               {/* Video Production */}
               <div>
                 <h3 
-                  className="font-bold text-gray-900 text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Video Production' } })}
                 >
                   Video Production
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed text-justify">
+                <p className="text-gray-400 text-sm leading-relaxed text-justify">
                   Live IMAG camera systems, high-resolution LED screen mapping, media servers, and master video switching. Our ultra-high-definition displays turn complex content into captivating visual spectacles.
                 </p>
               </div>
@@ -93,12 +93,12 @@ const TechnicalServicesPage = () => {
               {/* AV Setup */}
               <div>
                 <h3 
-                  className="font-bold text-gray-900 text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'AV Setup' } })}
                 >
                   AV Setup & Integration
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed text-justify">
+                <p className="text-gray-400 text-sm leading-relaxed text-justify">
                   Complete audiovisual integration for corporate conferences, trade shows, and galas. Seamless connectivity, synchronized playback, and multi-zone distribution managed by expert technicians.
                 </p>
               </div>
@@ -106,12 +106,12 @@ const TechnicalServicesPage = () => {
               {/* Lighting Design */}
               <div>
                 <h3 
-                  className="font-bold text-gray-900 text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Lighting Design' } })}
                 >
                   Lighting Design
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed text-justify">
+                <p className="text-gray-400 text-sm leading-relaxed text-justify">
                   Intelligent lighting plots, architectural uplighting, laser shows, and dynamic stage fixtures designed to dictate mood, highlight key moments, and create unforgettable atmosphere.
                 </p>
               </div>
@@ -119,7 +119,7 @@ const TechnicalServicesPage = () => {
           </div>
 
           {/* Right Side: Media Collage */}
-          <div className="w-full xl:w-1/2 bg-gray-100 p-6 md:p-8 flex flex-col gap-4 relative z-10 min-h-[500px] justify-between">
+          <div className="w-full xl:w-1/2 bg-[#181818] p-6 md:p-8 flex flex-col gap-4 relative z-10 min-h-[500px] justify-between">
             <div className="grid grid-cols-2 gap-4">
               <div className="relative group overflow-hidden rounded-xl shadow-md">
                 <img src={tech_audio} alt="Audio Production" className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -160,7 +160,7 @@ const TechnicalServicesPage = () => {
           {/* Left Side: Text Content */}
           <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pl-16 relative z-10 flex flex-col justify-center">
             <div className="mb-10">
-              <h2 className="text-4xl font-black text-gray-900 tracking-tight mb-2">
+              <h2 className="text-4xl font-black text-white tracking-tight mb-2">
                 Stage & Structural Engineering
               </h2>
               <p className="text-[#f59e0b] font-semibold text-sm tracking-wide uppercase">
@@ -172,12 +172,12 @@ const TechnicalServicesPage = () => {
               {/* Stage Design */}
               <div>
                 <h3 
-                  className="font-bold text-gray-900 text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Stage Design' } })}
                 >
                   Stage Design & Construction
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed text-justify">
+                <p className="text-gray-400 text-sm leading-relaxed text-justify">
                   Custom-engineered stages, platforms, and multi-tier set structures. Built with high load capacity, safety compliance, and bespoke architectural aesthetics tailored to your theme.
                 </p>
               </div>
@@ -185,12 +185,12 @@ const TechnicalServicesPage = () => {
               {/* Rigging Services */}
               <div>
                 <h3 
-                  className="font-bold text-gray-900 text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Rigging Services' } })}
                 >
                   Rigging & Truss Systems
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed text-justify">
+                <p className="text-gray-400 text-sm leading-relaxed text-justify">
                   Certified overhead rigging, trussing, and motor hoists. Safety-first structural engineering for heavy lighting rigs, line arrays, and massive LED displays.
                 </p>
               </div>
@@ -198,12 +198,12 @@ const TechnicalServicesPage = () => {
               {/* Backdrop Solutions */}
               <div>
                 <h3 
-                  className="font-bold text-gray-900 text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Backdrop Solutions' } })}
                 >
                   Backdrop & Set Solutions
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed text-justify">
+                <p className="text-gray-400 text-sm leading-relaxed text-justify">
                   Precision-fabricated backdrops including seamless printed panels, LED video walls, custom wood framing, and 3D architectural stage wings.
                 </p>
               </div>
@@ -211,12 +211,12 @@ const TechnicalServicesPage = () => {
               {/* Theatrical Draping */}
               <div>
                 <h3 
-                  className="font-bold text-gray-900 text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Theatrical Draping' } })}
                 >
                   Theatrical Draping
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed text-justify">
+                <p className="text-gray-400 text-sm leading-relaxed text-justify">
                   Premium flame-retardant pipe and drape systems for space transformation, acoustic isolation, masking, and elegant VIP enclosures.
                 </p>
               </div>
@@ -224,7 +224,7 @@ const TechnicalServicesPage = () => {
           </div>
 
           {/* Right Side: Grid with Image Labels */}
-          <div className="w-full xl:w-1/2 p-6 md:p-8 bg-gray-100 grid grid-cols-2 gap-4 items-center relative z-10">
+          <div className="w-full xl:w-1/2 p-6 md:p-8 bg-[#181818] grid grid-cols-2 gap-4 items-center relative z-10">
             <div className="relative group overflow-hidden rounded-xl shadow-md">
               <img src={tech_stage} alt="Stage Design" className="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 flex items-end p-4">
@@ -257,7 +257,7 @@ const TechnicalServicesPage = () => {
           {/* Left Side: Text Content */}
           <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pr-16 relative z-10 flex flex-col justify-center">
             <div className="mb-10">
-              <h2 className="text-4xl font-black text-gray-900 tracking-tight mb-2">
+              <h2 className="text-4xl font-black text-white tracking-tight mb-2">
                 Broadcasting & Live Streaming
               </h2>
               <p className="text-[#f59e0b] font-semibold text-sm tracking-wide uppercase">
@@ -269,12 +269,12 @@ const TechnicalServicesPage = () => {
               {/* Live Streaming */}
               <div>
                 <h3 
-                  className="font-bold text-gray-900 text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Live Streaming' } })}
                 >
                   Live Streaming Solutions
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed text-justify">
+                <p className="text-gray-400 text-sm leading-relaxed text-justify">
                   Low-latency, multi-platform live streaming to YouTube, LinkedIn, custom web portals, and private hybrid event platforms with real-time Q&A and interactive polling.
                 </p>
               </div>
@@ -282,12 +282,12 @@ const TechnicalServicesPage = () => {
               {/* Broadcast Solutions */}
               <div>
                 <h3 
-                  className="font-bold text-gray-900 text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Broadcast Solutions' } })}
                 >
                   Multi-Camera Broadcast Setup
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed text-justify">
+                <p className="text-gray-400 text-sm leading-relaxed text-justify">
                   Television-grade production trucks, 4K camera rigs, jib arms, wireless steadicams, and live direction switchers to capture every highlight in pristine clarity.
                 </p>
               </div>
@@ -295,7 +295,7 @@ const TechnicalServicesPage = () => {
           </div>
 
           {/* Right Side: Broadcast Grid */}
-          <div className="w-full xl:w-1/2 bg-gray-100 p-6 md:p-10 flex flex-col gap-4 relative z-10 min-h-[450px]">
+          <div className="w-full xl:w-1/2 bg-[#181818] p-6 md:p-10 flex flex-col gap-4 relative z-10 min-h-[450px]">
             <div className="grid grid-cols-2 gap-4 h-full">
               <div className="relative group overflow-hidden rounded-xl shadow-md h-full">
                 <img src={tech_livestream} alt="Live Streaming" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -320,7 +320,7 @@ const TechnicalServicesPage = () => {
           {/* Left Side: Text Content */}
           <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pl-16 relative z-10 flex flex-col justify-center">
             <div className="mb-10">
-              <h2 className="text-4xl font-black text-gray-900 tracking-tight mb-2">
+              <h2 className="text-4xl font-black text-white tracking-tight mb-2">
                 Project & Production Management
               </h2>
               <p className="text-[#f59e0b] font-semibold text-sm tracking-wide uppercase">
@@ -332,12 +332,12 @@ const TechnicalServicesPage = () => {
               {/* Event Production */}
               <div>
                 <h3 
-                  className="font-bold text-gray-900 text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Event Production' } })}
                 >
                   Technical Event Production
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed text-justify">
+                <p className="text-gray-400 text-sm leading-relaxed text-justify">
                   Turnkey management of all technical vendors, load-in schedules, run-of-show cue sheets, and stage management to keep complex productions operating seamlessly.
                 </p>
               </div>
@@ -345,12 +345,12 @@ const TechnicalServicesPage = () => {
               {/* Project Management */}
               <div>
                 <h3 
-                  className="font-bold text-gray-900 text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Project Management' } })}
                 >
                   Project Management & Oversight
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed text-justify">
+                <p className="text-gray-400 text-sm leading-relaxed text-justify">
                   Rigorous budget control, venue risk assessments, authority permits, and timeline oversight to guarantee deliverables on time without compromising safety.
                 </p>
               </div>
@@ -358,12 +358,12 @@ const TechnicalServicesPage = () => {
               {/* Pavilion Design */}
               <div>
                 <h3 
-                  className="font-bold text-gray-900 text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Pavilion Design' } })}
                 >
                   Custom Pavilion Engineering
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed text-justify">
+                <p className="text-gray-400 text-sm leading-relaxed text-justify">
                   Structural design and full technical integration for large-scale outdoor pavilions, exhibition halls, and temporary domain structures.
                 </p>
               </div>
@@ -371,12 +371,12 @@ const TechnicalServicesPage = () => {
               {/* Fabrication */}
               <div>
                 <h3 
-                  className="font-bold text-gray-900 text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Fabrication' } })}
                 >
                   In-House Custom Fabrication
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed text-justify">
+                <p className="text-gray-400 text-sm leading-relaxed text-justify">
                   Skilled carpentry, metalwork, 3D CNC carving, and custom scenic painting to build unique event props, branded entry archways, and immersive environments.
                 </p>
               </div>
@@ -384,7 +384,7 @@ const TechnicalServicesPage = () => {
           </div>
 
           {/* Right Side: Production Showcase Grid */}
-          <div className="w-full xl:w-1/2 bg-gray-100 p-6 md:p-8 flex flex-col gap-4 relative z-10 justify-between">
+          <div className="w-full xl:w-1/2 bg-[#181818] p-6 md:p-8 flex flex-col gap-4 relative z-10 justify-between">
             <div className="grid grid-cols-2 gap-4">
               <div className="relative group overflow-hidden rounded-xl shadow-md">
                 <img src={tech_eventprod} alt="Event Production" className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -423,7 +423,7 @@ const TechnicalServicesPage = () => {
           {/* Left Side: Text Content */}
           <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pr-16 relative z-10 flex flex-col justify-center">
             <div className="mb-10">
-              <h2 className="text-4xl font-black text-gray-900 tracking-tight mb-2">
+              <h2 className="text-4xl font-black text-white tracking-tight mb-2">
                 Digital & Web Infrastructure
               </h2>
               <p className="text-[#f59e0b] font-semibold text-sm tracking-wide uppercase">
@@ -435,12 +435,12 @@ const TechnicalServicesPage = () => {
               {/* Website Development */}
               <div>
                 <h3 
-                  className="font-bold text-gray-900 text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Website Development' } })}
                 >
                   Event Website & Portal Development
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed text-justify">
+                <p className="text-gray-400 text-sm leading-relaxed text-justify">
                   Custom high-converting event landing pages, delegate registration portals, badge generation engines, and secure payment gateway integration.
                 </p>
               </div>
@@ -448,12 +448,12 @@ const TechnicalServicesPage = () => {
               {/* Website Maintenance */}
               <div>
                 <h3 
-                  className="font-bold text-gray-900 text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Website Maintenance' } })}
                 >
                   Server & Infrastructure Maintenance
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed text-justify">
+                <p className="text-gray-400 text-sm leading-relaxed text-justify">
                   High-capacity cloud server hosting, SSL encryption, load balancing for traffic spikes, and continuous technical support.
                 </p>
               </div>
@@ -461,12 +461,12 @@ const TechnicalServicesPage = () => {
               {/* Mobile App Development */}
               <div>
                 <h3 
-                  className="font-bold text-gray-900 text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Mobile App Development' } })}
                 >
                   Custom Mobile Event Apps
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed text-justify">
+                <p className="text-gray-400 text-sm leading-relaxed text-justify">
                   Dedicated iOS and Android mobile event applications with live agenda scheduling, speaker profiles, interactive floor maps, B2B matchmaking, and push notifications.
                 </p>
               </div>
@@ -474,19 +474,19 @@ const TechnicalServicesPage = () => {
           </div>
 
           {/* Right Side: Digital Grid */}
-          <div className="w-full xl:w-1/2 bg-gray-100 p-6 md:p-10 flex flex-col gap-4 relative z-10 justify-between min-h-[450px]">
+          <div className="w-full xl:w-1/2 bg-[#181818] p-6 md:p-10 flex flex-col gap-4 relative z-10 justify-between min-h-[450px]">
             <div className="grid grid-cols-3 gap-3">
               <div className="flex flex-col items-center">
                 <img src={tech_webdev} alt="Web Dev" className="w-full aspect-square object-cover rounded-xl shadow-md mb-2" />
-                <span className="text-[0.7rem] font-bold text-gray-600 text-center">Web Portals</span>
+                <span className="text-[0.7rem] font-bold text-gray-400 text-center">Web Portals</span>
               </div>
               <div className="flex flex-col items-center">
                 <img src={tech_webmain} alt="Web Maintenance" className="w-full aspect-square object-cover rounded-xl shadow-md mb-2" />
-                <span className="text-[0.7rem] font-bold text-gray-600 text-center">Server Care</span>
+                <span className="text-[0.7rem] font-bold text-gray-400 text-center">Server Care</span>
               </div>
               <div className="flex flex-col items-center">
                 <img src={tech_mobileapp} alt="Mobile App" className="w-full aspect-square object-cover rounded-xl shadow-md mb-2" />
-                <span className="text-[0.7rem] font-bold text-gray-600 text-center">Event Apps</span>
+                <span className="text-[0.7rem] font-bold text-gray-400 text-center">Event Apps</span>
               </div>
             </div>
 

@@ -20,14 +20,14 @@ const MilestoneItem = ({ milestone, idx }) => {
     >
       {/* Timeline Dot */}
       <div
-        className={`absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-[#f59e0b] border-4 border-white shadow -translate-x-1/2 z-10 ${
+        className={`absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-[#f59e0b] border-4 border-[#151515] shadow -translate-x-1/2 z-10 ${
           inView ? 'timeline-dot-entrance' : 'timeline-dot-initial'
         }`}
       />
 
       <div className="w-full md:w-5/12 pl-12 md:pl-0">
         <div
-          className={`p-6 bg-white rounded-2xl shadow-sm border border-gray-100 ${
+          className={`p-6 bg-[#151515] rounded-2xl shadow-sm border border-white/10 ${
             isEven ? 'md:text-left' : 'md:text-right'
           } ${
             isEven
@@ -36,8 +36,8 @@ const MilestoneItem = ({ milestone, idx }) => {
           }`}
         >
           <span className="text-[#f59e0b] font-black text-2xl tracking-tighter block mb-2">{milestone.year}</span>
-          <h3 className="text-lg font-bold text-gray-900 mb-2 uppercase">{milestone.title}</h3>
-          <p className="text-gray-600 text-sm">{milestone.desc}</p>
+          <h3 className="text-lg font-bold text-white mb-2 uppercase">{milestone.title}</h3>
+          <p className="text-gray-400 text-sm leading-relaxed">{milestone.desc}</p>
         </div>
       </div>
 
@@ -75,16 +75,16 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="bg-white min-h-screen pb-24 pt-20">
+    <div className="bg-[#000000] min-h-screen pb-24 pt-20">
       <About />
 
       {/* Core Strengths */}
       <div ref={strengthsRef} className="max-w-7xl mx-auto px-6 py-24 overflow-hidden">
         <div className="text-center mb-16">
-          <h2 className={`text-4xl font-black text-gray-900 uppercase tracking-tighter mb-4 ${strengthsInView ? 'strengths-heading-entrance' : 'strengths-heading-initial'}`}>
+          <h2 className={`text-4xl font-black text-white uppercase tracking-tighter mb-4 ${strengthsInView ? 'strengths-heading-entrance' : 'strengths-heading-initial'}`}>
             Core Strengths
           </h2>
-          <p className={`text-gray-600 ${strengthsInView ? 'strengths-subtitle-entrance' : 'strengths-subtitle-initial'}`}>
+          <p className={`text-gray-400 ${strengthsInView ? 'strengths-subtitle-entrance' : 'strengths-subtitle-initial'}`}>
             The pillars that uphold our standard of excellence.
           </p>
         </div>
@@ -103,31 +103,31 @@ const AboutPage = () => {
               }`}
             >
               <div
-                className={`w-20 h-20 mx-auto bg-gray-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#f59e0b] group-hover:text-white transition-colors duration-300 ${
+                className={`w-20 h-20 mx-auto bg-[#151515] border border-white/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#f59e0b] group-hover:text-black transition-colors duration-300 ${
                   idx === 0
                     ? (strengthsInView ? 'strength-icon-1-entrance' : 'strength-icon-initial')
                     : idx === 1
                     ? (strengthsInView ? 'strength-icon-2-entrance' : 'strength-icon-initial')
                     : idx === 2
-                    ? (strengthsInView ? 'strength-icon-3-entrance' : 'strength-icon-initial')
-                    : (strengthsInView ? 'strength-icon-4-entrance' : 'strength-icon-initial')
+                    ? (strengthsInView ? 'strength-icon-3-entrance' : 'strength-icon-3-initial')
+                    : (strengthsInView ? 'strength-icon-4-entrance' : 'strength-icon-4-initial')
                 }`}
               >
-                <strength.icon size={32} className="text-[#f59e0b] group-hover:text-white transition-colors" />
+                <strength.icon size={32} className="text-[#f59e0b] group-hover:text-black transition-colors" />
               </div>
               <div
                 className={
                   idx === 0
                     ? (strengthsInView ? 'strength-text-1-entrance' : 'strength-text-initial')
                     : idx === 1
-                    ? (strengthsInView ? 'strength-text-2-entrance' : 'strength-text-initial')
+                    ? (strengthsInView ? 'strength-text-2-entrance' : 'strength-text-2-initial')
                     : idx === 2
                     ? (strengthsInView ? 'strength-text-3-entrance' : 'strength-text-3-initial')
                     : (strengthsInView ? 'strength-text-4-entrance' : 'strength-text-4-initial')
                 }
               >
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{strength.title}</h3>
-                <p className="text-gray-600 text-sm">{strength.desc}</p>
+                <h3 className="text-xl font-bold text-white mb-3">{strength.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">{strength.desc}</p>
               </div>
             </div>
           ))}
@@ -135,15 +135,15 @@ const AboutPage = () => {
       </div>
 
       {/* Milestones / Timeline */}
-      <div ref={timelineSectionRef} className="bg-gray-50 py-24 overflow-hidden">
+      <div ref={timelineSectionRef} className="bg-[#0a0a0a] border-t border-white/10 py-24 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
-            <h2 className={`text-4xl font-black text-gray-900 uppercase tracking-tighter mb-4 ${
+            <h2 className={`text-4xl font-black text-white uppercase tracking-tighter mb-4 ${
               timelineSectionInView ? 'timeline-heading-entrance' : 'timeline-heading-initial'
             }`}>
               6 Years of Excellence
             </h2>
-            <p className={`text-gray-600 ${
+            <p className={`text-gray-400 ${
               timelineSectionInView ? 'timeline-subtitle-entrance' : 'timeline-subtitle-initial'
             }`}>
               A timeline of our journey and milestones.
@@ -153,7 +153,7 @@ const AboutPage = () => {
           <div className="relative">
             {/* Center Line */}
             <div 
-              className={`absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-gray-200 z-0 origin-top -translate-x-1/2 ${
+              className={`absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-white/10 z-0 origin-top -translate-x-1/2 ${
                 timelineSectionInView ? 'timeline-line-entrance' : 'timeline-line-initial'
               }`}
             />

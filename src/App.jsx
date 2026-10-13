@@ -191,7 +191,7 @@ function App() {
     <Router>
       {/* SmoothScroll must be inside Router (uses useLocation) */}
       <SmoothScroll>
-        <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-amber-600/30">
+        <div className="min-h-screen bg-[#000000] text-gray-100 font-sans selection:bg-amber-600/30">
           {/* Glowing amber scroll progress bar */}
           <ScrollProgressBar />
           <Navbar />

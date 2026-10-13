@@ -50,10 +50,10 @@ const events = [
 
 const EventsPage = () => {
   return (
-    <div className="w-full bg-white min-h-screen">
+    <div className="w-full bg-[#000000] min-h-screen">
       <SectionHeader title="EVENTS" />
 
-      <div className="w-full py-20 bg-white relative overflow-hidden">
+      <div className="w-full py-20 bg-[#000000] relative overflow-hidden">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -63,7 +63,7 @@ const EventsPage = () => {
             className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12"
           >
             <div className="flex flex-col gap-4 max-w-xl">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 uppercase tracking-tight leading-none">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight leading-none">
                 Our Event Categories
               </h2>
               <div className="flex items-center gap-3">
@@ -71,7 +71,7 @@ const EventsPage = () => {
               </div>
             </div>
             <div className="flex flex-col gap-6 max-w-lg">
-              <p className="text-gray-500 text-xl leading-relaxed">
+              <p className="text-gray-400 text-xl leading-relaxed">
                 From high-profile corporate summits to international sporting spectacles, our expertise spans across a diverse range of premium event categories.
               </p>
             </div>
@@ -79,7 +79,7 @@ const EventsPage = () => {
         </div>
       </div>
 
-      <div className="w-full bg-gray-50 py-16">
+      <div className="w-full bg-[#0a0a0a] border-t border-white/10 py-16">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="flex flex-col gap-10">
             {events.map((event, idx) => {
@@ -92,11 +92,11 @@ const EventsPage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-60px' }}
                   transition={{ duration: 0.6, delay: 0.1 }}
-                  className={`bg-white rounded-[2rem] shadow-[0_8px_40px_rgba(0,0,0,0.06)] overflow-hidden flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+                  className={`bg-[#151515] border border-white/10 rounded-[2rem] shadow-[0_8px_40px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}
                 >
                   {event.isCollage ? (
                     // Collage Layout
-                    <div className="w-full md:w-1/2 relative min-h-[400px] md:min-h-[500px] p-4 bg-gray-100">
+                    <div className="w-full md:w-1/2 relative min-h-[400px] md:min-h-[500px] p-4 bg-[#111111]">
                       <div className="grid grid-cols-2 grid-rows-3 gap-3 w-full h-full">
                         <div className="col-span-2 relative overflow-hidden rounded-2xl shadow-sm group">
                           <img src={event.images[0]} alt="Motorsport Event" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -138,8 +138,8 @@ const EventsPage = () => {
                   )}
 
                   <div className="w-full md:w-1/2 p-8 md:p-14 lg:p-16 flex flex-col justify-center gap-6">
-                    <h3 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight">{event.name}</h3>
-                    <div className="text-gray-500 text-base md:text-lg leading-relaxed space-y-4">
+                    <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">{event.name}</h3>
+                    <div className="text-gray-400 text-base md:text-lg leading-relaxed space-y-4">
                       {event.desc.split('\n\n').map((paragraph, i) => (
                         <p key={i}>{paragraph}</p>
                       ))}

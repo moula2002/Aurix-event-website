@@ -18,14 +18,14 @@ const team = [
 
 const Team = () => {
   return (
-    <section id="team" className="py-24 bg-white">
+    <section id="team" className="py-24 bg-[#000000]">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
           <div>
             <SectionTitle subtitle="MEET OUR" title="EXPERTS" />
           </div>
           <div className="max-w-md">
-            <p className="text-gray-600 font-medium leading-relaxed text-sm md:text-base">
+            <p className="text-gray-400 font-medium leading-relaxed text-sm md:text-base">
               6+ years of experience, driven by a passionate team
               committed to delivering exceptional event experiences.
             </p>

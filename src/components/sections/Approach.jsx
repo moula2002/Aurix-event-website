@@ -31,10 +31,10 @@ const Approach = () => {
   const infiniteSteps = [...steps, ...steps];
 
   return (
-    <section className="relative bg-white py-24 overflow-hidden">
+    <section className="relative bg-[#000000] py-24 overflow-hidden">
       
       {/* Background ambient light */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#f59e0b] opacity-[0.03] rounded-full blur-[100px] pointer-events-none z-0"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#f59e0b] opacity-[0.06] rounded-full blur-[100px] pointer-events-none z-0"></div>
 
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 w-full relative z-10 flex flex-col md:flex-row gap-12 items-center">
         
@@ -47,11 +47,11 @@ const Approach = () => {
               transition={{ duration: 0.8 }}
             >
               <h3 className="text-[#f59e0b] font-bold tracking-[0.2em] uppercase text-sm mb-4">Our Methodology</h3>
-              <h2 className="text-5xl lg:text-7xl font-black text-gray-900 tracking-tighter uppercase mb-6 leading-none">
+              <h2 className="text-5xl lg:text-7xl font-black text-white tracking-tighter uppercase mb-6 leading-none">
                 OUR <br/> APPROACH
               </h2>
               <div className="w-20 h-2 bg-[#f59e0b] mb-8"></div>
-              <p className="text-gray-500 text-lg leading-relaxed">
+              <p className="text-gray-300 text-lg leading-relaxed">
                 A seamless integration of planning, design, and execution. Scroll to explore how we bring your vision to life.
               </p>
             </motion.div>
@@ -68,27 +68,27 @@ const Approach = () => {
               {infiniteSteps.map((step, idx) => (
                 <div 
                   key={idx}
-                  className="w-[85vw] md:w-[600px] shrink-0 relative bg-white rounded-3xl p-8 md:p-12 border border-gray-100 shadow-[0_10px_40px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] transition-all duration-500 group overflow-hidden"
+                  className="w-[85vw] md:w-[600px] shrink-0 relative bg-[#111111] rounded-3xl p-8 md:p-12 border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_50px_rgba(245,158,11,0.15)] transition-all duration-500 group overflow-hidden"
                 >
                   {/* Background Gradient Hover Effect */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
                   
                   {/* Giant Faded Number */}
-                  <div className="absolute -right-8 -bottom-16 text-[150px] md:text-[200px] font-black text-gray-50 pointer-events-none group-hover:scale-110 group-hover:text-gray-100 transition-all duration-700 leading-none">
+                  <div className="absolute -right-8 -bottom-16 text-[150px] md:text-[200px] font-black text-white/[0.04] pointer-events-none group-hover:scale-110 group-hover:text-white/[0.08] transition-all duration-700 leading-none">
                     {step.id}
                   </div>
 
                   <div className="relative z-10">
                     <div className="flex items-center gap-6 mb-8">
-                      <div className={`shrink-0 w-16 h-16 rounded-full border-4 ${step.borderColor} flex items-center justify-center bg-white shadow-lg`}>
-                        <span className="text-2xl font-black text-gray-900">{step.id}</span>
+                      <div className={`shrink-0 w-16 h-16 rounded-full border-4 ${step.borderColor} flex items-center justify-center bg-[#1a1a1a] shadow-lg`}>
+                        <span className="text-2xl font-black text-white">{step.id}</span>
                       </div>
-                      <h3 className="text-3xl font-black text-gray-900 tracking-tight uppercase group-hover:text-[#f59e0b] transition-colors duration-300">
+                      <h3 className="text-3xl font-black text-white tracking-tight uppercase group-hover:text-[#f59e0b] transition-colors duration-300">
                         {step.title}
                       </h3>
                     </div>
                     
-                    <p className="text-gray-600 leading-relaxed text-[15px] md:text-lg font-medium">
+                    <p className="text-gray-300 leading-relaxed text-[15px] md:text-lg font-medium">
                       {step.desc}
                     </p>
                   </div>

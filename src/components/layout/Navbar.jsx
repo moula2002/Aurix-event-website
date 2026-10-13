@@ -62,12 +62,12 @@ const Navbar = () => {
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-2">
             <Phone size={14} className="text-[#f59e0b]" />
-            <span className="text-gray-800">+971 54 574 5761</span>
+            <span className="text-gray-200">+971 54 574 5761</span>
           </div>
-          <div className="w-px h-4 bg-gray-300"></div>
+          <div className="w-px h-4 bg-white/20"></div>
           <div className="flex items-center gap-2">
             <Mail size={14} className="text-[#f59e0b]" />
-            <span className="text-gray-800">info@axaurixevents.com</span>
+            <span className="text-gray-200">info@axaurixevents.com</span>
           </div>
         </div>
         <div className="flex items-center gap-6">
@@ -77,7 +77,7 @@ const Navbar = () => {
             <a href="#" className="hover:text-white transition-colors"><Linkedin size={16} /></a>
             <a href="#" className="hover:text-white transition-colors"><Youtube size={16} /></a>
           </div>
-          <div className="w-px h-4 bg-gray-300"></div>
+          <div className="w-px h-4 bg-white/20"></div>
           <span className="text-[#f59e0b]">Follow Us</span>
         </div>
       </div>
@@ -91,16 +91,16 @@ const Navbar = () => {
           isScrolled ? 'top-2 px-4' : 'top-2 lg:top-12 px-4 lg:px-6'
         }`}
       >
-        <div className={`w-full max-w-[1440px] flex items-center justify-between bg-white rounded-full transition-all duration-500 ${
-          isScrolled ? 'px-6 py-2 shadow-[0_8px_30px_rgba(0,0,0,0.08)]' : 'px-8 py-3 shadow-[0_4px_24px_rgba(0,0,0,0.04)]'
+        <div className={`w-full max-w-[1440px] flex items-center justify-between bg-[#111111]/90 backdrop-blur-md rounded-full transition-all duration-500 border border-white/10 ${
+          isScrolled ? 'px-6 py-2 shadow-[0_8px_30px_rgba(0,0,0,0.5)]' : 'px-8 py-3 shadow-[0_4px_24px_rgba(0,0,0,0.4)]'
         }`}>
 
           {/* ── LOGO ── */}
           <Link to="/" className="flex items-center flex-shrink-0">
             <img
               src={logo}
-              alt="Aurix Events Logo"
-              className={`w-auto transition-all duration-500 ${isScrolled ? 'h-10' : 'h-12'}`}
+              alt="Ax Aurix Events Logo"
+              className={`w-auto object-contain transition-all duration-300 ${isScrolled ? 'h-10' : 'h-12'}`}
             />
           </Link>
 
@@ -111,7 +111,7 @@ const Navbar = () => {
                 <Link
                   to={link.to}
                   className={`relative py-2 text-[0.8rem] font-bold tracking-[0.1em] transition-colors duration-200 flex items-center gap-1 group ${
-                    isActive(link.to) || (link.hasDropdown && location.pathname.includes(link.to)) ? 'text-[#f59e0b]' : 'text-gray-900 hover:text-[#f59e0b]'
+                    isActive(link.to) || (link.hasDropdown && location.pathname.includes(link.to)) ? 'text-[#f59e0b]' : 'text-gray-200 hover:text-[#f59e0b]'
                   }`}
                 >
                   {link.name}
@@ -136,17 +136,17 @@ const Navbar = () => {
                   <div className="absolute top-full left-0 pt-4 opacity-0 translate-y-4 pointer-events-none group-hover/navitem:opacity-100 group-hover/navitem:translate-y-0 group-hover/navitem:pointer-events-auto transition-all duration-300 z-50">
                     {link.isGroup ? (
                       // ── OUR GROUP rich dropdown ──
-                      <div className="bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.12)] border border-gray-100 p-3 min-w-[280px] flex flex-col gap-1">
+                      <div className="bg-[#151515] rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-white/10 p-3 min-w-[280px] flex flex-col gap-1 backdrop-blur-md">
                         <p className="text-[10px] font-black tracking-[0.2em] text-[#f59e0b] uppercase px-3 py-1">Ax Aurix Group</p>
                         {link.dropdownItems.map((item, idx) => (
                           <Link
                             key={idx}
                             to={item.to}
-                            className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-amber-50 transition-colors group/di"
+                            className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 transition-colors group/di"
                           >
                             <span className={`w-2 h-2 rounded-full flex-shrink-0 ${item.color}`} />
                             <div className="flex flex-col flex-1 min-w-0">
-                              <span className="text-sm font-black text-gray-900 group-hover/di:text-[#f59e0b] transition-colors leading-tight">{item.name}</span>
+                              <span className="text-sm font-black text-gray-100 group-hover/di:text-[#f59e0b] transition-colors leading-tight">{item.name}</span>
                               <span className="text-[10px] text-gray-400 font-semibold tracking-wide">{item.sub}</span>
                             </div>
                             <span className={`text-[9px] font-black text-white px-2 py-0.5 rounded-full ${item.color} whitespace-nowrap`}>{item.badge}</span>
@@ -155,12 +155,12 @@ const Navbar = () => {
                       </div>
                     ) : (
                       // ── standard dropdown ──
-                      <div className="bg-white rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] border border-gray-100 p-3 min-w-[220px] flex flex-col gap-1">
+                      <div className="bg-[#151515] rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.6)] border border-white/10 p-3 min-w-[220px] flex flex-col gap-1 backdrop-blur-md">
                         {link.dropdownItems.map((item, idx) => (
                           <Link
                             key={idx}
                             to={item.to}
-                            className="px-4 py-2 text-sm font-bold tracking-wide text-gray-700 hover:text-[#f59e0b] hover:bg-amber-50 rounded-lg transition-colors whitespace-nowrap"
+                            className="px-4 py-2 text-sm font-bold tracking-wide text-gray-300 hover:text-[#f59e0b] hover:bg-white/5 rounded-lg transition-colors whitespace-nowrap"
                           >
                             {item.name}
                           </Link>
@@ -187,7 +187,7 @@ const Navbar = () => {
 
           {/* ── MOBILE HAMBURGER ── */}
           <button
-            className="lg:hidden relative w-10 h-10 flex items-center justify-center text-gray-900"
+            className="lg:hidden relative w-10 h-10 flex items-center justify-center text-gray-100"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -203,16 +203,16 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'tween', duration: 0.35 }}
-            className="fixed inset-0 z-40 bg-white lg:hidden flex flex-col overflow-y-auto"
+            className="fixed inset-0 z-40 bg-[#0d0d0d] lg:hidden flex flex-col overflow-y-auto"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+            <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
               <Link to="/" onClick={() => setMobileMenuOpen(false)}>
-                <img src={logo} alt="Aurix Events Logo" className="h-10 w-auto" />
+                <img src={logo} alt="Ax Aurix Events Logo" className="h-10 w-auto object-contain" />
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-700"
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 text-gray-200"
               >
                 <X size={20} />
               </button>
@@ -225,10 +225,10 @@ const Navbar = () => {
                   <Link
                     to={link.to}
                     onClick={() => !link.hasDropdown && setMobileMenuOpen(false)}
-                    className={`flex justify-between items-center py-4 text-base font-black tracking-wider border-b border-gray-50 ${
+                    className={`flex justify-between items-center py-4 text-base font-black tracking-wider border-b border-white/5 ${
                       isActive(link.to) || (link.hasDropdown && location.pathname.includes(link.to))
                         ? 'text-[#f59e0b]'
-                        : 'text-gray-900'
+                        : 'text-gray-100'
                     }`}
                   >
                     {link.name}
@@ -241,8 +241,8 @@ const Navbar = () => {
                           key={idx}
                           to={item.to}
                           onClick={() => setMobileMenuOpen(false)}
-                          className={`py-3 text-sm font-bold tracking-wide border-b border-gray-50 flex items-center gap-2 ${
-                            location.pathname === item.to ? 'text-[#f59e0b]' : 'text-gray-600'
+                          className={`py-3 text-sm font-bold tracking-wide border-b border-white/5 flex items-center gap-2 ${
+                            location.pathname === item.to ? 'text-[#f59e0b]' : 'text-gray-400'
                           }`}
                         >
                           <span className="w-1.5 h-1.5 rounded-full bg-[#f59e0b] flex-shrink-0" />
@@ -256,7 +256,7 @@ const Navbar = () => {
             </nav>
 
             {/* CTA + Contact */}
-            <div className="px-6 py-6 border-t border-gray-100 bg-gray-50 space-y-4">
+            <div className="px-6 py-6 border-t border-white/10 bg-[#141414] space-y-4">
               <Link
                 to="/contact"
                 onClick={() => setMobileMenuOpen(false)}
@@ -266,11 +266,11 @@ const Navbar = () => {
                 GET A QUOTE
               </Link>
               <div className="flex flex-col gap-3 pt-2">
-                <a href="tel:+971545745761" className="flex items-center gap-3 text-sm font-semibold text-gray-700">
+                <a href="tel:+971545745761" className="flex items-center gap-3 text-sm font-semibold text-gray-300">
                   <Phone size={16} className="text-[#f59e0b]" />
                   +971 54 574 5761
                 </a>
-                <a href="mailto:info@axaurixevents.com" className="flex items-center gap-3 text-sm font-semibold text-gray-700">
+                <a href="mailto:info@axaurixevents.com" className="flex items-center gap-3 text-sm font-semibold text-gray-300">
                   <Mail size={16} className="text-[#f59e0b]" />
                   info@axaurixevents.com
                 </a>

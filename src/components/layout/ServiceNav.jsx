@@ -13,7 +13,7 @@ const ServiceNav = () => {
 
   return (
     <div className="flex justify-center px-6 mt-12 mb-16">
-      <div className="inline-flex p-1.5 bg-gray-200/80 backdrop-blur-md rounded-full border border-gray-300/60 shadow-inner max-w-full overflow-x-auto no-scrollbar">
+      <div className="inline-flex p-1.5 bg-[#151515]/90 backdrop-blur-md rounded-full border border-white/10 shadow-inner max-w-full overflow-x-auto no-scrollbar">
         {tabs.map((tab) => {
           const isActive = currentPath === tab.path;
           return (
@@ -22,8 +22,8 @@ const ServiceNav = () => {
               to={tab.path}
               className={`px-5 sm:px-7 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wider transition-all duration-300 uppercase whitespace-nowrap ${
                 isActive
-                  ? 'bg-[#f59e0b] text-white shadow-md scale-105'
-                  : 'text-gray-700 hover:text-gray-900 hover:bg-white/60'
+                  ? 'bg-[#f59e0b] text-black shadow-md scale-105'
+                  : 'text-gray-300 hover:text-white hover:bg-white/10'
               }`}
             >
               {tab.name}

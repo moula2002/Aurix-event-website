@@ -10,18 +10,18 @@ export const GalleryGridSkeleton = ({ count = 8 }) => {
       {Array.from({ length: count }).map((_, idx) => (
         <div
           key={idx}
-          className="aspect-square rounded-2xl overflow-hidden border border-gray-100 shadow-sm relative bg-gray-100"
+          className="aspect-square rounded-2xl overflow-hidden border border-white/10 shadow-sm relative bg-[#111111]"
         >
-          <SkeletonBox className="w-full h-full rounded-2xl" />
+          <SkeletonBox className="w-full h-full rounded-2xl" variant="dark" />
           
           {/* Category Pill Placeholder */}
           <div className="absolute top-4 left-4 z-10">
-            <div className="w-20 h-6 rounded-full bg-white/70 skeleton-shimmer" />
+            <div className="w-20 h-6 rounded-full bg-white/20 skeleton-shimmer-dark" />
           </div>
 
           {/* Bottom Title Placeholder */}
           <div className="absolute bottom-4 left-4 right-4 z-10">
-            <div className="w-3/4 h-5 rounded-md bg-white/80 skeleton-shimmer" />
+            <div className="w-3/4 h-5 rounded-md bg-white/30 skeleton-shimmer-dark" />
           </div>
         </div>
       ))}
@@ -31,7 +31,7 @@ export const GalleryGridSkeleton = ({ count = 8 }) => {
 
 const GallerySkeleton = () => {
   return (
-    <div className="w-full bg-[#fefefe] min-h-screen pb-24" role="status" aria-label="Loading gallery page">
+    <div className="w-full bg-[#000000] min-h-screen pb-24" role="status" aria-label="Loading gallery page">
       {/* 1. Large Orange Section Header */}
       <SkeletonHeader title="GALLERY" />
 

@@ -52,7 +52,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#fafafa] overflow-hidden">
+    <section className="py-24 bg-[#0d0d0d] overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 gap-8">
           <SectionTitle 
@@ -63,7 +63,7 @@ const WhyChooseUs = () => {
             } 
           />
           <div className="max-w-xl text-right lg:text-left">
-            <p className="text-gray-500 font-medium leading-relaxed text-sm md:text-base">
+            <p className="text-gray-300 font-medium leading-relaxed text-sm md:text-base">
               Turning ideas into extraordinary experiences with innovative event
               solutions. Driven by creativity, reliability, and a commitment to
               delivering excellence.
@@ -84,11 +84,11 @@ const WhyChooseUs = () => {
                 <div className="w-full h-full relative transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                   
                   {/* Front Side */}
-                  <div className="absolute inset-0 w-full h-full bg-white border border-gray-100 rounded-[2rem] p-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)] [backface-visibility:hidden] flex flex-col items-center justify-center text-center">
-                    <div className="w-20 h-20 rounded-full border border-gray-100 flex items-center justify-center mb-6 bg-gray-50/50 shadow-inner group-hover:shadow-md transition-all duration-300">
+                  <div className="absolute inset-0 w-full h-full bg-[#151515] border border-white/10 rounded-[2rem] p-8 shadow-[0_8px_30px_rgba(0,0,0,0.5)] [backface-visibility:hidden] flex flex-col items-center justify-center text-center">
+                    <div className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center mb-6 bg-white/5 shadow-inner group-hover:shadow-md transition-all duration-300">
                       {React.cloneElement(reason.icon, { size: 32, className: "text-amber-500" })}
                     </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-gray-900">
+                    <h3 className="text-xl md:text-2xl font-bold text-white">
                       {reason.title}
                     </h3>
                   </div>

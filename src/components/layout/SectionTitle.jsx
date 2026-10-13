@@ -17,7 +17,7 @@ const SectionTitle = ({ title, subtitle, className = "" }) => {
             {subtitle}
           </span>
         )}
-        <h2 className="text-3xl md:text-5xl font-black text-gray-900 uppercase tracking-tight leading-none m-0">
+        <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight leading-none m-0">
           {title}
         </h2>
       </div>

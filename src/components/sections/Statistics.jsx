@@ -42,7 +42,7 @@ const Statistics = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
-        className="relative rounded-2xl overflow-hidden bg-white shadow-[0_20px_60px_rgba(0,0,0,0.1)] border border-gray-100"
+        className="relative rounded-2xl overflow-hidden bg-[#111111] shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-white/10"
       >
         {/* Gold top stripe */}
         <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#f59e0b] to-transparent" />
@@ -62,16 +62,16 @@ const Statistics = () => {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: idx * 0.15, ease: [0.21, 0.47, 0.32, 0.98] }}
               className={`flex flex-col items-center justify-center py-5 px-6 relative group cursor-pointer
-                ${idx < stats.length - 1 ? 'md:border-r border-b md:border-b-0 border-gray-100' : ''}`}
+                ${idx < stats.length - 1 ? 'md:border-r border-b md:border-b-0 border-white/10' : ''}`}
             >
               {/* Hover amber tint */}
-              <div className="absolute inset-0 bg-[#f59e0b]/0 group-hover:bg-[#f59e0b]/[0.03] transition-colors duration-500" />
+              <div className="absolute inset-0 bg-[#f59e0b]/0 group-hover:bg-[#f59e0b]/[0.05] transition-colors duration-500" />
 
               <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="text-5xl lg:text-[3.5rem] font-black tracking-tighter mb-2 text-[#111827]">
+                <div className="text-5xl lg:text-[3.5rem] font-black tracking-tighter mb-2 text-white">
                   <Counter from={0} to={stat.number} duration={2000} suffix={stat.suffix} />
                 </div>
-                <div className="text-xs font-bold text-gray-400 uppercase tracking-[0.15em] group-hover:text-gray-700 transition-colors duration-300">
+                <div className="text-xs font-bold text-gray-400 uppercase tracking-[0.15em] group-hover:text-amber-400 transition-colors duration-300">
                   {stat.label}
                 </div>
               </div>
@@ -80,7 +80,7 @@ const Statistics = () => {
         </div>
 
         {/* Bottom marquee strip */}
-        <div className="border-t border-gray-100 py-3 overflow-hidden bg-gray-50/60">
+        <div className="border-t border-white/10 py-3 overflow-hidden bg-[#0a0a0a]">
           <div className="marquee-track gap-12 text-gray-400 text-[0.65rem] font-bold uppercase tracking-[0.2em]">
             {Array.from({ length: 10 }).map((_, i) => (
               <span key={i} className="flex items-center gap-3 whitespace-nowrap px-6">

@@ -15,14 +15,14 @@ const Footer = () => {
   });
 
   return (
-    <footer ref={footerRef} className="w-full bg-[#151313] text-gray-500 pt-16 pb-8 border-t-[6px] border-[#f59e0b] overflow-hidden">
+    <footer ref={footerRef} className="w-full bg-[#000000] text-gray-500 pt-16 pb-8 border-t-[6px] border-[#f59e0b] overflow-hidden">
       <div className="w-full max-w-[1440px] mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
           
           {/* Logo & Description */}
           <div className="lg:col-span-5 flex flex-col gap-6">
             <a href="#" className={`inline-block mb-1 ${inView ? 'footer-logo-entrance' : 'footer-fade-up-initial'}`}>
-              <img src={logo} alt="Aurix Events Logo" className="h-14 w-auto filter brightness-0 invert opacity-90" />
+              <img src={logo} alt="Ax Aurix Events Logo" className="h-16 w-auto object-contain" />
             </a>
             <div className="flex flex-col gap-4">
               <p className={`text-[#a3a3a3] text-sm leading-relaxed max-w-sm font-medium ${inView ? 'footer-desc-entrance' : 'footer-fade-up-initial'}`}>
@@ -52,7 +52,7 @@ const Footer = () => {
           {/* Location Map */}
           <div className="lg:col-span-4 flex flex-col">
             <h3 className={`text-[#f59e0b] text-sm font-bold uppercase tracking-widest mb-6 ${inView ? 'footer-loc-title-entrance' : 'footer-fade-up-initial'}`}>OUR LOCATION</h3>
-            <div className={`w-full h-40 rounded-xl overflow-hidden border border-[#333333] ${inView ? 'footer-map-entrance' : 'footer-fade-up-initial'}`}>
+            <div className={`w-full h-40 rounded-xl overflow-hidden border border-white/10 ${inView ? 'footer-map-entrance' : 'footer-fade-up-initial'}`}>
               <iframe 
                 src="https://maps.google.com/maps?q=The+Hub+WTC+Mall+Abu+Dhabi&t=&z=14&ie=UTF8&iwloc=&output=embed" 
                 width="100%" 
@@ -68,12 +68,12 @@ const Footer = () => {
         </div>
         
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-[#333333] flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className={`flex flex-col gap-1 text-center md:text-left ${inView ? 'footer-bottom-text-entrance' : 'footer-fade-up-initial'}`}>
             <div className="text-[13px] font-semibold text-[#a3a3a3]">
               Ax Aurix Events, 2026 © All Rights Reserved.
             </div>
-            <div className="text-[12px] text-gray-600">
+            <div className="text-[12px] text-gray-500">
               Part of{' '}
               <a
                 href="https://axaurix.com"
@@ -90,27 +90,27 @@ const Footer = () => {
           {/* Social Icons & WhatsApp */}
           <div className="flex items-center gap-4">
             <div className={inView ? 'footer-icon-1' : 'footer-icon-initial'}>
-              <a href="#" className="w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:scale-110 bg-white text-[#f59e0b]">
+              <a href="#" className="w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:scale-110 bg-[#151515] border border-white/10 text-[#f59e0b] hover:border-[#f59e0b]">
                 <MailIcon />
               </a>
             </div>
             <div className={inView ? 'footer-icon-2' : 'footer-icon-initial'}>
-              <a href="https://www.instagram.com/axaurixevents?stkn=aTh5dTEyMDAxaDBn" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:scale-110 bg-white text-[#f59e0b]">
+              <a href="https://www.instagram.com/axaurixevents?stkn=aTh5dTEyMDAxaDBn" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:scale-110 bg-[#151515] border border-white/10 text-[#f59e0b] hover:border-[#f59e0b]">
                 <InstagramIcon />
               </a>
             </div>
             <div className={inView ? 'footer-icon-3' : 'footer-icon-initial'}>
-              <a href="#" className="w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:scale-110 bg-white text-[#f59e0b]">
+              <a href="#" className="w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:scale-110 bg-[#151515] border border-white/10 text-[#f59e0b] hover:border-[#f59e0b]">
                 <FacebookIcon />
               </a>
             </div>
             <div className={inView ? 'footer-icon-4' : 'footer-icon-initial'}>
-              <a href="#" className="w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:scale-110 bg-white text-[#f59e0b]">
+              <a href="#" className="w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:scale-110 bg-[#151515] border border-white/10 text-[#f59e0b] hover:border-[#f59e0b]">
                 <LinkedinIcon />
               </a>
             </div>
             <div className={inView ? 'footer-icon-5' : 'footer-icon-initial'}>
-              <a href="#" className="w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:scale-110 bg-white text-[#f59e0b]">
+              <a href="#" className="w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:scale-110 bg-[#151515] border border-white/10 text-[#f59e0b] hover:border-[#f59e0b]">
                 <YoutubeIcon />
               </a>
             </div>

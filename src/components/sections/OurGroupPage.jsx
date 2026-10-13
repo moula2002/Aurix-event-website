@@ -81,9 +81,9 @@ const divisions = [
     desc: 'The Ax Aurix Group is continuously growing with new verticals and business opportunities. More innovative services and divisions are in the pipeline — stay tuned for exciting announcements.',
     features: ['New Verticals', 'Strategic Expansion', 'Innovation Hub', 'Global Reach', 'New Markets', 'Future Services'],
     gradient: 'from-gray-300 via-gray-400 to-gray-500',
-    lightBg: 'bg-gray-50',
+    lightBg: 'bg-white/5',
     textAccent: 'text-gray-500',
-    borderAccent: 'border-gray-200',
+    borderAccent: 'border-white/10',
     badge: 'Future',
     badgeBg: 'bg-gray-400',
     link: '#',
@@ -115,7 +115,7 @@ const AnimatedServiceDetailRow = ({ div, idx }) => {
       }`}
     >
       <div
-        className={`bg-white rounded-[2rem] shadow-[0_8px_40px_rgba(0,0,0,0.06)] overflow-hidden flex flex-col ${
+        className={`bg-[#151515] border border-white/10 rounded-[2rem] shadow-[0_8px_40px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col ${
           isEven ? 'md:flex-row' : 'md:flex-row-reverse'
         }`}
       >
@@ -143,13 +143,13 @@ const AnimatedServiceDetailRow = ({ div, idx }) => {
             <p className={`text-xs font-black tracking-[0.2em] uppercase ${div.textAccent}`}>{div.tagline}</p>
           </div>
 
-          <h3 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight">{div.name}</h3>
+          <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">{div.name}</h3>
 
-          <p className="text-gray-500 text-base md:text-lg leading-relaxed">{div.desc}</p>
+          <p className="text-gray-400 text-base md:text-lg leading-relaxed">{div.desc}</p>
 
           <div className="grid grid-cols-2 gap-3">
             {div.features.map((f, fi) => (
-              <div key={fi} className="flex items-center gap-2 text-sm text-gray-600 font-semibold">
+              <div key={fi} className="flex items-center gap-2 text-sm text-gray-300 font-semibold">
                 <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${div.badgeBg}`} />
                 {f}
               </div>
@@ -193,12 +193,12 @@ const OurGroupPage = () => {
   });
 
   return (
-    <div className="w-full bg-[#fefefe] min-h-screen relative overflow-hidden">
+    <div className="w-full bg-[#000000] min-h-screen relative overflow-hidden">
       
       {/* ── Premium Background Decorations (Unique Design) ── */}
-      <div className="absolute top-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-gradient-to-bl from-[#ffedd5]/80 to-transparent opacity-80 z-0 pointer-events-none rounded-full blur-[100px]" />
-      <div className="absolute top-[20%] left-[-10%] w-[50vw] h-[70vh] bg-gradient-to-tr from-[#fbd38d]/20 via-transparent to-transparent z-0 pointer-events-none rounded-[100%] rotate-45" />
-      <div className="absolute bottom-[-10%] right-[10%] w-[40vw] h-[40vw] bg-gradient-to-tl from-[#ffedd5]/70 to-transparent z-0 pointer-events-none rounded-full blur-[80px]" />
+      <div className="absolute top-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-gradient-to-bl from-amber-500/10 to-transparent opacity-80 z-0 pointer-events-none rounded-full blur-[100px]" />
+      <div className="absolute top-[20%] left-[-10%] w-[50vw] h-[70vh] bg-gradient-to-tr from-amber-500/5 via-transparent to-transparent z-0 pointer-events-none rounded-[100%] rotate-45" />
+      <div className="absolute bottom-[-10%] right-[10%] w-[40vw] h-[40vw] bg-gradient-to-tl from-amber-500/10 to-transparent z-0 pointer-events-none rounded-full blur-[80px]" />
       
       {/* Delicate horizontal wavy lines */}
       <svg className="absolute top-[30%] w-full h-[200px] z-0 pointer-events-none opacity-20" preserveAspectRatio="none" viewBox="0 0 1440 320">
@@ -207,7 +207,7 @@ const OurGroupPage = () => {
       <svg className="absolute bottom-[20%] w-full h-[200px] z-0 pointer-events-none opacity-10" preserveAspectRatio="none" viewBox="0 0 1440 320">
         <path fill="none" stroke="#f59e0b" strokeWidth="1.5" d="M0,96L60,112C120,128,240,160,360,154.7C480,149,600,107,720,117.3C840,128,960,192,1080,208C1200,224,1320,192,1380,176L1440,160"></path>
       </svg>
-      <div className="absolute top-[60%] left-12 z-0 opacity-20 pointer-events-none hidden xl:block" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 2px, transparent 2px)', backgroundSize: '32px 32px', width: '200px', height: '200px' }}></div>
+      <div className="absolute top-[60%] left-12 z-0 opacity-10 pointer-events-none hidden xl:block" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 2px, transparent 2px)', backgroundSize: '32px 32px', width: '200px', height: '200px' }}></div>
 
       <div className="relative z-10">
         {/* ── PAGE HEADER BANNER ── */}
@@ -236,7 +236,7 @@ const OurGroupPage = () => {
                 className="group flex items-end gap-3"
               >
                 <div className="overflow-hidden">
-                  <h2 className={`text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 uppercase tracking-tight leading-none group-hover:text-[#f59e0b] transition-colors duration-300 ${
+                  <h2 className={`text-5xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tight leading-none group-hover:text-[#f59e0b] transition-colors duration-300 ${
                     introInView ? 'ourgroup-title-entrance' : 'ourgroup-title-initial'
                   }`}>
                     Ax Aurix
@@ -244,19 +244,19 @@ const OurGroupPage = () => {
                 </div>
                 <ExternalLink 
                   size={28} 
-                  className={`mb-2 text-gray-300 group-hover:text-[#f59e0b] transition-all duration-300 ${
+                  className={`mb-2 text-gray-500 group-hover:text-[#f59e0b] transition-all duration-300 ${
                     introInView ? 'ourgroup-icon-entrance' : 'ourgroup-icon-initial'
                   }`} 
                 />
               </a>
               <div className="flex items-center gap-3">
                 <div className="h-1 w-20 rounded-full bg-[#f59e0b]" />
-                <div className="h-1 w-6 rounded-full bg-amber-200" />
-                <div className="h-1 w-2 rounded-full bg-amber-100" />
+                <div className="h-1 w-6 rounded-full bg-amber-500/40" />
+                <div className="h-1 w-2 rounded-full bg-amber-500/20" />
               </div>
             </div>
             <div className="flex flex-col gap-6 max-w-lg">
-              <p className={`text-gray-500 text-xl leading-relaxed ${
+              <p className={`text-gray-400 text-xl leading-relaxed ${
                 introInView ? 'ourgroup-desc-entrance' : 'ourgroup-desc-initial'
               }`}>
                 A multi-vertical holding group delivering excellence across events, hospitality, and digital — all under one visionary brand.
@@ -265,7 +265,7 @@ const OurGroupPage = () => {
                 {['Events', 'Dining', 'Digital', 'And More...'].map((tag, i) => (
                   <span 
                     key={i} 
-                    className={`px-4 py-1.5 rounded-full bg-amber-50 text-amber-700 text-xs font-black tracking-widest uppercase border border-amber-200 ${
+                    className={`px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-400 text-xs font-black tracking-widest uppercase border border-amber-500/20 ${
                       introInView ? `ourgroup-tag-${i}` : 'ourgroup-badge-initial'
                     }`}
                   >
@@ -297,7 +297,7 @@ const OurGroupPage = () => {
                   }`}
                 >
                   <div
-                    className={`group relative rounded-3xl border ${div.borderAccent} bg-white overflow-hidden flex flex-col shadow-sm hover:shadow-xl transition-all duration-500`}
+                    className={`group relative rounded-3xl border ${div.borderAccent} bg-[#151515] overflow-hidden flex flex-col shadow-sm hover:shadow-xl transition-all duration-500`}
                   >
                     {/* Image top section */}
                     {div.image ? (
@@ -314,7 +314,7 @@ const OurGroupPage = () => {
                         </div>
                       </div>
                     ) : (
-                      <div className="relative h-40 bg-gray-50 flex items-center justify-center overflow-hidden">
+                      <div className="relative h-40 bg-[#111111] flex items-center justify-center overflow-hidden">
                         <div className={`absolute inset-0 bg-gradient-to-br ${div.gradient} opacity-30`} />
                         <Icon size={48} className="text-gray-500 relative z-10" />
                       </div>
@@ -337,7 +337,7 @@ const OurGroupPage = () => {
                         cardsInView ? `ourgroup-content-${cardNum}-entrance` : 'ourgroup-content-initial'
                       }`}>
                         <p className={`text-[10px] font-black tracking-[0.2em] uppercase ${div.textAccent}`}>{div.tagline}</p>
-                        <h3 className="text-gray-900 font-black text-xl leading-tight group-hover:text-[#f59e0b] transition-colors duration-300">{div.name}</h3>
+                        <h3 className="text-white font-black text-xl leading-tight group-hover:text-[#f59e0b] transition-colors duration-300">{div.name}</h3>
                         <p className="text-gray-400 text-sm leading-relaxed mt-2 line-clamp-3">{div.desc}</p>
                       </div>
 
@@ -367,7 +367,7 @@ const OurGroupPage = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-4 pt-10 border-t border-gray-200"
+            className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-4 pt-10 border-t border-white/10"
           >
             <p className="text-gray-400 text-sm">
               All divisions are part of the{' '}
@@ -375,10 +375,10 @@ const OurGroupPage = () => {
                 Ax Aurix Group
               </a>
             </p>
-            <div className="flex items-center gap-2 text-xs text-gray-300 font-semibold uppercase tracking-widest">
-              <span className="w-6 h-px bg-gray-200" />
+            <div className="flex items-center gap-2 text-xs text-gray-500 font-semibold uppercase tracking-widest">
+              <span className="w-6 h-px bg-white/10" />
               Events · Dining · Digital
-              <span className="w-6 h-px bg-gray-200" />
+              <span className="w-6 h-px bg-white/10" />
             </div>
           </motion.div>
         </div>

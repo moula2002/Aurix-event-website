@@ -37,7 +37,7 @@ const AnimatedServiceCard = ({
   return (
     <div ref={ref} className={containerClassName}>
       <div
-        className={`bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col ${
+        className={`bg-[#111111] border border-white/10 rounded-[2rem] shadow-2xl overflow-hidden flex flex-col ${
           reverse ? 'xl:flex-row-reverse' : (mediaFirst ? 'lg:flex-row' : 'xl:flex-row')
         } relative ${className}`}
       >

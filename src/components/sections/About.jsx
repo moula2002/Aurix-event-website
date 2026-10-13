@@ -8,7 +8,7 @@ const About = () => {
   });
 
   return (
-    <section id="about" ref={sectionRef} className="w-full relative bg-white">
+    <section id="about" ref={sectionRef} className="w-full relative bg-[#000000]">
       <div className="flex flex-col lg:flex-row w-full min-h-[600px]">
         
         {/* Left Side (Amber/Brand Color) */}
@@ -79,19 +79,19 @@ const About = () => {
           </div>
         </div>
 
-        {/* Right Side (White) */}
-        <div className="w-full lg:w-1/2 bg-white py-20 px-10 md:px-24 flex flex-col justify-center gap-12 relative">
+        {/* Right Side (Dark) */}
+        <div className="w-full lg:w-1/2 bg-[#0f0f0f] py-20 px-10 md:px-24 flex flex-col justify-center gap-12 relative border-l border-white/5">
           
           {/* Mission Box */}
           <div
-            className={`border-2 border-[#f59e0b] p-8 md:p-10 relative bg-white ${inView ? 'about-hero-mission-entrance' : 'about-hero-mission-initial'}`}
+            className={`border-2 border-[#f59e0b] p-8 md:p-10 relative bg-[#151515] rounded-xl ${inView ? 'about-hero-mission-entrance' : 'about-hero-mission-initial'}`}
           >
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-4">
-              <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-[#111827]">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0f0f0f] px-4 rounded-full border border-[#f59e0b]/30">
+              <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-[#f59e0b]">
                 OUR MISSION
               </h3>
             </div>
-            <p className="text-gray-700 font-semibold text-sm md:text-base leading-relaxed text-center mt-2">
+            <p className="text-gray-300 font-medium text-sm md:text-base leading-relaxed text-center mt-2">
               To create exceptional event experiences through innovation,
               creativity, and flawless execution. We are committed to delivering
               world-class solutions that exceed client expectations, build lasting
@@ -101,14 +101,14 @@ const About = () => {
 
           {/* Vision Box */}
           <div
-            className={`border-2 border-[#f59e0b] p-8 md:p-10 relative bg-white ${inView ? 'about-hero-vision-entrance' : 'about-hero-vision-initial'}`}
+            className={`border-2 border-[#f59e0b] p-8 md:p-10 relative bg-[#151515] rounded-xl ${inView ? 'about-hero-vision-entrance' : 'about-hero-vision-initial'}`}
           >
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-4">
-              <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-[#111827]">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0f0f0f] px-4 rounded-full border border-[#f59e0b]/30">
+              <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-[#f59e0b]">
                 OUR VISION
               </h3>
             </div>
-            <p className="text-gray-700 font-semibold text-sm md:text-base leading-relaxed text-center mt-2">
+            <p className="text-gray-300 font-medium text-sm md:text-base leading-relaxed text-center mt-2">
               To be the UAE's most trusted and innovative event management
               company, recognized for delivering extraordinary experiences,
               setting new industry benchmarks, and inspiring memorable moments

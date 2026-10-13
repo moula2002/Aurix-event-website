@@ -56,7 +56,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className={`relative ${isHome ? 'py-24' : 'pb-24'} bg-white overflow-hidden`}>
+    <section id="services" className={`relative ${isHome ? 'py-24' : 'pb-24'} bg-[#000000] overflow-hidden`}>
       {isHome ? (
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12 mb-20">
           <SectionTitle subtitle="OUR" title="SERVICES" />
@@ -81,7 +81,7 @@ const Services = () => {
                   navigate(service.link);
                   window.scrollTo(0, 0);
                 }}
-                className="relative aspect-[4/5] border-8 border-[#f59e0b] overflow-hidden group cursor-pointer bg-white flex flex-col items-center justify-center text-center p-6 transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_20px_35px_-10px_rgba(245,158,11,0.25)] will-change-transform"
+                className="relative aspect-[4/5] border-8 border-[#f59e0b] overflow-hidden group cursor-pointer bg-[#111111] flex flex-col items-center justify-center text-center p-6 transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_20px_35px_-10px_rgba(245,158,11,0.25)] will-change-transform"
               >
                 {/* Background Image Layer */}
                 <div 
@@ -124,8 +124,8 @@ const Services = () => {
               <div className={`absolute bottom-6 left-0 right-0 z-10 text-center transition-opacity duration-500 ${
                 hoveredIndex === index ? 'opacity-0' : 'opacity-100'
               }`}>
-                <div className="inline-block bg-white px-4 py-2 shadow-lg">
-                  <h3 className="text-lg font-black uppercase text-[#111827]">
+                <div className="inline-block bg-[#0f0f0f]/95 border border-white/10 px-4 py-2 shadow-lg backdrop-blur-sm">
+                  <h3 className="text-lg font-black uppercase text-white">
                     {service.title}
                   </h3>
                 </div>

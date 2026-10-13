@@ -63,7 +63,7 @@ const SubServicesCarousel = () => {
   const carouselServices = [...baseServices, ...baseServices];
 
   return (
-    <section ref={sectionRef} className="relative py-24 bg-white overflow-hidden border-t border-gray-100">
+    <section ref={sectionRef} className="relative py-24 bg-[#0a0a0a] overflow-hidden border-t border-white/10">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 mb-16 relative z-20">
         <SectionTitle subtitle="EXPLORE" title="OUR CAPABILITIES" />
       </div>
@@ -91,11 +91,11 @@ const SubServicesCarousel = () => {
                     navigate(service.link);
                     window.scrollTo(0, 0);
                   }}
-                  className="w-full h-full relative overflow-hidden group cursor-pointer bg-white flex flex-col items-center justify-center text-center shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-[0_8px_30px_rgba(245,158,11,0.2)] transition-shadow duration-300 border border-gray-100"
+                  className="w-full h-full relative overflow-hidden group cursor-pointer bg-[#151515] flex flex-col items-center justify-center text-center shadow-[0_8px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_8px_30px_rgba(245,158,11,0.25)] transition-shadow duration-300 border border-white/10"
                 >
                   {/* Background Image Layer */}
                   <div 
-                    className="w-full h-[80%] relative overflow-hidden bg-white"
+                    className="w-full h-[80%] relative overflow-hidden bg-[#111111]"
                   >
                     <img 
                       src={service.image} 
@@ -126,8 +126,8 @@ const SubServicesCarousel = () => {
                   </div>
 
                   {/* Default Title (always at the bottom) */}
-                  <div className="w-full h-[20%] bg-[#f8f9fa] border-t border-gray-100 px-4 flex items-center justify-center text-center relative z-10">
-                    <h3 className="text-[11px] md:text-sm font-black uppercase text-gray-800 tracking-wider">
+                  <div className="w-full h-[20%] bg-[#1a1a1a] border-t border-white/10 px-4 flex items-center justify-center text-center relative z-10">
+                    <h3 className="text-[11px] md:text-sm font-black uppercase text-gray-200 tracking-wider">
                       {service.title}
                     </h3>
                   </div>

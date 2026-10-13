@@ -82,13 +82,13 @@ const Portfolio = () => {
 
   return (
     <>
-      <section id="gallery" className={`py-12 bg-[#fefefe] relative overflow-hidden ${!isHome ? 'pt-0' : ''}`}>
+      <section id="gallery" className={`py-12 bg-[#000000] relative overflow-hidden ${!isHome ? 'pt-0' : ''}`}>
         
         {/* ── Premium Background Decorations ── */}
-        <div className="absolute top-0 right-0 w-[45vw] h-[45vw] bg-gradient-to-bl from-[#fff7ed] to-transparent opacity-90 z-0 pointer-events-none rounded-bl-[100%]" />
-        <div className="absolute bottom-[10%] left-[-5%] w-[40vw] h-[60vh] bg-gradient-to-tr from-[#ffedd5] via-[#ffedd5]/50 to-transparent z-0 pointer-events-none rounded-tr-[100%] rounded-br-[20%]" />
-        <div className="absolute top-[40%] right-12 z-0 opacity-40 pointer-events-none hidden md:block" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1.5px, transparent 1.5px)', backgroundSize: '24px 24px', width: '150px', height: '150px' }}></div>
-        <div className="absolute bottom-[20%] left-12 z-0 opacity-20 pointer-events-none hidden lg:block" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1.5px, transparent 1.5px)', backgroundSize: '24px 24px', width: '100px', height: '100px' }}></div>
+        <div className="absolute top-0 right-0 w-[45vw] h-[45vw] bg-gradient-to-bl from-amber-500/10 to-transparent opacity-50 z-0 pointer-events-none rounded-bl-[100%]" />
+        <div className="absolute bottom-[10%] left-[-5%] w-[40vw] h-[60vh] bg-gradient-to-tr from-amber-500/10 via-transparent to-transparent z-0 pointer-events-none rounded-tr-[100%] rounded-br-[20%]" />
+        <div className="absolute top-[40%] right-12 z-0 opacity-20 pointer-events-none hidden md:block" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1.5px, transparent 1.5px)', backgroundSize: '24px 24px', width: '150px', height: '150px' }}></div>
+        <div className="absolute bottom-[20%] left-12 z-0 opacity-15 pointer-events-none hidden lg:block" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1.5px, transparent 1.5px)', backgroundSize: '24px 24px', width: '100px', height: '100px' }}></div>
 
         {isHome ? (
           <div className="max-w-7xl mx-auto px-6 pt-12 mb-14 relative z-10">
@@ -185,7 +185,7 @@ const Portfolio = () => {
               className="flex justify-center mt-14"
               style={{ willChange: "transform, opacity" }}
             >
-              <Link to="/gallery" className="group flex items-center gap-3 px-8 py-3.5 border-2 border-gray-200 hover:border-[#f59e0b] text-gray-900 hover:text-[#f59e0b] font-bold uppercase tracking-widest text-xs rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(245,158,11,0.2)]">
+              <Link to="/gallery" className="group flex items-center gap-3 px-8 py-3.5 border-2 border-white/20 hover:border-[#f59e0b] text-white hover:text-[#f59e0b] font-bold uppercase tracking-widest text-xs rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(245,158,11,0.2)]">
                 View More
                 <ExternalLink size={14} className="group-hover:rotate-45 transition-transform duration-300" />
               </Link>
@@ -214,7 +214,7 @@ const Portfolio = () => {
             
             <motion.div
               layoutId={`project-container-${selectedProject.id}`}
-              className="relative max-w-5xl w-full max-h-[90vh] rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row bg-white"
+              className="relative max-w-5xl w-full max-h-[90vh] rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row bg-[#151515] border border-white/10"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="w-full md:w-3/5 h-64 md:h-auto">
@@ -224,13 +224,13 @@ const Portfolio = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="w-full md:w-2/5 p-8 md:p-12 flex flex-col justify-center bg-white">
+              <div className="w-full md:w-2/5 p-8 md:p-12 flex flex-col justify-center bg-[#151515]">
                 <span className="text-[#f59e0b] font-bold tracking-widest uppercase text-xs mb-4 inline-block">{selectedProject.category}</span>
-                <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-6 uppercase tracking-tight">{selectedProject.title}</h2>
-                <p className="text-gray-500 mb-8 leading-relaxed">
+                <h2 className="text-3xl md:text-4xl font-black text-white mb-6 uppercase tracking-tight">{selectedProject.title}</h2>
+                <p className="text-gray-300 mb-8 leading-relaxed">
                   Experience the flawless execution and exceptional creativity behind our {selectedProject.title.toLowerCase()}. We deliver world-class event solutions tailored to perfection from concept to reality.
                 </p>
-                <Link to="/contact" className="inline-flex items-center justify-center gap-2 bg-[#111827] text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-xs hover:bg-[#f59e0b] hover:text-black transition-all duration-300 w-max">
+                <Link to="/contact" className="inline-flex items-center justify-center gap-2 bg-[#f59e0b] text-black px-8 py-4 rounded-full font-bold uppercase tracking-wider text-xs hover:bg-[#fbbf24] transition-all duration-300 w-max">
                   Book Similar Event
                   <ExternalLink size={14} />
                 </Link>

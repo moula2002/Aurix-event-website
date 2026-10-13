@@ -47,7 +47,7 @@ const Hero = () => {
       />
       {/* Gradient Overlay */}
       <div 
-        className="absolute inset-0 z-0 bg-gradient-to-r from-white via-white/85 to-transparent"
+        className="absolute inset-0 z-0 bg-gradient-to-r from-black via-black/85 to-transparent"
       />
 
       <div className="max-w-[1440px] mx-auto px-6 lg:px-14 w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center pb-20 mt-12 md:mt-0">
@@ -69,7 +69,7 @@ const Hero = () => {
               2020
             </div>
             <div className="flex flex-col justify-center mt-2">
-              <span className="text-xs md:text-sm font-bold tracking-widest uppercase text-[#111827] leading-tight">
+              <span className="text-xs md:text-sm font-bold tracking-widest uppercase text-white leading-tight">
                 WE ARE
               </span>
               <div className="w-full h-[3px] bg-[#f59e0b] my-1"></div>
@@ -81,14 +81,14 @@ const Hero = () => {
 
           {/* Headline */}
           <div className="flex flex-col mb-4">
-            <h1 className="text-4xl md:text-6xl lg:text-[5rem] font-black text-[#111827] uppercase tracking-tighter leading-[0.95] overflow-hidden pb-1">
+            <h1 className="text-4xl md:text-6xl lg:text-[5rem] font-black text-white uppercase tracking-tighter leading-[0.95] overflow-hidden pb-1">
               <motion.div variants={lineReveal} initial="hidden" animate="show" custom={0.1}>
                 EVENTS
               </motion.div>
             </h1>
             <h1 className="text-4xl md:text-6xl lg:text-[5rem] font-black uppercase tracking-tighter leading-[0.95] flex gap-3 overflow-hidden pb-1">
               <motion.div variants={lineReveal} initial="hidden" animate="show" custom={0.2} className="flex gap-3">
-                <span className="text-[#111827]">THAT</span> <span className="text-[#f59e0b]">CREATE</span>
+                <span className="text-white">THAT</span> <span className="text-[#f59e0b]">CREATE</span>
               </motion.div>
             </h1>
             <h1 className="text-4xl md:text-6xl lg:text-[5rem] font-black text-[#f59e0b] uppercase tracking-tighter leading-[0.95] overflow-hidden pb-1">
@@ -104,7 +104,7 @@ const Hero = () => {
             initial="hidden"
             animate="show"
             custom={0.4}
-            className="text-slate-800 text-lg md:text-xl leading-relaxed mb-8 max-w-md font-medium"
+            className="text-gray-300 text-lg md:text-xl leading-relaxed mb-8 max-w-md font-medium"
           >
             From concept to celebration, we craft extraordinary events that leave a lasting impact.
           </motion.p>
@@ -127,7 +127,7 @@ const Hero = () => {
 
             <Link
               to="/gallery"
-              className="flex items-center gap-3 px-8 py-3.5 bg-white border-2 border-[#f59e0b] text-[#111827] font-bold uppercase tracking-wider text-sm rounded-full shadow-sm hover:shadow-md hover:bg-amber-50 transition-all duration-300 transform hover:-translate-y-0.5 group"
+              className="flex items-center gap-3 px-8 py-3.5 bg-[#111111] border-2 border-[#f59e0b] text-white font-bold uppercase tracking-wider text-sm rounded-full shadow-sm hover:shadow-md hover:bg-amber-950/30 transition-all duration-300 transform hover:-translate-y-0.5 group"
             >
               <div className="w-5 h-5 rounded-full border-2 border-[#f59e0b] flex items-center justify-center text-[#f59e0b] group-hover:bg-[#f59e0b] group-hover:text-white transition-colors duration-300">
                 <Play size={10} className="ml-0.5" fill="currentColor" />

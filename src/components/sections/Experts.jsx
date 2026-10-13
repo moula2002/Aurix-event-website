@@ -23,7 +23,7 @@ const socials = [
 
 const Experts = () => {
   return (
-    <section className="py-28 bg-white relative overflow-hidden">
+    <section className="py-28 bg-[#000000] relative overflow-hidden">
       {/* Dot pattern */}
       <div
         className="absolute right-8 top-16 opacity-[0.06] pointer-events-none"
@@ -40,7 +40,7 @@ const Experts = () => {
         {/* Header */}
         <AnimatedSection className="flex flex-col items-center text-center mb-16">
           <span className="section-label mb-4">Our Team</span>
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900 uppercase">
+          <h2 className="text-4xl md:text-5xl font-black text-white uppercase">
             Meet Our <span className="text-[#f59e0b]">Experts</span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-md text-base leading-relaxed">
@@ -58,7 +58,7 @@ const Experts = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.55, delay: index * 0.1 }}
               whileHover={{ y: -10 }}
-              className="group relative overflow-hidden rounded-2xl bg-white shadow-md hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-all duration-500 cursor-pointer"
+              className="group relative overflow-hidden rounded-2xl bg-[#151515] border border-white/10 shadow-md hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-500 cursor-pointer"
             >
               {/* Profile image area */}
               <div className={`w-full aspect-[3/4] bg-gradient-to-br ${member.gradient} relative overflow-hidden`}>
@@ -104,8 +104,8 @@ const Experts = () => {
               </div>
 
               {/* Info area */}
-              <div className="p-5 text-center border-t-[3px] border-[#f59e0b] bg-white relative z-10">
-                <h3 className="font-black text-lg text-gray-900 uppercase tracking-wide mb-0.5 group-hover:text-[#f59e0b] transition-colors duration-300">
+              <div className="p-5 text-center border-t-[3px] border-[#f59e0b] bg-[#151515] relative z-10">
+                <h3 className="font-black text-lg text-white uppercase tracking-wide mb-0.5 group-hover:text-[#f59e0b] transition-colors duration-300">
                   {member.name}
                 </h3>
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">

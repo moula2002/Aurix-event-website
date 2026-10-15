@@ -82,7 +82,7 @@ const Portfolio = () => {
 
   return (
     <>
-      <section id="gallery" className={`py-12 bg-[#000000] relative overflow-hidden ${!isHome ? 'pt-0' : ''}`}>
+      <section id="projects" className={`py-12 bg-[#000000] relative overflow-hidden ${!isHome ? 'pt-0' : ''}`}>
         
         {/* ── Premium Background Decorations ── */}
         <div className="absolute top-0 right-0 w-[45vw] h-[45vw] bg-gradient-to-bl from-amber-500/10 to-transparent opacity-50 z-0 pointer-events-none rounded-bl-[100%]" />
@@ -92,11 +92,11 @@ const Portfolio = () => {
 
         {isHome ? (
           <div className="max-w-7xl mx-auto px-6 pt-12 mb-14 relative z-10">
-            <SectionTitle subtitle="OUR" title="GALLERY" />
+            <SectionTitle subtitle="OUR" title="PROJECTS" />
           </div>
         ) : (
           <div className="mb-14 relative z-10">
-            <SectionHeader title="GALLERY" />
+            <SectionHeader title="PROJECTS" />
           </div>
         )}
 
@@ -185,7 +185,7 @@ const Portfolio = () => {
               className="flex justify-center mt-14"
               style={{ willChange: "transform, opacity" }}
             >
-              <Link to="/gallery" className="group flex items-center gap-3 px-8 py-3.5 border-2 border-white/20 hover:border-[#f59e0b] text-white hover:text-[#f59e0b] font-bold uppercase tracking-widest text-xs rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(245,158,11,0.2)]">
+              <Link to="/projects" className="group flex items-center gap-3 px-8 py-3.5 border-2 border-white/20 hover:border-[#f59e0b] text-white hover:text-[#f59e0b] font-bold uppercase tracking-widest text-xs rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(245,158,11,0.2)]">
                 View More
                 <ExternalLink size={14} className="group-hover:rotate-45 transition-transform duration-300" />
               </Link>

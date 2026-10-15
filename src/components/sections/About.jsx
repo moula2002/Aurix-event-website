@@ -28,20 +28,22 @@ const About = () => {
           </div>
 
           <div className="relative z-10">
-            {/* Layered Text 1 - Main Heading */}
-            <div className={`relative mb-6 inline-block mt-8 ${inView ? 'about-hero-heading-entrance' : 'about-hero-heading-initial'}`}>
-              <div 
-                className="absolute text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tighter"
-                style={{
-                  color: 'transparent',
-                  WebkitTextStroke: '1px white',
-                  transform: 'translate(3px, 5px)'
-                }}
-              >
-                INNOVATIVE IDEAS &<br/>IMMERSIVE EXPERIENCES
-              </div>
-              <h2 className="relative text-3xl md:text-4xl lg:text-5xl font-black uppercase text-[#111827] tracking-tighter m-0 leading-[1.05]">
-                INNOVATIVE IDEAS &<br/>IMMERSIVE EXPERIENCES
+            {/* Main Heading styled exactly like the Event page SectionHeader */}
+            <div className={`mb-6 mt-8 ${inView ? 'about-hero-heading-entrance' : 'about-hero-heading-initial'}`}>
+              <h2 className="relative inline-block text-3xl md:text-4xl lg:text-5xl font-black uppercase text-[#111827] tracking-tight leading-[1.1] font-heading m-0">
+                <span className="relative z-10">
+                  INNOVATIVE IDEAS &<br />IMMERSIVE EXPERIENCES
+                </span>
+                <span
+                  className="absolute top-0 left-0 w-full h-full z-[-1] pointer-events-none select-none text-transparent"
+                  aria-hidden="true"
+                  style={{
+                    WebkitTextStroke: '1.5px rgba(255, 255, 255, 0.85)',
+                    transform: 'translate(4px, 4px)'
+                  }}
+                >
+                  INNOVATIVE IDEAS &<br />IMMERSIVE EXPERIENCES
+                </span>
               </h2>
             </div>
 
@@ -50,20 +52,22 @@ const About = () => {
               Ax Aurix Events delivers event production, technical expertise, creative services, and digital solutions designed to help organizations connect with audiences and communicate their brand messages effectively.
             </p>
 
-            {/* Layered Text 2 - Unified Long-Term Goal Heading */}
-            <div className={`relative mb-6 inline-block ${inView ? 'about-hero-goal-heading-entrance' : 'about-hero-goal-heading-initial'}`}>
-              <div 
-                className="absolute text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tighter"
-                style={{
-                  color: 'transparent',
-                  WebkitTextStroke: '1px white',
-                  transform: 'translate(3px, 4px)'
-                }}
-              >
-                OUR UNIFIED<br/>LONG TERM GOAL
-              </div>
-              <h3 className="relative text-2xl md:text-3xl lg:text-4xl font-black uppercase text-[#111827] tracking-tighter m-0 leading-[1.05]">
-                OUR UNIFIED<br/>LONG TERM GOAL
+            {/* Unified Long-Term Goal Heading styled exactly like the Event page SectionHeader */}
+            <div className={`mb-6 ${inView ? 'about-hero-goal-heading-entrance' : 'about-hero-goal-heading-initial'}`}>
+              <h3 className="relative inline-block text-2xl md:text-3xl lg:text-4xl font-black uppercase text-[#111827] tracking-tight leading-[1.1] font-heading m-0">
+                <span className="relative z-10">
+                  OUR UNIFIED<br />LONG TERM GOAL
+                </span>
+                <span
+                  className="absolute top-0 left-0 w-full h-full z-[-1] pointer-events-none select-none text-transparent"
+                  aria-hidden="true"
+                  style={{
+                    WebkitTextStroke: '1.5px rgba(255, 255, 255, 0.85)',
+                    transform: 'translate(3px, 3px)'
+                  }}
+                >
+                  OUR UNIFIED<br />LONG TERM GOAL
+                </span>
               </h3>
             </div>
 

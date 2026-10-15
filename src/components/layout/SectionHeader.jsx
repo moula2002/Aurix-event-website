@@ -30,7 +30,7 @@ const SectionHeader = ({ title, bgColor = 'bg-[#f59e0b]' }) => {
     <div ref={ref} className={`w-full ${bgColor} pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden relative flex items-center justify-center`}>
       {/* Container for the layered text */}
       <div className="relative flex items-center justify-center w-full px-4">
-        <h2 className="relative w-full text-center text-4xl sm:text-5xl md:text-7xl lg:text-[9rem] font-black text-[#111827] tracking-tighter uppercase z-10 leading-[0.9] break-words">
+        <h2 className="relative w-full text-center text-4xl sm:text-5xl md:text-7xl lg:text-[8rem] font-bold text-[#111827] tracking-tight uppercase z-10 leading-[0.92] break-words font-heading">
           
           <span className="relative z-10">
             {renderWords()}

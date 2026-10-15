@@ -1,10 +1,11 @@
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import SmoothScroll from './components/layout/SmoothScroll';
 import ScrollProgressBar from './components/layout/ScrollProgressBar';
+import CustomCursor from './components/layout/CustomCursor';
 import FloatingWhatsApp from './components/layout/FloatingWhatsApp';
 
 // Lazy loading page sections for code splitting and performance optimization
@@ -148,12 +149,16 @@ const AnimatedRoutes = () => {
             </Suspense>
           } />
 
-          <Route path="/gallery" element={
+          <Route path="/projects" element={
             <Suspense fallback={<PageWrapper><GallerySkeleton /></PageWrapper>}>
               <PageWrapper>
                 <Portfolio />
               </PageWrapper>
             </Suspense>
+          } />
+
+          <Route path="/gallery" element={
+            <Navigate to="/projects" replace />
           } />
 
           <Route path="/events" element={
@@ -192,6 +197,8 @@ function App() {
       {/* SmoothScroll must be inside Router (uses useLocation) */}
       <SmoothScroll>
         <div className="min-h-screen bg-[#000000] text-gray-100 font-sans selection:bg-amber-600/30">
+          {/* Global custom mouse cursor */}
+          <CustomCursor />
           {/* Glowing amber scroll progress bar */}
           <ScrollProgressBar />
           <Navbar />

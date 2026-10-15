@@ -126,13 +126,13 @@ const Hero = () => {
             </Link>
 
             <Link
-              to="/gallery"
+              to="/projects"
               className="flex items-center gap-3 px-8 py-3.5 bg-[#111111] border-2 border-[#f59e0b] text-white font-bold uppercase tracking-wider text-sm rounded-full shadow-sm hover:shadow-md hover:bg-amber-950/30 transition-all duration-300 transform hover:-translate-y-0.5 group"
             >
               <div className="w-5 h-5 rounded-full border-2 border-[#f59e0b] flex items-center justify-center text-[#f59e0b] group-hover:bg-[#f59e0b] group-hover:text-white transition-colors duration-300">
                 <Play size={10} className="ml-0.5" fill="currentColor" />
               </div>
-              VIEW GALLERY
+              VIEW PROJECTS
             </Link>
           </motion.div>
 

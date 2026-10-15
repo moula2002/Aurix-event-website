@@ -124,10 +124,10 @@ const HomeSkeleton = () => {
         </div>
       </section>
 
-      {/* ── 5. GALLERY SKELETON PREVIEW ── */}
+      {/* ── 5. PROJECTS SKELETON PREVIEW ── */}
       <section className="py-24 bg-[#000000]">
         <div className="max-w-7xl mx-auto px-6 mb-14">
-          <SkeletonTitle subtitle="OUR" title="GALLERY" />
+          <SkeletonTitle subtitle="OUR" title="PROJECTS" />
         </div>
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {[1, 2, 3, 4].map((i) => (

@@ -31,9 +31,9 @@ export const GalleryGridSkeleton = ({ count = 8 }) => {
 
 const GallerySkeleton = () => {
   return (
-    <div className="w-full bg-[#000000] min-h-screen pb-24" role="status" aria-label="Loading gallery page">
+    <div className="w-full bg-[#000000] min-h-screen pb-24" role="status" aria-label="Loading projects page">
       {/* 1. Large Orange Section Header */}
-      <SkeletonHeader title="GALLERY" />
+      <SkeletonHeader title="PROJECTS" />
 
       {/* 2. Gallery Grid */}
       <div className="max-w-7xl mx-auto px-6 mt-14">

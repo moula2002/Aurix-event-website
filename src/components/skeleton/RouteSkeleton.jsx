@@ -30,7 +30,7 @@ export const RouteSkeleton = ({ pathname: explicitPathname }) => {
   if (path === '/services/support') return <SupportServicesSkeleton />;
   if (path.startsWith('/services')) return <ServicePageSkeleton title="SERVICES" />;
   if (path === '/events') return <EventsSkeleton />;
-  if (path === '/gallery') return <GallerySkeleton />;
+  if (path === '/projects' || path === '/gallery') return <GallerySkeleton />;
   if (path === '/contact') return <ContactSkeleton />;
   if (path === '/our-group') return <OurGroupSkeleton />;
 

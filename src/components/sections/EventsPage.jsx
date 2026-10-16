@@ -50,10 +50,10 @@ const events = [
 
 const EventsPage = () => {
   return (
-    <div className="w-full bg-[#000000] min-h-screen">
+    <div className="w-full bg-[#FFFFFF] min-h-screen">
       <SectionHeader title="EVENTS" />
 
-      <div className="w-full py-20 bg-[#000000] relative overflow-hidden">
+      <div className="w-full py-20 bg-[#FAFAF8] relative overflow-hidden">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -63,7 +63,7 @@ const EventsPage = () => {
             className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12"
           >
             <div className="flex flex-col gap-4 max-w-xl">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight leading-none">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#171717] uppercase tracking-tight leading-none">
                 Our Event Categories
               </h2>
               <div className="flex items-center gap-3">
@@ -71,7 +71,7 @@ const EventsPage = () => {
               </div>
             </div>
             <div className="flex flex-col gap-6 max-w-lg">
-              <p className="text-gray-400 text-xl leading-relaxed">
+              <p className="text-[#555555] text-xl leading-relaxed font-medium">
                 From high-profile corporate summits to international sporting spectacles, our expertise spans across a diverse range of premium event categories.
               </p>
             </div>
@@ -79,7 +79,7 @@ const EventsPage = () => {
         </div>
       </div>
 
-      <div className="w-full bg-[#0a0a0a] border-t border-white/10 py-16">
+      <div className="w-full bg-[#FFFFFF] border-t border-stone-200/80 py-16">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className="flex flex-col gap-10">
             {events.map((event, idx) => {

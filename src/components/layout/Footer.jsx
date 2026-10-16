@@ -134,7 +134,7 @@ const Footer = () => {
           aria-label="Footer Navigation"
           className={`w-full max-w-[1050px] mb-7 px-2 ${inView ? 'footer-nav-enter' : 'footer-fade-up-initial'}`}
         >
-          <ul className="flex flex-wrap items-center justify-center gap-y-2.5 gap-x-3 sm:gap-x-4 md:gap-x-5 text-[11px] sm:text-xs md:text-[13px] font-extrabold uppercase tracking-wider text-white">
+          <ul className="flex flex-wrap items-center justify-center gap-y-2.5 gap-x-3 sm:gap-x-4 md:gap-x-6 text-[12px] sm:text-[13px] md:text-[15px] font-medium uppercase tracking-[0.14em] text-white nav-font">
             {navLinks.map((link, idx) => (
               <React.Fragment key={link.name}>
                 <li
@@ -143,7 +143,7 @@ const Footer = () => {
                 >
                   <a
                     href={link.to}
-                    className="footer-nav-link text-white hover:text-[#f59e0b] transition-colors duration-200 py-0.5"
+                    className="footer-nav-link text-white hover:text-[#f59e0b] transition-colors duration-200 py-0.5 nav-font font-medium tracking-[0.14em]"
                   >
                     {link.name}
                   </a>

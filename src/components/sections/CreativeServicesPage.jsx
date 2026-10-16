@@ -13,7 +13,7 @@ import c4 from '../../assets/images/creative/creative-4.jpg';
 import c5 from '../../assets/images/creative/creative-5.jpg';
 
 import cre_motion from '../../assets/images/creative/cre_motion.jpg';
-import cre_2d3d from '../../assets/images/creative/cre_2d3d.jpg';
+import cre_2d3d from '../../assets/images/services/3D-Modeling.jpg';
 import cre_info from '../../assets/images/creative/cre_info.jpg';
 import cre_holo from '../../assets/images/creative/cre_holo.jpg';
 import cre_projection from '../../assets/images/creative/cre_projection.png';
@@ -26,7 +26,7 @@ import cre_films from '../../assets/images/creative/cre_films.jpg';
 import cre_tvc from '../../assets/images/creative/cre_tvc.png';
 import cre_eventcov from '../../assets/images/creative/cre_eventcov.jpg';
 import cre_concepts from '../../assets/images/creative/cre_concepts.jpg';
-import cre_techdesign from '../../assets/images/creative/cre_techdesign.jpg';
+import cre_techdesign from '../../assets/images/services/cad-model.png';
 import cre_exhibition from '../../assets/images/creative/cre_exhibition.png';
 
 const CreativeServicesPage = () => {
@@ -50,14 +50,14 @@ const CreativeServicesPage = () => {
       </div>
 
       {/* 1. Content & Animation */}
-      <AnimatedServiceCard>
+      <AnimatedServiceCard cardBg="bg-white" borderColor="border-stone-200/90">
           {/* Left Side: Text Content */}
-          <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pr-16 relative z-10 flex flex-col justify-center">
+          <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pr-16 relative z-10 flex flex-col justify-center bg-white">
             <div className="mb-10">
-              <h2 className="text-4xl font-black text-white tracking-tight mb-2">
+              <h2 className="text-4xl font-black text-[#171717] tracking-tight mb-2">
                 Content & Animation
               </h2>
-              <p className="text-[#f59e0b] font-semibold text-sm tracking-wide uppercase">
+              <p className="text-[#f59e0b] font-bold text-sm tracking-wide uppercase">
                 Dynamic 2D/3D motion graphics & bespoke storytelling
               </p>
             </div>
@@ -66,12 +66,12 @@ const CreativeServicesPage = () => {
               {/* Motion Graphics */}
               <div>
                 <h3 
-                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-[#171717] text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Motion Graphics' } })}
                 >
                   Motion Graphics & VFX
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed text-justify">
+                <p className="text-[#444444] text-sm leading-relaxed text-justify font-medium">
                   Dynamic 2D and 3D motion graphics created specifically for high-resolution LED screens, stage intros, keynote loops, and broadcast packages.
                 </p>
               </div>
@@ -79,12 +79,12 @@ const CreativeServicesPage = () => {
               {/* 2D/3D Content */}
               <div>
                 <h3 
-                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-[#171717] text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: '2D/3D Content' } })}
                 >
                   2D/3D Content Creation
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed text-justify">
+                <p className="text-[#444444] text-sm leading-relaxed text-justify font-medium">
                   Bespoke digital artwork, high-poly 3D modeling, photorealistic rendering, and narrative animations tailored to express your corporate brand identity.
                 </p>
               </div>
@@ -92,12 +92,12 @@ const CreativeServicesPage = () => {
               {/* Infographics */}
               <div>
                 <h3 
-                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-[#171717] text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Infographics' } })}
                 >
                   Animated Infographics & Data Stories
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed text-justify">
+                <p className="text-[#444444] text-sm leading-relaxed text-justify font-medium">
                   Transforming complex statistical data, financial milestones, and corporate visions into clear, visually engaging animated explainer videos.
                 </p>
               </div>
@@ -105,33 +105,37 @@ const CreativeServicesPage = () => {
           </div>
 
           {/* Right Side: Media Showcase */}
-          <div className="w-full xl:w-1/2 bg-[#181818] p-6 md:p-8 flex flex-col gap-4 relative z-10 min-h-[500px] justify-between">
-            <div className="grid grid-cols-3 gap-3">
-              <div className="flex flex-col items-center">
-                <img src={cre_motion} alt="Motion Graphics" className="w-full aspect-square object-cover rounded-xl shadow-md mb-2" />
-                <span className="text-[0.7rem] font-bold text-gray-400 text-center">Motion FX</span>
+          <div className="w-full xl:w-1/2 p-6 md:p-8 bg-[#FAFAF8] border-l border-stone-200/80 grid grid-cols-2 gap-4 items-center relative z-10">
+            <div className="relative group overflow-hidden rounded-xl shadow-md">
+              <img src={cre_motion} alt="Motion Graphics" className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 flex items-end p-4">
+                <span className="text-white font-bold text-sm">Motion FX</span>
               </div>
-              <div className="flex flex-col items-center">
-                <img src={cre_2d3d} alt="2D/3D Content" className="w-full aspect-square object-cover rounded-xl shadow-md mb-2" />
-                <span className="text-[0.7rem] font-bold text-gray-400 text-center">3D Modeling</span>
+            </div>
+            <div className="relative group overflow-hidden rounded-xl shadow-md">
+              <img src={cre_2d3d} alt="2D/3D Content" className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 flex items-end p-4">
+                <span className="text-white font-bold text-sm">3D Modeling</span>
               </div>
-              <div className="flex flex-col items-center">
-                <img src={cre_info} alt="Infographics" className="w-full aspect-square object-cover rounded-xl shadow-md mb-2" />
-                <span className="text-[0.7rem] font-bold text-gray-400 text-center">Infographics</span>
+            </div>
+            <div className="relative group overflow-hidden rounded-xl shadow-md col-span-2">
+              <img src={cre_info} alt="Infographics" className="w-full aspect-[21/9] object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 flex items-end p-4">
+                <span className="text-white font-bold text-sm">Animated Infographics</span>
               </div>
             </div>
           </div>
       </AnimatedServiceCard>
 
       {/* 2. Interactive Technology */}
-      <AnimatedServiceCard reverse>
+      <AnimatedServiceCard reverse cardBg="bg-white" borderColor="border-stone-200/90">
           {/* Left Side: Text Content */}
-          <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pl-16 relative z-10 flex flex-col justify-center">
+          <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pl-16 relative z-10 flex flex-col justify-center bg-white">
             <div className="mb-10">
-              <h2 className="text-4xl font-black text-white tracking-tight mb-2">
+              <h2 className="text-4xl font-black text-[#171717] tracking-tight mb-2">
                 Interactive Technology
               </h2>
-              <p className="text-[#f59e0b] font-semibold text-sm tracking-wide uppercase">
+              <p className="text-[#f59e0b] font-bold text-sm tracking-wide uppercase">
                 Immersive technologies pushing the boundaries of reality
               </p>
             </div>
@@ -140,12 +144,12 @@ const CreativeServicesPage = () => {
               {/* Holograms */}
               <div>
                 <h3 
-                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-[#171717] text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Holograms' } })}
                 >
                   3D Hologram Displays
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed text-justify">
+                <p className="text-[#444444] text-sm leading-relaxed text-justify font-medium">
                   Cutting-edge holographic projections, holo-fans, and transparent OLED displays ideal for high-impact product launches, reveal moments, and VIP exhibits.
                 </p>
               </div>
@@ -153,12 +157,12 @@ const CreativeServicesPage = () => {
               {/* Projection Mapping */}
               <div>
                 <h3 
-                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-[#171717] text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Projection Mapping' } })}
                 >
                   3D Projection Mapping
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed text-justify">
+                <p className="text-[#444444] text-sm leading-relaxed text-justify font-medium">
                   Transforming building facades, stage backdrops, cars, and complex surfaces into dynamic digital canvasses using high-lumen laser projectors.
                 </p>
               </div>
@@ -166,12 +170,12 @@ const CreativeServicesPage = () => {
               {/* Interactive Experiences */}
               <div>
                 <h3 
-                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-[#171717] text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Interactive Experiences' } })}
                 >
                   AR/VR & Immersive Activations
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed text-justify">
+                <p className="text-[#444444] text-sm leading-relaxed text-justify font-medium">
                   Custom Augmented Reality (AR) filters, Virtual Reality (VR) simulations, motion-tracking touchwalls, and gamified attendee touchpoints.
                 </p>
               </div>
@@ -179,7 +183,7 @@ const CreativeServicesPage = () => {
           </div>
 
           {/* Right Side: Interactive Collage */}
-          <div className="w-full xl:w-1/2 p-6 md:p-8 bg-[#181818] grid grid-cols-2 gap-4 items-center relative z-10">
+          <div className="w-full xl:w-1/2 p-6 md:p-8 bg-[#FAFAF8] border-r border-stone-200/80 grid grid-cols-2 gap-4 items-center relative z-10">
             <div className="relative group overflow-hidden rounded-xl shadow-md">
               <img src={cre_holo} alt="Holograms" className="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 flex items-end p-4">
@@ -202,14 +206,14 @@ const CreativeServicesPage = () => {
       </AnimatedServiceCard>
 
       {/* 3. App & Game Development */}
-      <AnimatedServiceCard>
+      <AnimatedServiceCard cardBg="bg-white" borderColor="border-stone-200/90">
           {/* Left Side: Text Content */}
-          <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pr-16 relative z-10 flex flex-col justify-center">
+          <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pr-16 relative z-10 flex flex-col justify-center bg-white">
             <div className="mb-10">
-              <h2 className="text-4xl font-black text-white tracking-tight mb-2">
+              <h2 className="text-4xl font-black text-[#171717] tracking-tight mb-2">
                 App & Game Development
               </h2>
-              <p className="text-[#f59e0b] font-semibold text-sm tracking-wide uppercase">
+              <p className="text-[#f59e0b] font-bold text-sm tracking-wide uppercase">
                 Engaging digital products for interactive attendee journeys
               </p>
             </div>
@@ -218,12 +222,12 @@ const CreativeServicesPage = () => {
               {/* UI/UX Design */}
               <div>
                 <h3 
-                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-[#171717] text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'UI/UX Design' } })}
                 >
                   UI/UX Interface Design
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed text-justify">
+                <p className="text-[#444444] text-sm leading-relaxed text-justify font-medium">
                   Sleek, intuitive user interface design for touch kiosks, digital registration counters, web applications, and interactive event displays.
                 </p>
               </div>
@@ -231,12 +235,12 @@ const CreativeServicesPage = () => {
               {/* Mobile Applications */}
               <div>
                 <h3 
-                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-[#171717] text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Mobile Applications' } })}
                 >
                   Native Mobile Event Apps
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed text-justify">
+                <p className="text-[#444444] text-sm leading-relaxed text-justify font-medium">
                   Custom iOS and Android event apps featuring personalized schedules, live voting, networking lounges, badge scanning, and interactive venue navigation.
                 </p>
               </div>
@@ -244,12 +248,12 @@ const CreativeServicesPage = () => {
               {/* Game Development */}
               <div>
                 <h3 
-                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-[#171717] text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Game Development' } })}
                 >
                   Branded Mini-Games & Gamification
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed text-justify">
+                <p className="text-[#444444] text-sm leading-relaxed text-justify font-medium">
                   Custom-developed touch screen games, trivia challenges, leaderboards, and digital prize wheels to boost booth engagement and dwell time.
                 </p>
               </div>
@@ -257,37 +261,37 @@ const CreativeServicesPage = () => {
           </div>
 
           {/* Right Side: Media Grid */}
-          <div className="w-full xl:w-1/2 bg-[#181818] p-6 md:p-8 flex flex-col gap-4 relative z-10 justify-between">
-            <div className="grid grid-cols-3 gap-3">
-              <div className="flex flex-col items-center">
-                <img src={cre_uiux} alt="UI UX" className="w-full aspect-square object-cover rounded-xl shadow-md mb-2" />
-                <span className="text-[0.7rem] font-bold text-gray-400 text-center">UI/UX Design</span>
-              </div>
-              <div className="flex flex-col items-center">
-                <img src={cre_mobile} alt="Mobile App" className="w-full aspect-square object-cover rounded-xl shadow-md mb-2" />
-                <span className="text-[0.7rem] font-bold text-gray-400 text-center">Mobile Apps</span>
-              </div>
-              <div className="flex flex-col items-center">
-                <img src={cre_game} alt="Game Dev" className="w-full aspect-square object-cover rounded-xl shadow-md mb-2" />
-                <span className="text-[0.7rem] font-bold text-gray-400 text-center">Interactive Games</span>
+          <div className="w-full xl:w-1/2 p-6 md:p-8 bg-[#FAFAF8] border-l border-stone-200/80 grid grid-cols-2 gap-4 items-center relative z-10">
+            <div className="relative group overflow-hidden rounded-xl shadow-md">
+              <img src={cre_uiux} alt="UI/UX Design" className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 flex items-end p-4">
+                <span className="text-white font-bold text-sm">UI/UX Design</span>
               </div>
             </div>
-            
-            <div className="relative group rounded-2xl overflow-hidden shadow-lg mt-2 flex-1 min-h-[220px]">
-              <img src={c3} alt="Digital App Design" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div className="relative group overflow-hidden rounded-xl shadow-md">
+              <img src={cre_mobile} alt="Mobile Apps" className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 flex items-end p-4">
+                <span className="text-white font-bold text-sm">Mobile Apps</span>
+              </div>
+            </div>
+            <div className="relative group overflow-hidden rounded-xl shadow-md col-span-2">
+              <img src={cre_game} alt="Interactive Games" className="w-full aspect-[21/9] object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 flex items-end p-4">
+                <span className="text-white font-bold text-sm">Interactive Games</span>
+              </div>
             </div>
           </div>
       </AnimatedServiceCard>
 
       {/* 4. Cinematography & Production */}
-      <AnimatedServiceCard reverse>
+      <AnimatedServiceCard reverse cardBg="bg-white" borderColor="border-stone-200/90">
           {/* Left Side: Text Content */}
-          <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pl-16 relative z-10 flex flex-col justify-center">
+          <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pl-16 relative z-10 flex flex-col justify-center bg-white">
             <div className="mb-10">
-              <h2 className="text-4xl font-black text-white tracking-tight mb-2">
+              <h2 className="text-4xl font-black text-[#171717] tracking-tight mb-2">
                 Cinematography & Production
               </h2>
-              <p className="text-[#f59e0b] font-semibold text-sm tracking-wide uppercase">
+              <p className="text-[#f59e0b] font-bold text-sm tracking-wide uppercase">
                 End-to-end cinematic film & broadcast-quality video content
               </p>
             </div>
@@ -296,12 +300,12 @@ const CreativeServicesPage = () => {
               {/* Video Production */}
               <div>
                 <h3 
-                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-[#171717] text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Video Production' } })}
                 >
                   Full Video Production
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed text-justify">
+                <p className="text-[#444444] text-sm leading-relaxed text-justify font-medium">
                   End-to-end video production including concept development, storyboarding, location scouting, crew management, and post-production editing.
                 </p>
               </div>
@@ -309,12 +313,12 @@ const CreativeServicesPage = () => {
               {/* Corporate Films */}
               <div>
                 <h3 
-                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-[#171717] text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Corporate Films' } })}
                 >
                   High-End Corporate Films
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed text-justify">
+                <p className="text-[#444444] text-sm leading-relaxed text-justify font-medium">
                   Inspiring narrative brand films, CEO video messages, investor presentations, and documentary-style corporate showcases.
                 </p>
               </div>
@@ -322,12 +326,12 @@ const CreativeServicesPage = () => {
               {/* TV Commercials */}
               <div>
                 <h3 
-                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-[#171717] text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'TV Commercials' } })}
                 >
                   TV Commercials & Teasers
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed text-justify">
+                <p className="text-[#444444] text-sm leading-relaxed text-justify font-medium">
                   Broadcast-quality commercial commercials, promotional teasers, social media video campaigns, and cinematic trailer cuts.
                 </p>
               </div>
@@ -335,12 +339,12 @@ const CreativeServicesPage = () => {
               {/* Event Coverage */}
               <div>
                 <h3 
-                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-[#171717] text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Event Coverage' } })}
                 >
                   Cinematic Event Aftermovies
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed text-justify">
+                <p className="text-[#444444] text-sm leading-relaxed text-justify font-medium">
                   Multi-camera event coverage, drone aerial videography, highlight reels, and fast-turnaround same-day edits for social media publishing.
                 </p>
               </div>
@@ -348,7 +352,7 @@ const CreativeServicesPage = () => {
           </div>
 
           {/* Right Side: Video Grid */}
-          <div className="w-full xl:w-1/2 p-6 md:p-8 bg-[#181818] grid grid-cols-2 gap-4 items-center relative z-10">
+          <div className="w-full xl:w-1/2 p-6 md:p-8 bg-[#FAFAF8] border-r border-stone-200/80 grid grid-cols-2 gap-4 items-center relative z-10">
             <div className="relative group overflow-hidden rounded-xl shadow-md">
               <img src={cre_video} alt="Video Production" className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors p-3 flex items-end">
@@ -377,14 +381,14 @@ const CreativeServicesPage = () => {
       </AnimatedServiceCard>
 
       {/* 5. Creative & Technical Design */}
-      <AnimatedServiceCard>
+      <AnimatedServiceCard cardBg="bg-white" borderColor="border-stone-200/90">
           {/* Left Side: Text Content */}
-          <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pr-16 relative z-10 flex flex-col justify-center">
+          <div className="w-full xl:w-1/2 p-8 md:p-12 xl:pr-16 relative z-10 flex flex-col justify-center bg-white">
             <div className="mb-10">
-              <h2 className="text-4xl font-black text-white tracking-tight mb-2">
+              <h2 className="text-4xl font-black text-[#171717] tracking-tight mb-2">
                 Creative & Technical Design
               </h2>
-              <p className="text-[#f59e0b] font-semibold text-sm tracking-wide uppercase">
+              <p className="text-[#f59e0b] font-bold text-sm tracking-wide uppercase">
                 Foundational creative concepts and detailed architectural renders
               </p>
             </div>
@@ -393,12 +397,12 @@ const CreativeServicesPage = () => {
               {/* Event Concepts */}
               <div>
                 <h3 
-                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-[#171717] text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Event Concepts' } })}
                 >
                   Event Concepts & Creative Direction
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed text-justify">
+                <p className="text-[#444444] text-sm leading-relaxed text-justify font-medium">
                   Original thematic development, storytelling frameworks, moodboards, and overall creative direction that aligns with your brand objectives.
                 </p>
               </div>
@@ -406,12 +410,12 @@ const CreativeServicesPage = () => {
               {/* Technical Design */}
               <div>
                 <h3 
-                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-[#171717] text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Technical Design' } })}
                 >
                   3D Renders & Technical CADs
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed text-justify">
+                <p className="text-[#444444] text-sm leading-relaxed text-justify font-medium">
                   Photorealistic 3D architectural renders, site plans, lighting plots, and spatial CAD blueprints that bridge creative vision and physical setup.
                 </p>
               </div>
@@ -419,12 +423,12 @@ const CreativeServicesPage = () => {
               {/* Exhibition Design */}
               <div>
                 <h3 
-                  className="font-bold text-white text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
+                  className="font-bold text-[#171717] text-2xl mb-2 cursor-pointer hover:text-[#f59e0b] transition-colors inline-block"
                   onClick={() => navigate('/contact', { state: { service: 'Exhibition Design' } })}
                 >
                   Exhibition Stand & Booth Design
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed text-justify">
+                <p className="text-[#444444] text-sm leading-relaxed text-justify font-medium">
                   Bespoke trade show stand designs, double-decker pavilions, immersive product display pods, and high-footfall booth layouts.
                 </p>
               </div>
@@ -432,24 +436,24 @@ const CreativeServicesPage = () => {
           </div>
 
           {/* Right Side: Design Showcase */}
-          <div className="w-full xl:w-1/2 bg-[#181818] p-6 md:p-8 flex flex-col gap-4 relative z-10 justify-between">
-            <div className="grid grid-cols-3 gap-3">
-              <div className="flex flex-col items-center">
-                <img src={cre_concepts} alt="Concepts" className="w-full aspect-square object-cover rounded-xl shadow-md mb-2" />
-                <span className="text-[0.7rem] font-bold text-gray-400 text-center">Event Concepts</span>
-              </div>
-              <div className="flex flex-col items-center">
-                <img src={cre_techdesign} alt="3D Renders" className="w-full aspect-square object-cover rounded-xl shadow-md mb-2" />
-                <span className="text-[0.7rem] font-bold text-gray-400 text-center">3D CAD Renders</span>
-              </div>
-              <div className="flex flex-col items-center">
-                <img src={cre_exhibition} alt="Exhibitions" className="w-full aspect-square object-cover rounded-xl shadow-md mb-2" />
-                <span className="text-[0.7rem] font-bold text-gray-400 text-center">Exhibition Stands</span>
+          <div className="w-full xl:w-1/2 p-6 md:p-8 bg-[#FAFAF8] border-l border-stone-200/80 grid grid-cols-2 gap-4 items-center relative z-10">
+            <div className="relative group overflow-hidden rounded-xl shadow-md">
+              <img src={cre_concepts} alt="Event Concepts" className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 flex items-end p-4">
+                <span className="text-white font-bold text-sm">Event Concepts</span>
               </div>
             </div>
-            
-            <div className="relative group rounded-2xl overflow-hidden shadow-lg mt-2 flex-1 min-h-[220px]">
-              <img src={c5} alt="Creative Architectural Design" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div className="relative group overflow-hidden rounded-xl shadow-md">
+              <img src={cre_techdesign} alt="3D CAD Renders" className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 flex items-end p-4">
+                <span className="text-white font-bold text-sm">3D CAD Renders</span>
+              </div>
+            </div>
+            <div className="relative group overflow-hidden rounded-xl shadow-md col-span-2">
+              <img src={cre_exhibition} alt="Exhibition Stands" className="w-full aspect-[21/9] object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 flex items-end p-4">
+                <span className="text-white font-bold text-sm">Exhibition Stands & Booths</span>
+              </div>
             </div>
           </div>
       </AnimatedServiceCard>

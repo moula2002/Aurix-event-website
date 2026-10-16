@@ -30,9 +30,23 @@ h3 {
   font-weight: 600;
 }
 
-/* Exclude badge numbers, code, form fields, and navigation links from forced serif */
-.font-sans, .number-badge, input, textarea, select, button, nav a, [role="button"], code, pre {
+:root {
+  --nav-font-family: 'Bodoni Moda', 'Playfair Display', Didot, 'Bodoni MT', 'Times New Roman', serif;
+}
+
+/* Exclude badge numbers, code, and form inputs from forced serif */
+.font-sans, .number-badge, input, textarea, select, [role="button"], code, pre {
   font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+}
+
+/* Reusable luxury serif typography matching the SERVICES heading */
+.nav-font,
+.footer-nav-link,
+nav .nav-font,
+footer .nav-font {
+  font-family: var(--nav-font-family) !important;
+  font-feature-settings: "liga" 1, "dlig" 1;
+  text-transform: uppercase;
 }
 
 /* ─── BASE ─── */

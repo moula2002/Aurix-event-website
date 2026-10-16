@@ -35,13 +35,13 @@ const Approach = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-[#050505] py-20 lg:py-28 overflow-hidden select-text border-t border-b border-white/5"
+      className="relative bg-gradient-to-b from-[#0A0A0A] to-[#1A1200] py-20 lg:py-28 overflow-hidden select-text border-t border-b border-amber-500/10"
     >
       {/* ── Background Subtle Dark Brown/Amber Radial Gradient matching reference ── */}
       <div
         className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] pointer-events-none z-0"
         style={{
-          background: 'radial-gradient(circle, rgba(180, 83, 9, 0.09) 0%, rgba(120, 53, 15, 0.04) 50%, rgba(5,5,5,0) 75%)',
+          background: 'radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, rgba(180, 83, 9, 0.04) 50%, transparent 75%)',
         }}
       />
       <div

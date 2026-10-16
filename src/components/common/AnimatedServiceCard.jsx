@@ -6,7 +6,9 @@ const AnimatedServiceCard = ({
   reverse = false,
   mediaFirst = false,
   className = '',
-  containerClassName = 'max-w-[1600px] mx-auto px-6 mb-24'
+  containerClassName = 'max-w-[1600px] mx-auto px-6 mb-24',
+  cardBg = 'bg-[#111111]',
+  borderColor = 'border-white/10'
 }) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -37,7 +39,7 @@ const AnimatedServiceCard = ({
   return (
     <div ref={ref} className={containerClassName}>
       <div
-        className={`bg-[#111111] border border-white/10 rounded-[2rem] shadow-2xl overflow-hidden flex flex-col ${
+        className={`${cardBg} border ${borderColor} rounded-[2rem] shadow-2xl overflow-hidden flex flex-col ${
           reverse ? 'xl:flex-row-reverse' : (mediaFirst ? 'lg:flex-row' : 'xl:flex-row')
         } relative ${className}`}
       >

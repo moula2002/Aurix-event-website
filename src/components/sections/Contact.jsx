@@ -74,18 +74,18 @@ const Contact = () => {
   };
 
   return (
-    <section ref={sectionRef} id="contact" className={`${isHome ? 'py-24' : 'pb-28'} bg-[#0a0a0a] relative overflow-hidden`}>
+    <section ref={sectionRef} id="contact" className={`${isHome ? 'py-24' : 'pb-28'} bg-white relative overflow-hidden`}>
       
-      {/* ── Premium Background Decorations ── */}
-      <div className="absolute top-0 right-0 w-[45vw] h-[45vw] bg-gradient-to-bl from-amber-500/10 to-transparent opacity-60 z-0 pointer-events-none rounded-bl-[100%]" />
-      <div className="absolute bottom-[10%] left-[-5%] w-[40vw] h-[60vh] bg-gradient-to-tr from-amber-600/10 via-amber-500/5 to-transparent z-0 pointer-events-none rounded-tr-[100%] rounded-br-[20%]" />
-      <div className="absolute top-[40%] right-12 z-0 opacity-20 pointer-events-none hidden md:block" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1.5px, transparent 1.5px)', backgroundSize: '24px 24px', width: '150px', height: '150px' }}></div>
+      {/* ── Background Decorations ── */}
+      <div className="absolute top-0 right-0 w-[45vw] h-[45vw] bg-amber-500/5 z-0 pointer-events-none rounded-bl-[100%]" />
+      <div className="absolute bottom-[10%] left-[-5%] w-[40vw] h-[60vh] bg-amber-500/5 z-0 pointer-events-none rounded-tr-[100%] rounded-br-[20%]" />
+      <div className="absolute top-[40%] right-12 z-0 opacity-15 pointer-events-none hidden md:block" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1.5px, transparent 1.5px)', backgroundSize: '24px 24px', width: '150px', height: '150px' }}></div>
       <div className="absolute bottom-[20%] left-12 z-0 opacity-10 pointer-events-none hidden lg:block" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1.5px, transparent 1.5px)', backgroundSize: '24px 24px', width: '100px', height: '100px' }}></div>
 
       <div className="relative z-10">
         {isHome ? (
           <div className={`max-w-7xl mx-auto px-6 mb-16 pt-12 ${inView ? 'contact-heading-entrance' : 'contact-heading-initial'}`}>
-            <SectionTitle subtitle="GET IN" title="TOUCH" />
+            <SectionTitle subtitle="GET IN" title="TOUCH" light={true} />
           </div>
         ) : (
           <SectionHeader title="CONTACT" />
@@ -96,7 +96,7 @@ const Contact = () => {
 
         {/* Left info */}
         <div className="flex flex-col justify-center">
-          <p className={`text-gray-400 text-lg mb-12 leading-relaxed max-w-lg mt-10 ${inView ? 'contact-desc-entrance' : 'contact-desc-initial'}`}>
+          <p className={`text-[#444444] font-medium text-lg mb-12 leading-relaxed max-w-lg mt-10 ${inView ? 'contact-desc-entrance' : 'contact-desc-initial'}`}>
             Let's create an unforgettable experience together. Reach out to our team of experts and let's discuss your vision.
           </p>
 
@@ -109,17 +109,17 @@ const Contact = () => {
                   animationDelay: inView ? `${0.32 + idx * 0.17}s` : '0s',
                 }}
               >
-                <div className="w-14 h-14 shrink-0 rounded-xl bg-[#151515] border border-amber-500/20 flex items-center justify-center text-[#f59e0b] group-hover:bg-[#f59e0b] group-hover:text-black transition-all duration-300 shadow-sm group-hover:shadow-[0_8px_20px_rgba(245,158,11,0.3)]">
+                <div className="w-14 h-14 shrink-0 rounded-xl bg-[#FAFAF8] text-[#f59e0b] border border-amber-500/30 group-hover:bg-[#f59e0b] group-hover:text-black shadow-sm group-hover:shadow-[0_8px_20px_rgba(245,158,11,0.25)] flex items-center justify-center transition-all duration-300">
                   <Icon size={22} />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{label}</p>
+                  <p className="text-xs font-bold text-stone-500 uppercase tracking-widest mb-1">{label}</p>
                   {isLink ? (
-                    <a href={isLink} className="text-base font-bold text-white hover:text-[#f59e0b] transition-colors whitespace-pre-line">
+                    <a href={isLink} className="text-base font-bold text-[#171717] hover:text-[#f59e0b] transition-colors whitespace-pre-line">
                       {value}
                     </a>
                   ) : (
-                    <p className="text-base font-bold text-white whitespace-pre-line leading-relaxed">{value}</p>
+                    <p className="text-base font-bold text-[#171717] whitespace-pre-line leading-relaxed">{value}</p>
                   )}
                 </div>
               </div>

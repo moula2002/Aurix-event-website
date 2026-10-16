@@ -4,24 +4,24 @@ import { useInView } from 'react-intersection-observer';
 import { useNavigate } from 'react-router-dom';
 import SectionTitle from '../layout/SectionTitle';
 
-// Technical Images
+// Technical Images (exact images from TechnicalServicesPage)
 import techAudio from '../../assets/images/technical/tech_audio.jpg';
 import techStage from '../../assets/images/technical/tech_stage.jpg';
-import techBroadcast from '../../assets/images/technical/tech_broadcast.jpg';
-import techProjectMgmt from '../../assets/images/technical/tech_projectmg.jpg';
+import techBroadcast from '../../assets/images/services/broadcast rigging.png';
+import techProjectMgmt from '../../assets/images/technical/tech_eventprod.jpg';
 import techWebDev from '../../assets/images/technical/tech_webdev.jpg';
 
-// Creative Images
+// Creative Images (exact images from CreativeServicesPage)
 import creMotion from '../../assets/images/creative/cre_motion.jpg';
-import creInteractive from '../../assets/images/creative/cre_interactive.jpg';
+import creInteractive from '../../assets/images/creative/cre_holo.jpg';
 import creGame from '../../assets/images/creative/cre_game.jpg';
 import creFilms from '../../assets/images/creative/cre_films.jpg';
-import creTechDesign from '../../assets/images/creative/cre_techdesign.jpg';
+import creTechDesign from '../../assets/images/services/cad-model.png';
 
-// Support Images
-import supportGen from '../../assets/images/services/service-support-gen.jpg';
-import supportGifting from '../../assets/images/services/gift_luggagetag.png';
-import supportToilets from '../../assets/images/services/toilet_standard.png';
+// Support Images (exact images from SupportServicesPage)
+import supportFurniture from '../../assets/images/services/furniture_1.png';
+import supportGifting from '../../assets/images/services/gift_set_showcase.jpg';
+import supportToilets from '../../assets/images/services/toilet_open_1.png';
 
 const SubServicesCarousel = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -54,7 +54,7 @@ const SubServicesCarousel = () => {
     { title: "Creative & Technical Design", image: creTechDesign, link: '/services/creative' },
     
     // Support
-    { title: "Event Support Services", image: supportGen, link: '/services/support' },
+    { title: "Event Support Services", image: supportFurniture, link: '/services/support' },
     { title: "Corporate Gifting", image: supportGifting, link: '/services/support' },
     { title: "Portable Toilets & Hand Wash Stations", image: supportToilets, link: '/services/support' }
   ];

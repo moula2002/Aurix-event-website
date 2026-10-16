@@ -56,16 +56,26 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className={`relative ${isHome ? 'py-24' : 'pb-24'} bg-[#000000] overflow-hidden`}>
+    <section id="services" className={`relative ${isHome ? 'py-24 bg-[#FFF7E1]' : 'pb-24 bg-[#000000]'} overflow-hidden`}>
+      {/* Subtle warm accent decorations for light cream background */}
+      {isHome && (
+        <div 
+          className="absolute inset-0 z-0 pointer-events-none opacity-40"
+          style={{
+            background: 'radial-gradient(at 10% 20%, rgba(254, 240, 138, 0.4) 0px, transparent 50%), radial-gradient(at 90% 80%, rgba(251, 191, 36, 0.25) 0px, transparent 50%)',
+          }}
+        />
+      )}
+
       {isHome ? (
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 mb-20">
-          <SectionTitle subtitle="OUR" title="SERVICES" />
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 mb-20 relative z-10">
+          <SectionTitle subtitle="OUR" title="SERVICES" light={true} />
         </div>
       ) : (
         <SectionHeader title="SERVICES" />
       )}
 
-      <div className={`max-w-[1440px] mx-auto px-6 lg:px-12 ${!isHome ? 'mt-20' : ''}`}>
+      <div className={`max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10 ${!isHome ? 'mt-20' : ''}`}>
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, index) => {
             const anim = serviceAnimationClasses[index];
@@ -124,8 +134,8 @@ const Services = () => {
               <div className={`absolute bottom-6 left-0 right-0 z-10 text-center transition-opacity duration-500 ${
                 hoveredIndex === index ? 'opacity-0' : 'opacity-100'
               }`}>
-                <div className="inline-block bg-[#0f0f0f]/95 border border-white/10 px-4 py-2 shadow-lg backdrop-blur-sm">
-                  <h3 className="text-lg font-black uppercase text-white">
+                <div className="inline-block bg-black/95 border border-amber-500/40 px-5 py-2.5 shadow-2xl backdrop-blur-md rounded-md">
+                  <h3 className="text-lg font-black uppercase text-white tracking-wide">
                     {service.title}
                   </h3>
                 </div>

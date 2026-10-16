@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const SectionTitle = ({ title, subtitle, className = "" }) => {
+const SectionTitle = ({ title, subtitle, className = "", light = false }) => {
   return (
     <motion.div 
       initial={{ opacity: 0, x: -30 }}
@@ -17,7 +17,9 @@ const SectionTitle = ({ title, subtitle, className = "" }) => {
             {subtitle}
           </span>
         )}
-        <h2 className="text-3xl md:text-5xl lg:text-[3.25rem] font-bold text-white uppercase tracking-tight leading-none m-0 font-heading">
+        <h2 className={`text-3xl md:text-5xl lg:text-[3.25rem] font-bold uppercase tracking-tight leading-none m-0 font-heading ${
+          light ? 'text-[#171717]' : 'text-white'
+        }`}>
           {title}
         </h2>
       </div>

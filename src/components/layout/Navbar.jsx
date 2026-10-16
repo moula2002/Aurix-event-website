@@ -123,7 +123,7 @@ const Navbar = () => {
               <div key={link.to} className="relative group/navitem">
                 <Link
                   to={link.to}
-                  className={`relative py-2 text-[0.8rem] font-bold tracking-[0.1em] transition-colors duration-200 flex items-center gap-1 group ${isActive(link.to) || (link.hasDropdown && location.pathname.includes(link.to)) ? 'text-[#f59e0b]' : 'text-gray-200 hover:text-[#f59e0b]'
+                  className={`relative py-2 text-[0.88rem] lg:text-[0.94rem] font-medium tracking-[0.14em] uppercase transition-colors duration-200 flex items-center gap-1 group nav-font ${isActive(link.to) || (link.hasDropdown && location.pathname.includes(link.to)) ? 'text-[#f59e0b]' : 'text-gray-200 hover:text-[#f59e0b]'
                     }`}
                 >
                   {link.name}
@@ -189,11 +189,9 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-6 flex-shrink-0">
             <Link
               to="/contact"
-              className="relative group flex items-center gap-2 px-6 py-3 rounded-full font-bold text-xs tracking-widest text-black bg-gradient-to-r from-[#f59e0b] to-[#fbbf24] hover:shadow-[0_8px_24px_rgba(245,158,11,0.4)] transition-all duration-300"
+              className="relative group flex items-center justify-center px-6 py-2.5 rounded-full font-bold text-xs tracking-widest text-black bg-gradient-to-r from-[#f59e0b] to-[#fbbf24] hover:shadow-[0_8px_24px_rgba(245,158,11,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
             >
-              <Send size={14} className="rotate-45" />
               <span>Plan Your Event</span>
-              <ArrowRight size={14} className="ml-1 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
@@ -245,7 +243,7 @@ const Navbar = () => {
                       <button
                         type="button"
                         onClick={() => setServicesExpanded(!servicesExpanded)}
-                        className={`w-full flex justify-between items-center py-3.5 text-base font-bold tracking-wider text-left transition-colors ${
+                        className={`w-full flex justify-between items-center py-3.5 text-base sm:text-lg font-medium tracking-[0.14em] uppercase text-left transition-colors nav-font ${
                           linkActive ? 'text-[#FFA500]' : 'text-white hover:text-[#FFA500]'
                         }`}
                         aria-expanded={servicesExpanded}
@@ -297,7 +295,7 @@ const Navbar = () => {
                     <Link
                       to={link.to}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`block py-3.5 text-base font-bold tracking-wider transition-colors ${
+                      className={`block py-3.5 text-base sm:text-lg font-medium tracking-[0.14em] uppercase transition-colors nav-font ${
                         isActive(link.to) ? 'text-[#FFA500]' : 'text-white hover:text-[#FFA500]'
                       }`}
                     >

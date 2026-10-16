@@ -20,14 +20,14 @@ const MilestoneItem = ({ milestone, idx }) => {
     >
       {/* Timeline Dot */}
       <div
-        className={`absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-[#f59e0b] border-4 border-[#151515] shadow -translate-x-1/2 z-10 ${
+        className={`absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-[#f59e0b] border-4 border-black md:border-white shadow -translate-x-1/2 z-10 ${
           inView ? 'timeline-dot-entrance' : 'timeline-dot-initial'
         }`}
       />
 
       <div className="w-full md:w-5/12 pl-12 md:pl-0">
         <div
-          className={`p-6 bg-[#151515] rounded-2xl shadow-sm border border-white/10 ${
+          className={`p-6 bg-white rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.18)] border border-stone-200/90 transition-all duration-300 hover:shadow-[0_12px_35px_rgba(245,158,11,0.25)] ${
             isEven ? 'md:text-left' : 'md:text-right'
           } ${
             isEven
@@ -36,8 +36,8 @@ const MilestoneItem = ({ milestone, idx }) => {
           }`}
         >
           <span className="text-[#f59e0b] font-black text-2xl tracking-tighter block mb-2">{milestone.year}</span>
-          <h3 className="text-lg font-bold text-white mb-2 uppercase">{milestone.title}</h3>
-          <p className="text-gray-400 text-sm leading-relaxed">{milestone.desc}</p>
+          <h3 className="text-lg font-bold text-[#171717] mb-2 uppercase">{milestone.title}</h3>
+          <p className="text-[#555555] text-sm leading-relaxed">{milestone.desc}</p>
         </div>
       </div>
 
@@ -78,59 +78,62 @@ const AboutPage = () => {
     <div className="bg-[#000000] min-h-screen pb-24 pt-20">
       <About />
 
-      {/* Core Strengths */}
-      <div ref={strengthsRef} className="max-w-7xl mx-auto px-6 py-24 overflow-hidden">
-        <div className="text-center mb-16">
-          <h2 className={`text-4xl font-black text-white uppercase tracking-tighter mb-4 ${strengthsInView ? 'strengths-heading-entrance' : 'strengths-heading-initial'}`}>
-            Core Strengths
-          </h2>
-          <p className={`text-gray-400 ${strengthsInView ? 'strengths-subtitle-entrance' : 'strengths-subtitle-initial'}`}>
-            The pillars that uphold our standard of excellence.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {strengths.map((strength, idx) => (
-            <div
-              key={idx}
-              className={`text-center group ${
-                idx === 0
-                  ? (strengthsInView ? 'strength-item-1-entrance' : 'strength-item-1-initial')
-                  : idx === 1
-                  ? (strengthsInView ? 'strength-item-2-entrance' : 'strength-item-2-initial')
-                  : idx === 2
-                  ? (strengthsInView ? 'strength-item-3-entrance' : 'strength-item-3-initial')
-                  : (strengthsInView ? 'strength-item-4-entrance' : 'strength-item-4-initial')
-              }`}
-            >
+      {/* Core Strengths — White Background */}
+      <div className="bg-white border-t border-b border-stone-200/80">
+        <div ref={strengthsRef} className="max-w-7xl mx-auto px-6 py-24 overflow-hidden">
+          <div className="text-center mb-16">
+            <h2 className={`text-4xl font-black text-[#171717] uppercase tracking-tighter mb-4 ${strengthsInView ? 'strengths-heading-entrance' : 'strengths-heading-initial'}`}>
+              Core Strengths
+            </h2>
+            <p className={`text-[#666666] font-medium ${strengthsInView ? 'strengths-subtitle-entrance' : 'strengths-subtitle-initial'}`}>
+              The pillars that uphold our standard of excellence.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {strengths.map((strength, idx) => (
               <div
-                className={`w-20 h-20 mx-auto bg-[#151515] border border-white/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#f59e0b] group-hover:text-black transition-colors duration-300 ${
+                key={idx}
+                className={`bg-[#F59E0B] border border-amber-600/40 rounded-3xl p-8 text-center group shadow-[0_12px_35px_rgba(245,158,11,0.28)] hover:shadow-[0_20px_45px_rgba(217,119,6,0.38)] transition-all duration-300 hover:-translate-y-2 flex flex-col items-center justify-start ${
                   idx === 0
-                    ? (strengthsInView ? 'strength-icon-1-entrance' : 'strength-icon-initial')
+                    ? (strengthsInView ? 'strength-item-1-entrance' : 'strength-item-1-initial')
                     : idx === 1
-                    ? (strengthsInView ? 'strength-icon-2-entrance' : 'strength-icon-initial')
+                    ? (strengthsInView ? 'strength-item-2-entrance' : 'strength-item-2-initial')
                     : idx === 2
-                    ? (strengthsInView ? 'strength-icon-3-entrance' : 'strength-icon-3-initial')
-                    : (strengthsInView ? 'strength-icon-4-entrance' : 'strength-icon-4-initial')
+                    ? (strengthsInView ? 'strength-item-3-entrance' : 'strength-item-3-initial')
+                    : (strengthsInView ? 'strength-item-4-entrance' : 'strength-item-4-initial')
                 }`}
               >
-                <strength.icon size={32} className="text-[#f59e0b] group-hover:text-black transition-colors" />
+                {/* Premium Black & White Circular Icon Badge */}
+                <div
+                  className={`w-20 h-20 mx-auto bg-[#111111] border-2 border-white/25 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-white group-hover:border-black transition-all duration-300 shadow-[0_8px_20px_rgba(0,0,0,0.25)] group-hover:scale-105 ${
+                    idx === 0
+                      ? (strengthsInView ? 'strength-icon-1-entrance' : 'strength-icon-initial')
+                      : idx === 1
+                      ? (strengthsInView ? 'strength-icon-2-entrance' : 'strength-icon-initial')
+                      : idx === 2
+                      ? (strengthsInView ? 'strength-icon-3-entrance' : 'strength-icon-3-initial')
+                      : (strengthsInView ? 'strength-icon-4-entrance' : 'strength-icon-4-initial')
+                  }`}
+                >
+                  <strength.icon size={32} className="text-white group-hover:text-[#111111] transition-colors duration-300" strokeWidth={2.2} />
+                </div>
+                <div
+                  className={
+                    idx === 0
+                      ? (strengthsInView ? 'strength-text-1-entrance' : 'strength-text-initial')
+                      : idx === 1
+                      ? (strengthsInView ? 'strength-text-2-entrance' : 'strength-text-2-initial')
+                      : idx === 2
+                      ? (strengthsInView ? 'strength-text-3-entrance' : 'strength-text-3-initial')
+                      : (strengthsInView ? 'strength-text-4-entrance' : 'strength-text-4-initial')
+                  }
+                >
+                  <h3 className="text-xl font-black text-[#111111] mb-3 tracking-tight font-sans uppercase">{strength.title}</h3>
+                  <p className="text-[#1a1a1a] text-sm leading-relaxed font-semibold">{strength.desc}</p>
+                </div>
               </div>
-              <div
-                className={
-                  idx === 0
-                    ? (strengthsInView ? 'strength-text-1-entrance' : 'strength-text-initial')
-                    : idx === 1
-                    ? (strengthsInView ? 'strength-text-2-entrance' : 'strength-text-2-initial')
-                    : idx === 2
-                    ? (strengthsInView ? 'strength-text-3-entrance' : 'strength-text-3-initial')
-                    : (strengthsInView ? 'strength-text-4-entrance' : 'strength-text-4-initial')
-                }
-              >
-                <h3 className="text-xl font-bold text-white mb-3">{strength.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{strength.desc}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
@@ -153,7 +156,7 @@ const AboutPage = () => {
           <div className="relative">
             {/* Center Line */}
             <div 
-              className={`absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-white/10 z-0 origin-top -translate-x-1/2 ${
+              className={`absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-white/15 z-0 origin-top -translate-x-1/2 ${
                 timelineSectionInView ? 'timeline-line-entrance' : 'timeline-line-initial'
               }`}
             />

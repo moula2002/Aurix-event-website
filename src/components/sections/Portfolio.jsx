@@ -81,17 +81,17 @@ const Portfolio = () => {
 
   return (
     <>
-      <section id="projects" className={`py-12 bg-[#000000] relative overflow-hidden ${!isHome ? 'pt-0' : ''}`}>
+      <section id="projects" className={`py-12 ${isHome ? 'bg-[#F1F1F1]' : 'bg-[#FFFFFF]'} relative overflow-hidden ${!isHome ? 'pt-0' : ''}`}>
         
-        {/* ── Premium Background Decorations ── */}
-        <div className="absolute top-0 right-0 w-[45vw] h-[45vw] bg-gradient-to-bl from-amber-500/10 to-transparent opacity-50 z-0 pointer-events-none rounded-bl-[100%]" />
-        <div className="absolute bottom-[10%] left-[-5%] w-[40vw] h-[60vh] bg-gradient-to-tr from-amber-500/10 via-transparent to-transparent z-0 pointer-events-none rounded-tr-[100%] rounded-br-[20%]" />
+        {/* ── Background Decorations ── */}
+        <div className={`absolute top-0 right-0 w-[45vw] h-[45vw] bg-gradient-to-bl from-amber-500/10 to-transparent opacity-40 z-0 pointer-events-none rounded-bl-[100%]`} />
+        <div className={`absolute bottom-[10%] left-[-5%] w-[40vw] h-[60vh] bg-gradient-to-tr from-amber-500/10 via-transparent to-transparent opacity-40 z-0 pointer-events-none rounded-tr-[100%] rounded-br-[20%]`} />
         <div className="absolute top-[40%] right-12 z-0 opacity-20 pointer-events-none hidden md:block" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1.5px, transparent 1.5px)', backgroundSize: '24px 24px', width: '150px', height: '150px' }}></div>
         <div className="absolute bottom-[20%] left-12 z-0 opacity-15 pointer-events-none hidden lg:block" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 1.5px, transparent 1.5px)', backgroundSize: '24px 24px', width: '100px', height: '100px' }}></div>
 
         {isHome ? (
           <div className="max-w-7xl mx-auto px-6 pt-12 mb-14 relative z-10">
-            <SectionTitle subtitle="OUR" title="PROJECTS" />
+            <SectionTitle subtitle="OUR" title="PROJECTS" light={true} />
           </div>
         ) : (
           <div className="mb-14 relative z-10">
@@ -186,7 +186,7 @@ const Portfolio = () => {
               className="flex justify-center mt-14"
               style={{ willChange: "transform, opacity" }}
             >
-              <Link to="/projects" className="group flex items-center gap-3 px-8 py-3.5 border-2 border-white/20 hover:border-[#f59e0b] text-white hover:text-[#f59e0b] font-bold uppercase tracking-widest text-xs rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(245,158,11,0.2)]">
+              <Link to="/projects" className="group flex items-center gap-3 px-8 py-3.5 border-2 border-[#171717]/30 hover:border-[#f59e0b] text-[#171717] hover:text-[#f59e0b] bg-white/60 hover:bg-white font-bold uppercase tracking-widest text-xs rounded-full transition-all duration-300 shadow-sm hover:shadow-[0_4px_20px_rgba(245,158,11,0.25)]">
                 View More
                 <ExternalLink size={14} className="group-hover:rotate-45 transition-transform duration-300" />
               </Link>

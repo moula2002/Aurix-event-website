@@ -115,7 +115,7 @@ const AnimatedServiceDetailRow = ({ div, idx }) => {
       }`}
     >
       <div
-        className={`bg-[#151515] border border-white/10 rounded-[2rem] shadow-[0_8px_40px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col ${
+        className={`bg-white border border-stone-200/90 rounded-[2rem] shadow-[0_8px_30px_rgba(0,0,0,0.06)] overflow-hidden flex flex-col ${
           isEven ? 'md:flex-row' : 'md:flex-row-reverse'
         }`}
       >
@@ -137,19 +137,19 @@ const AnimatedServiceDetailRow = ({ div, idx }) => {
         </div>
 
         {/* Content Panel */}
-        <div className="w-full md:w-1/2 p-8 md:p-14 lg:p-16 flex flex-col justify-center gap-6">
+        <div className="w-full md:w-1/2 p-8 md:p-14 lg:p-16 flex flex-col justify-center gap-6 bg-white">
           <div className="flex items-center gap-3">
             <span className={`text-xs font-black text-white px-3 py-1 rounded-full ${div.badgeBg}`}>{div.badge}</span>
             <p className={`text-xs font-black tracking-[0.2em] uppercase ${div.textAccent}`}>{div.tagline}</p>
           </div>
 
-          <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">{div.name}</h3>
+          <h3 className="text-3xl md:text-4xl font-black text-[#171717] leading-tight font-heading">{div.name}</h3>
 
-          <p className="text-gray-400 text-base md:text-lg leading-relaxed">{div.desc}</p>
+          <p className="text-[#444444] text-base md:text-lg leading-relaxed font-medium">{div.desc}</p>
 
           <div className="grid grid-cols-2 gap-3">
             {div.features.map((f, fi) => (
-              <div key={fi} className="flex items-center gap-2 text-sm text-gray-300 font-semibold">
+              <div key={fi} className="flex items-center gap-2 text-sm text-[#222222] font-semibold">
                 <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${div.badgeBg}`} />
                 {f}
               </div>
@@ -171,7 +171,7 @@ const AnimatedServiceDetailRow = ({ div, idx }) => {
               Visit site <ArrowUpRight size={16} />
             </Link>
           ) : (
-            <span className={`inline-flex items-center gap-2 text-sm font-black ${div.textAccent} opacity-70`}>
+            <span className={`inline-flex items-center gap-2 text-sm font-black ${div.textAccent} opacity-80`}>
               Coming Soon — Stay tuned!
             </span>
           )}
@@ -193,21 +193,21 @@ const OurGroupPage = () => {
   });
 
   return (
-    <div className="w-full bg-[#000000] min-h-screen relative overflow-hidden">
+    <div className="w-full bg-[#FBF7EE] min-h-screen relative overflow-hidden">
       
-      {/* ── Premium Background Decorations (Unique Design) ── */}
-      <div className="absolute top-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-gradient-to-bl from-amber-500/10 to-transparent opacity-80 z-0 pointer-events-none rounded-full blur-[100px]" />
-      <div className="absolute top-[20%] left-[-10%] w-[50vw] h-[70vh] bg-gradient-to-tr from-amber-500/5 via-transparent to-transparent z-0 pointer-events-none rounded-[100%] rotate-45" />
-      <div className="absolute bottom-[-10%] right-[10%] w-[40vw] h-[40vw] bg-gradient-to-tl from-amber-500/10 to-transparent z-0 pointer-events-none rounded-full blur-[80px]" />
+      {/* ── Premium Background Decorations (Warm Beige & Soft Amber Harmony) ── */}
+      <div className="absolute top-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-gradient-to-bl from-amber-400/15 to-transparent opacity-80 z-0 pointer-events-none rounded-full blur-[100px]" />
+      <div className="absolute top-[20%] left-[-10%] w-[50vw] h-[70vh] bg-gradient-to-tr from-amber-300/15 via-transparent to-transparent z-0 pointer-events-none rounded-[100%] rotate-45" />
+      <div className="absolute bottom-[-10%] right-[10%] w-[40vw] h-[40vw] bg-gradient-to-tl from-amber-400/15 to-transparent z-0 pointer-events-none rounded-full blur-[80px]" />
       
       {/* Delicate horizontal wavy lines */}
-      <svg className="absolute top-[30%] w-full h-[200px] z-0 pointer-events-none opacity-20" preserveAspectRatio="none" viewBox="0 0 1440 320">
-        <path fill="none" stroke="#f59e0b" strokeWidth="1" strokeDasharray="5,5" d="M0,160L48,170.7C96,181,192,203,288,197.3C384,192,480,160,576,165.3C672,171,768,213,864,224C960,235,1056,213,1152,186.7C1248,160,1344,128,1392,112L1440,96"></path>
+      <svg className="absolute top-[30%] w-full h-[200px] z-0 pointer-events-none opacity-25" preserveAspectRatio="none" viewBox="0 0 1440 320">
+        <path fill="none" stroke="#d97706" strokeWidth="1" strokeDasharray="5,5" d="M0,160L48,170.7C96,181,192,203,288,197.3C384,192,480,160,576,165.3C672,171,768,213,864,224C960,235,1056,213,1152,186.7C1248,160,1344,128,1392,112L1440,96"></path>
       </svg>
-      <svg className="absolute bottom-[20%] w-full h-[200px] z-0 pointer-events-none opacity-10" preserveAspectRatio="none" viewBox="0 0 1440 320">
-        <path fill="none" stroke="#f59e0b" strokeWidth="1.5" d="M0,96L60,112C120,128,240,160,360,154.7C480,149,600,107,720,117.3C840,128,960,192,1080,208C1200,224,1320,192,1380,176L1440,160"></path>
+      <svg className="absolute bottom-[20%] w-full h-[200px] z-0 pointer-events-none opacity-20" preserveAspectRatio="none" viewBox="0 0 1440 320">
+        <path fill="none" stroke="#d97706" strokeWidth="1.5" d="M0,96L60,112C120,128,240,160,360,154.7C480,149,600,107,720,117.3C840,128,960,192,1080,208C1200,224,1320,192,1380,176L1440,160"></path>
       </svg>
-      <div className="absolute top-[60%] left-12 z-0 opacity-10 pointer-events-none hidden xl:block" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 2px, transparent 2px)', backgroundSize: '32px 32px', width: '200px', height: '200px' }}></div>
+      <div className="absolute top-[60%] left-12 z-0 opacity-15 pointer-events-none hidden xl:block" style={{ backgroundImage: 'radial-gradient(circle, #f59e0b 2px, transparent 2px)', backgroundSize: '32px 32px', width: '200px', height: '200px' }}></div>
 
       <div className="relative z-10">
         {/* ── PAGE HEADER BANNER ── */}
@@ -217,34 +217,34 @@ const OurGroupPage = () => {
       {/* ── PARENT COMPANY INTRO ── */}
       <div ref={introRef} className="w-full py-20 relative overflow-hidden z-10">
         <div
-          className="absolute inset-0 pointer-events-none opacity-[0.03]"
+          className="absolute inset-0 pointer-events-none opacity-[0.04]"
           style={{
-            backgroundImage: 'radial-gradient(#f59e0b 1.5px, transparent 1.5px)',
+            backgroundImage: 'radial-gradient(#d97706 1.5px, transparent 1.5px)',
             backgroundSize: '32px 32px',
           }}
         />
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12">
             <div className="flex flex-col gap-4 max-w-xl">
-              <span className="text-[#f59e0b] text-xs font-black tracking-[0.3em] uppercase flex items-center gap-2">
-                <span className={`h-px bg-[#f59e0b] ${introInView ? 'ourgroup-line-entrance' : 'ourgroup-line-initial'}`} /> Our Parent Company
+              <span className="text-[#d97706] text-xs font-black tracking-[0.3em] uppercase flex items-center gap-2">
+                <span className={`h-px bg-[#d97706] ${introInView ? 'ourgroup-line-entrance' : 'ourgroup-line-initial'}`} /> Our Parent Company
               </span>
               <a
                 href="https://axaurix.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-end gap-3"
+                className="group inline-flex items-center gap-3 py-1"
               >
-                <div className="overflow-hidden">
-                  <h2 className={`text-5xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tight leading-none group-hover:text-[#f59e0b] transition-colors duration-300 ${
+                <div className="overflow-visible">
+                  <h2 className={`text-5xl md:text-6xl lg:text-7xl font-black text-[#171717] uppercase tracking-tight leading-none group-hover:text-[#d97706] transition-colors duration-300 font-sans ${
                     introInView ? 'ourgroup-title-entrance' : 'ourgroup-title-initial'
                   }`}>
                     Ax Aurix
                   </h2>
                 </div>
                 <ExternalLink 
-                  size={28} 
-                  className={`mb-2 text-gray-500 group-hover:text-[#f59e0b] transition-all duration-300 ${
+                  size={32} 
+                  className={`text-[#777777] group-hover:text-[#d97706] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 ${
                     introInView ? 'ourgroup-icon-entrance' : 'ourgroup-icon-initial'
                   }`} 
                 />
@@ -256,7 +256,7 @@ const OurGroupPage = () => {
               </div>
             </div>
             <div className="flex flex-col gap-6 max-w-lg">
-              <p className={`text-gray-400 text-xl leading-relaxed ${
+              <p className={`text-[#555555] text-xl leading-relaxed font-medium ${
                 introInView ? 'ourgroup-desc-entrance' : 'ourgroup-desc-initial'
               }`}>
                 A multi-vertical holding group delivering excellence across events, hospitality, and digital — all under one visionary brand.
@@ -265,7 +265,7 @@ const OurGroupPage = () => {
                 {['Events', 'Dining', 'Digital', 'And More...'].map((tag, i) => (
                   <span 
                     key={i} 
-                    className={`px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-400 text-xs font-black tracking-widest uppercase border border-amber-500/20 ${
+                    className={`px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-700 text-xs font-black tracking-widest uppercase border border-amber-400/30 ${
                       introInView ? `ourgroup-tag-${i}` : 'ourgroup-badge-initial'
                     }`}
                   >
@@ -297,12 +297,12 @@ const OurGroupPage = () => {
                   }`}
                 >
                   <div
-                    className={`group relative rounded-3xl border ${div.borderAccent} bg-[#151515] overflow-hidden flex flex-col shadow-sm hover:shadow-xl transition-all duration-500`}
+                    className={`group relative rounded-3xl border border-stone-200/90 bg-white overflow-hidden flex flex-col shadow-[0_4px_25px_rgba(0,0,0,0.06)] hover:shadow-2xl transition-all duration-500`}
                   >
                     {/* Image top section */}
                     {div.image ? (
                       <div className="relative h-40 overflow-hidden">
-                        <div className={`absolute inset-0 bg-gradient-to-br ${div.gradient} opacity-30 z-10`} />
+                        <div className={`absolute inset-0 bg-gradient-to-br ${div.gradient} opacity-20 z-10`} />
                         <div className={`w-full h-full ${
                           cardsInView ? `ourgroup-img-${cardNum}-entrance` : 'ourgroup-img-initial'
                         }`}>
@@ -314,16 +314,16 @@ const OurGroupPage = () => {
                         </div>
                       </div>
                     ) : (
-                      <div className="relative h-40 bg-[#111111] flex items-center justify-center overflow-hidden">
-                        <div className={`absolute inset-0 bg-gradient-to-br ${div.gradient} opacity-30`} />
-                        <Icon size={48} className="text-gray-500 relative z-10" />
+                      <div className="relative h-40 bg-[#FAFAF8] flex items-center justify-center overflow-hidden border-b border-stone-200">
+                        <div className={`absolute inset-0 bg-gradient-to-br ${div.gradient} opacity-15`} />
+                        <Icon size={48} className="text-gray-400 relative z-10" />
                       </div>
                     )}
 
                     {/* Gradient top stripe */}
                     <div className={`h-1 w-full bg-gradient-to-r ${div.gradient}`} />
 
-                    <div className="p-6 flex flex-col gap-4 flex-1">
+                    <div className="p-6 flex flex-col gap-4 flex-1 bg-white">
                       <div className={`flex items-center justify-between ${
                         cardsInView ? `ourgroup-badge-${cardNum}-entrance` : 'ourgroup-badge-initial'
                       }`}>
@@ -337,8 +337,8 @@ const OurGroupPage = () => {
                         cardsInView ? `ourgroup-content-${cardNum}-entrance` : 'ourgroup-content-initial'
                       }`}>
                         <p className={`text-[10px] font-black tracking-[0.2em] uppercase ${div.textAccent}`}>{div.tagline}</p>
-                        <h3 className="text-white font-black text-xl leading-tight group-hover:text-[#f59e0b] transition-colors duration-300">{div.name}</h3>
-                        <p className="text-gray-400 text-sm leading-relaxed mt-2 line-clamp-3">{div.desc}</p>
+                        <h3 className="text-[#171717] font-black text-xl leading-tight group-hover:text-[#f59e0b] transition-colors duration-300 font-heading">{div.name}</h3>
+                        <p className="text-[#555555] text-sm leading-relaxed mt-2 line-clamp-3 font-medium">{div.desc}</p>
                       </div>
 
                       {!div.isFuture && (
@@ -367,18 +367,18 @@ const OurGroupPage = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-4 pt-10 border-t border-white/10"
+            className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-4 pt-10 border-t border-stone-300"
           >
-            <p className="text-gray-400 text-sm">
+            <p className="text-[#666666] text-sm font-medium">
               All divisions are part of the{' '}
-              <a href="https://axaurix.com" target="_blank" rel="noopener noreferrer" className="text-[#f59e0b] font-bold hover:underline">
+              <a href="https://axaurix.com" target="_blank" rel="noopener noreferrer" className="text-[#d97706] font-bold hover:underline">
                 Ax Aurix Group
               </a>
             </p>
-            <div className="flex items-center gap-2 text-xs text-gray-500 font-semibold uppercase tracking-widest">
-              <span className="w-6 h-px bg-white/10" />
+            <div className="flex items-center gap-2 text-xs text-[#888888] font-bold uppercase tracking-widest">
+              <span className="w-6 h-px bg-stone-300" />
               Events · Dining · Digital
-              <span className="w-6 h-px bg-white/10" />
+              <span className="w-6 h-px bg-stone-300" />
             </div>
           </motion.div>
         </div>

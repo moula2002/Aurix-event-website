@@ -84,11 +84,11 @@ const WhyChooseUs = () => {
                 <div className="w-full h-full relative transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                   
                   {/* Front Side */}
-                  <div className="absolute inset-0 w-full h-full bg-[#151515] border border-white/10 rounded-[2rem] p-8 shadow-[0_8px_30px_rgba(0,0,0,0.5)] [backface-visibility:hidden] flex flex-col items-center justify-center text-center">
-                    <div className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center mb-6 bg-white/5 shadow-inner group-hover:shadow-md transition-all duration-300">
-                      {React.cloneElement(reason.icon, { size: 32, className: "text-amber-500" })}
+                  <div className="absolute inset-0 w-full h-full bg-white border border-stone-200/90 rounded-[2rem] p-8 shadow-[0_10px_30px_rgba(0,0,0,0.25)] [backface-visibility:hidden] flex flex-col items-center justify-center text-center transition-shadow duration-300 group-hover:shadow-[0_15px_40px_rgba(245,158,11,0.2)]">
+                    <div className="w-20 h-20 rounded-full border border-amber-500/25 flex items-center justify-center mb-6 bg-[#FFFBEB] shadow-sm transition-all duration-300">
+                      {React.cloneElement(reason.icon, { size: 32, className: "text-[#f59e0b]" })}
                     </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-white">
+                    <h3 className="text-xl md:text-2xl font-bold text-[#171717] tracking-tight">
                       {reason.title}
                     </h3>
                   </div>

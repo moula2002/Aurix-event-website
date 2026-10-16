@@ -78,17 +78,25 @@ const ApproachPage = () => {
       {/* ── Main Content Container ── */}
       <div 
         ref={sectionRef} 
-        className="max-w-[1600px] mx-auto w-full min-h-[85vh] relative z-10 flex flex-col lg:flex-row shadow-[0_20px_60px_rgba(0,0,0,0.5)] bg-[#111111] border border-white/10 rounded-3xl overflow-hidden mb-12"
+        className="max-w-[1600px] mx-auto w-full min-h-[85vh] relative z-10 flex flex-col lg:flex-row shadow-[0_20px_60px_rgba(0,0,0,0.35)] bg-white border border-stone-200/90 rounded-3xl overflow-hidden mb-12"
       >
         
         {/* ── Left Column (Text Content) ── */}
-        <div className="w-full lg:w-[48%] p-10 md:p-14 lg:p-20 xl:p-24 relative bg-[#111111] z-10 flex flex-col justify-center">
+        <div className="w-full lg:w-[48%] p-10 md:p-14 lg:p-20 xl:p-24 relative bg-white z-10 flex flex-col justify-center">
           
           <div className={`mb-14 relative ${inView ? 'approach-heading-entrance' : 'approach-heading-initial'}`}>
-            <div className="absolute left-0 top-1 bottom-1 w-[3px] bg-[#f59e0b]"></div>
+            <div className="absolute left-0 top-1 bottom-1 w-[4px] bg-[#f59e0b] rounded-full"></div>
             <div className="pl-6">
-              <span className="text-[#f59e0b] font-black text-xl md:text-2xl uppercase tracking-wider mb-1 block">OUR</span>
-              <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tight leading-none m-0">
+              <span className="text-[#f59e0b] font-black text-xl md:text-2xl uppercase tracking-wider mb-2 block">OUR</span>
+              <h2 
+                className="text-4xl md:text-6xl font-black text-[#171717] uppercase tracking-tight leading-none m-0 font-heading"
+                style={{
+                  fontFamily: "'Bodoni Moda', 'Playfair Display', Didot, 'Bodoni MT', serif",
+                  fontWeight: 900,
+                  WebkitTextStroke: '0.4px #171717',
+                  letterSpacing: '0.01em',
+                }}
+              >
                 APPROACH
               </h2>
             </div>
@@ -102,11 +110,11 @@ const ApproachPage = () => {
               >
                 {/* Connecting subtle line */}
                 {idx !== steps.length - 1 && (
-                  <div className="absolute left-[31px] top-[75px] bottom-[-30px] w-[1px] bg-white/10 hidden md:block"></div>
+                  <div className="absolute left-[31px] top-[75px] bottom-[-30px] w-[1px] bg-stone-300 hidden md:block"></div>
                 )}
                 
                 {/* Icon Circle */}
-                <div className="flex-shrink-0 w-16 h-16 rounded-full border-2 border-white/10 flex items-center justify-center bg-[#151515] shadow-sm relative z-10">
+                <div className="flex-shrink-0 w-16 h-16 rounded-full border-2 border-amber-500/25 flex items-center justify-center bg-[#FFFBEB] shadow-sm relative z-10">
                   <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center">
                     {step.icon}
                   </div>
@@ -114,8 +122,8 @@ const ApproachPage = () => {
                 
                 {/* Text Content */}
                 <div className="pt-2 pb-4">
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3">{step.title}</h3>
-                  <p className="text-gray-400 leading-relaxed text-[14px] md:text-[15px] font-medium">
+                  <h3 className="text-xl md:text-2xl font-bold text-[#171717] mb-3">{step.title}</h3>
+                  <p className="text-[#444444] leading-relaxed text-[14px] md:text-[15px] font-medium">
                     {step.desc}
                   </p>
                 </div>
@@ -126,13 +134,13 @@ const ApproachPage = () => {
         </div>
 
         {/* ── Right Column (Image Collage) ── */}
-        <div className="w-full lg:w-[52%] relative min-h-[60vh] lg:min-h-full">
+        <div className="w-full lg:w-[52%] relative min-h-[60vh] lg:min-h-full bg-white">
           
           {/* Elegant curved, wave-like boundary with thin orange accent */}
-          <div className="absolute top-0 left-[-1px] w-[100px] h-full z-20 pointer-events-none hidden lg:block text-[#111111]"
+          <div className="absolute top-0 left-[-1px] w-[100px] h-full z-20 pointer-events-none hidden lg:block text-white"
                style={{ fill: 'currentColor' }}>
-            <svg viewBox="0 0 100 1000" preserveAspectRatio="none" className="w-full h-full text-[#111111]">
-              {/* Dark mask for the wave */}
+            <svg viewBox="0 0 100 1000" preserveAspectRatio="none" className="w-full h-full text-white">
+              {/* White mask for the wave */}
               <path d="M-10,0 C80,250 -40,500 60,750 C110,900 -10,1000 -10,1000 L-20,1000 L-20,0 Z" fill="currentColor"></path>
               {/* Thin orange stroke accent */}
               <path 
@@ -146,9 +154,9 @@ const ApproachPage = () => {
           </div>
 
           {/* Collage Layout */}
-          <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 h-full bg-[#111111] border-l-4 lg:border-l-0 border-[#111111]">
+          <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 h-full bg-white border-l-4 lg:border-l-0 border-white">
             {/* Top Left Image (Conference/Audience) */}
-            <div className="relative w-full h-full border-r-[3px] border-b-[3px] border-[#111111] overflow-hidden">
+            <div className="relative w-full h-full border-r-[3px] border-b-[3px] border-white overflow-hidden">
               <img 
                 src={process1} 
                 alt="Explore Audience" 
@@ -157,7 +165,7 @@ const ApproachPage = () => {
             </div>
             
             {/* Top Right Image (Tech/Production) */}
-            <div className="relative w-full h-full border-l-[3px] border-b-[3px] border-[#111111] overflow-hidden">
+            <div className="relative w-full h-full border-l-[3px] border-b-[3px] border-white overflow-hidden">
               <img 
                 src={process2} 
                 alt="Build Tech" 
@@ -166,7 +174,7 @@ const ApproachPage = () => {
             </div>
             
             {/* Bottom Full Width Image (Event Setup/Delivery) */}
-            <div className="relative w-full h-full col-span-2 border-t-[3px] border-[#111111] overflow-hidden">
+            <div className="relative w-full h-full col-span-2 border-t-[3px] border-white overflow-hidden">
               <img 
                 src={process3} 
                 alt="Deliver Event" 

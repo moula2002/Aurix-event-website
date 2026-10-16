@@ -2,15 +2,18 @@ import React, { useState, useEffect, useRef } from 'react';
 
 /**
  * Animated 1–100% Futuristic Digital Progress Loader
- * - Pure black background (#000000)
+ * - Pure black background (#000000) at z-[99999]
  * - Horizontal progress bar with thin orange outline (#F58200)
  * - Bright orange progress fill (#FF8500)
  * - Futuristic digital LED font (Orbitron) in orange displaying percentage
  * - Small white downward-pointing triangular marker synchronized with progress
  * - Unfilled portion divided into dark gray rectangular segments with black gaps
+ * - Lifecycle-aware: smoothly climbs to ~90-94%, then surges to 100% only when the page is ready
  */
 const ProgressLoader = ({
   isRoute = false,
+  isReady = false,
+  onStartFade,
   onComplete,
   segmentsCount = 24,
 }) => {
@@ -22,12 +25,22 @@ const ProgressLoader = ({
   const animationFrameRef = useRef(null);
   const timeoutRef = useRef(null);
   const startTimeRef = useRef(null);
+  const readyTimeRef = useRef(null);
+  const progressAtReadyRef = useRef(1);
+  const isReadyRef = useRef(isReady);
+  const hasCompletedRef = useRef(false);
+
+  // Keep isReadyRef in sync
+  useEffect(() => {
+    isReadyRef.current = isReady;
+  }, [isReady]);
 
   useEffect(() => {
-    // Respect prefers-reduced-motion: finish immediately
+    // Respect prefers-reduced-motion: complete immediately
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (mediaQuery.matches) {
       setProgress(100);
+      onStartFade?.();
       setIsFading(true);
       timeoutRef.current = setTimeout(() => {
         setIsFinished(true);
@@ -36,82 +49,81 @@ const ProgressLoader = ({
       return;
     }
 
-    // Target animation duration: ~1.2s - 1.6s for initial, ~400ms - 600ms for route transitions
-    const baseDuration = isRoute ? 480 : 1350;
+    // Target animation duration: ~1.1s for initial load, ~400ms for route transitions
+    const baseDuration = isRoute ? 400 : 1100;
     startTimeRef.current = performance.now();
 
-    // Check if document is already fully loaded
-    const isDocumentReady = document.readyState === 'complete';
-
     const updateProgress = (currentTime) => {
+      if (hasCompletedRef.current) return;
+
       const elapsed = currentTime - startTimeRef.current;
       const timeRatio = Math.min(elapsed / baseDuration, 1);
 
-      // Smooth cubic-like easing for realistic progress feel
-      let targetProgress;
-      if (timeRatio < 0.85) {
-        // Accelerate smoothly to ~88%
-        targetProgress = 1 + (timeRatio / 0.85) * 87;
+      let currentVal = 1;
+
+      // Phase 1: Natural climb toward ~90-94% while waiting for page ready signal
+      if (!isReadyRef.current && !isRoute) {
+        if (timeRatio < 0.85) {
+          // Smooth acceleration to 88%
+          currentVal = 1 + (timeRatio / 0.85) * 87;
+        } else {
+          // Asymptotic creep toward 94% until page is mounted
+          const tailRatio = Math.min(1, (timeRatio - 0.85) / 0.15);
+          currentVal = 88 + tailRatio * 5;
+        }
       } else {
-        // Asymptotically approach 96% until page / chunk is confirmed
-        const tailRatio = (timeRatio - 0.85) / 0.15;
-        targetProgress = 88 + tailRatio * 8; // reaches ~96%
+        // Phase 2: Page is ready (or route transition) -> surge smoothly to 100%
+        if (readyTimeRef.current === null) {
+          readyTimeRef.current = currentTime;
+          progressAtReadyRef.current = progress;
+        }
+
+        const surgeElapsed = currentTime - readyTimeRef.current;
+        const surgeDuration = isRoute ? 240 : 200;
+        const surgeRatio = Math.min(surgeElapsed / surgeDuration, 1);
+
+        const startVal = Math.max(progressAtReadyRef.current, isRoute ? 1 : 88);
+        currentVal = startVal + (100 - startVal) * surgeRatio;
       }
 
-      // If document is ready or route chunk loaded, accelerate to 100%
-      if (isDocumentReady || elapsed >= baseDuration) {
-        targetProgress = 100;
-      }
+      const clampedVal = Math.min(100, Math.max(1, currentVal));
+      setProgress(clampedVal);
 
-      setProgress((prev) => {
-        const nextVal = Math.min(100, Math.max(prev, targetProgress));
-        return nextVal;
-      });
-
-      if (targetProgress < 100) {
+      if (clampedVal < 100) {
         animationFrameRef.current = requestAnimationFrame(updateProgress);
       } else {
-        // Hold visually at 100% so the user clearly sees "100" and full bar
+        // Reached 100%!
+        hasCompletedRef.current = true;
+        // Signal parent to make underlying app visible before black overlay fades
+        onStartFade?.();
+
+        // Hold visually at 100% for 200ms so user clearly registers the 100% state
         timeoutRef.current = setTimeout(() => {
           setIsFading(true);
-          // Smooth fade out duration
+          // Fade-out duration: 350ms
           timeoutRef.current = setTimeout(() => {
             setIsFinished(true);
             onComplete?.();
-          }, 360);
-        }, 220);
+          }, 350);
+        }, 200);
       }
     };
 
     animationFrameRef.current = requestAnimationFrame(updateProgress);
 
-    // Global load listener for extra responsiveness if still loading
-    const handleWindowLoad = () => {
-      // Accelerate rapidly to 100%
-      setProgress(100);
-    };
-
-    if (!isDocumentReady) {
-      window.addEventListener('load', handleWindowLoad, { once: true });
-    }
-
-    // Safety fallback: never keep user stuck at 99%
+    // Safety fallback: never keep user stuck if page initialization stalls
     const safetyTimer = setTimeout(() => {
-      setProgress(100);
-      setIsFading(true);
-      setTimeout(() => {
-        setIsFinished(true);
-        onComplete?.();
-      }, 300);
-    }, isRoute ? 2500 : 3800);
+      if (!hasCompletedRef.current) {
+        isReadyRef.current = true;
+      }
+    }, isRoute ? 2000 : 3200);
 
     return () => {
       if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
       clearTimeout(safetyTimer);
-      window.removeEventListener('load', handleWindowLoad);
     };
-  }, [isRoute, onComplete]);
+  }, [isRoute, onStartFade, onComplete]);
 
   if (isFinished) return null;
 
@@ -126,7 +138,7 @@ const ProgressLoader = ({
       aria-valuemin={1}
       aria-valuemax={100}
       aria-label="Loading page"
-      className={`fixed inset-0 z-[9999] bg-[#000000] flex flex-col items-center justify-center p-4 sm:p-6 select-none transition-opacity duration-350 ease-out ${
+      className={`fixed inset-0 z-[99999] bg-[#000000] flex flex-col items-center justify-center p-4 sm:p-6 select-none transition-opacity duration-350 ease-out ${
         isFading ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >

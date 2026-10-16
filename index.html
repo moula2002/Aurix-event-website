@@ -11,8 +11,28 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Orbitron:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <style>
+      html, body {
+        background-color: #000000 !important;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+      #root {
+        background-color: #000000 !important;
+        min-height: 100vh;
+      }
+    </style>
+    <script>
+      try {
+        if ('scrollRestoration' in history) {
+          history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+      } catch (e) {}
+    </script>
   </head>
-  <body>
+  <body class="bg-[#000000] text-gray-100">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

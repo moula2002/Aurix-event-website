@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState } from 'react';
+import React, { Suspense, lazy, useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/layout/Navbar';
@@ -41,23 +41,29 @@ const pageVariants = {
   exit:    { opacity: 0, y: -16, transition: { duration: 0.35, ease: [0.21, 0.47, 0.32, 0.98] } },
 };
 
-const PageWrapper = ({ children, addPadding = true }) => (
-  <motion.div
-    variants={pageVariants}
-    initial="initial"
-    animate="animate"
-    exit="exit"
-    className={`min-h-screen ${addPadding ? 'pt-24' : ''}`}
-  >
-    {children}
-  </motion.div>
-);
+const PageWrapper = ({ children, addPadding = true, onMounted }) => {
+  useEffect(() => {
+    onMounted?.();
+  }, [onMounted]);
+
+  return (
+    <motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className={`min-h-screen ${addPadding ? 'pt-24' : ''}`}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 /* ── Animated routes (needs to be inside Router to use useLocation) ── */
-const AnimatedRoutes = () => {
+const AnimatedRoutes = ({ onRouteReady }) => {
   const location = useLocation();
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.scrollTo({
       top: 0,
       left: 0,
@@ -70,7 +76,7 @@ const AnimatedRoutes = () => {
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={
-            <PageWrapper addPadding={false}>
+            <PageWrapper addPadding={false} onMounted={onRouteReady}>
               <Hero />
               <Statistics />
               <Services />
@@ -85,43 +91,43 @@ const AnimatedRoutes = () => {
           } />
 
           <Route path="/about" element={
-            <PageWrapper>
+            <PageWrapper onMounted={onRouteReady}>
               <AboutPage />
             </PageWrapper>
           } />
 
           <Route path="/approach" element={
-            <PageWrapper>
+            <PageWrapper onMounted={onRouteReady}>
               <ApproachPage />
             </PageWrapper>
           } />
 
           <Route path="/services" element={
-            <PageWrapper>
+            <PageWrapper onMounted={onRouteReady}>
               <Services />
             </PageWrapper>
           } />
 
           <Route path="/services/technical" element={
-            <PageWrapper>
+            <PageWrapper onMounted={onRouteReady}>
               <TechnicalServicesPage />
             </PageWrapper>
           } />
 
           <Route path="/services/creative" element={
-            <PageWrapper>
+            <PageWrapper onMounted={onRouteReady}>
               <CreativeServicesPage />
             </PageWrapper>
           } />
 
           <Route path="/services/support" element={
-            <PageWrapper>
+            <PageWrapper onMounted={onRouteReady}>
               <SupportServicesPage />
             </PageWrapper>
           } />
 
           <Route path="/projects" element={
-            <PageWrapper>
+            <PageWrapper onMounted={onRouteReady}>
               <Portfolio />
             </PageWrapper>
           } />
@@ -131,20 +137,20 @@ const AnimatedRoutes = () => {
           } />
 
           <Route path="/events" element={
-            <PageWrapper>
+            <PageWrapper onMounted={onRouteReady}>
               <EventsPage />
             </PageWrapper>
           } />
 
           <Route path="/contact" element={
-            <PageWrapper>
+            <PageWrapper onMounted={onRouteReady}>
               <Contact />
               <Location />
             </PageWrapper>
           } />
 
           <Route path="/our-group" element={
-            <PageWrapper addPadding={false}>
+            <PageWrapper addPadding={false} onMounted={onRouteReady}>
               <OurGroupPage />
             </PageWrapper>
           } />
@@ -156,23 +162,67 @@ const AnimatedRoutes = () => {
 
 function App() {
   const [initialLoading, setInitialLoading] = useState(true);
+  const [isPageReady, setIsPageReady] = useState(false);
+  const [isAppVisible, setIsAppVisible] = useState(false);
+
+  // Manual scroll restoration on refresh to prevent jumping to footer
+  useEffect(() => {
+    try {
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
+    } catch (e) {}
+  }, []);
+
+  // Safety fallback: if onMounted didn't fire in 3s, force ready so user is never stuck
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsPageReady(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleRouteReady = useCallback(() => {
+    setIsPageReady(true);
+  }, []);
+
+  const handleStartFade = useCallback(() => {
+    setIsAppVisible(true);
+  }, []);
+
+  const handleComplete = useCallback(() => {
+    setIsInitialLoading(false);
+  }, []);
 
   return (
     <>
+      {/* Full-screen black loading screen (z-[99999]) covers the entire viewport */}
       {initialLoading && (
-        <ProgressLoader onComplete={() => setInitialLoading(false)} />
+        <ProgressLoader
+          isReady={isPageReady}
+          onStartFade={handleStartFade}
+          onComplete={handleComplete}
+        />
       )}
+
+      {/* Main website content: hidden until initial load reaches 100% and begins fading */}
       <Router>
-        {/* SmoothScroll must be inside Router (uses useLocation) */}
         <SmoothScroll>
-          <div className="min-h-screen bg-[#000000] text-gray-100 font-sans selection:bg-amber-600/30">
+          <div
+            className="min-h-screen bg-[#000000] text-gray-100 font-sans selection:bg-amber-600/30 transition-opacity duration-300"
+            style={{
+              opacity: isAppVisible ? 1 : 0,
+              visibility: isAppVisible ? 'visible' : 'hidden',
+            }}
+          >
             {/* Global custom mouse cursor */}
             <CustomCursor />
             {/* Glowing amber scroll progress bar */}
             <ScrollProgressBar />
             <Navbar />
             <main>
-              <AnimatedRoutes />
+              <AnimatedRoutes onRouteReady={handleRouteReady} />
             </main>
             <Footer />
             <FloatingWhatsApp />

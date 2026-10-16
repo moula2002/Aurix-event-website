@@ -80,7 +80,7 @@ const Footer = () => {
   return (
     <footer
       ref={footerRef}
-      className="relative w-full bg-[#050505] text-gray-300 pt-10 md:pt-12 pb-6 md:pb-7 overflow-hidden select-text border-t border-amber-500/20"
+      className="relative w-full bg-[#050505] text-gray-300 pt-10 md:pt-12 pb-20 sm:pb-12 md:pb-7 overflow-hidden select-text border-t border-amber-500/20"
     >
       {/* ── CINEMATIC LUXURY BLACK & GOLD BACKGROUND LAYER (OPTIMIZED STATIC COMPOSITION) ── */}
       <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden">
@@ -107,8 +107,8 @@ const Footer = () => {
         <div className="absolute top-0 inset-x-0 h-10 bg-gradient-to-b from-[#000000] to-transparent pointer-events-none" />
       </div>
 
-      {/* ── FOREGROUND CONTENT (Compact, balanced vertical rhythm ~520-560px on desktop) ── */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-12 flex flex-col items-center text-center">
+      {/* ── FOREGROUND CONTENT ── */}
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col items-center text-center">
         
         {/* ── SECTION A: COMPANY LOGO ── */}
         <div className={`mb-3 flex flex-col items-center ${inView ? 'footer-logo-enter' : 'footer-fade-up-initial'}`}>
@@ -132,9 +132,9 @@ const Footer = () => {
         {/* ── SECTION C: NAVIGATION LINKS ── */}
         <nav
           aria-label="Footer Navigation"
-          className={`w-full max-w-[1050px] mb-7 ${inView ? 'footer-nav-enter' : 'footer-fade-up-initial'}`}
+          className={`w-full max-w-[1050px] mb-7 px-2 ${inView ? 'footer-nav-enter' : 'footer-fade-up-initial'}`}
         >
-          <ul className="flex flex-wrap items-center justify-center gap-y-2 gap-x-2.5 sm:gap-x-3.5 md:gap-x-5 text-[11px] sm:text-xs md:text-[13px] font-extrabold uppercase tracking-wider text-white">
+          <ul className="flex flex-wrap items-center justify-center gap-y-2.5 gap-x-3 sm:gap-x-4 md:gap-x-5 text-[11px] sm:text-xs md:text-[13px] font-extrabold uppercase tracking-wider text-white">
             {navLinks.map((link, idx) => (
               <React.Fragment key={link.name}>
                 <li
@@ -159,13 +159,13 @@ const Footer = () => {
           </ul>
         </nav>
 
-        {/* ── SECTION D: CONTACT INFORMATION (3 Horizontally Aligned Blocks) ── */}
+        {/* ── SECTION D: CONTACT INFORMATION (Balanced Centered Column on Mobile, Row on Desktop) ── */}
         <div
-          className="w-full max-w-[980px] mb-7 flex flex-col md:flex-row items-center justify-center gap-5 md:gap-0"
+          className="w-fit max-w-[92vw] sm:max-w-md md:max-w-[980px] mx-auto mb-7 flex flex-col md:flex-row items-start md:items-center justify-center gap-4 sm:gap-5 md:gap-0 md:w-full"
         >
           {/* Block 1: CALL OR WHATSAPP */}
           <div
-            className={`flex-1 flex items-center justify-center md:justify-center gap-3.5 px-3 w-full sm:w-auto ${
+            className={`flex-1 flex items-center justify-start md:justify-center gap-3.5 px-2 sm:px-3 w-full md:w-auto ${
               inView ? 'footer-contact-item-1' : 'footer-fade-up-initial'
             }`}
           >
@@ -196,7 +196,7 @@ const Footer = () => {
 
           {/* Block 2: EMAIL US */}
           <div
-            className={`flex-1 flex items-center justify-center md:justify-center gap-3.5 px-3 w-full sm:w-auto ${
+            className={`flex-1 flex items-center justify-start md:justify-center gap-3.5 px-2 sm:px-3 w-full md:w-auto ${
               inView ? 'footer-contact-item-2' : 'footer-fade-up-initial'
             }`}
           >
@@ -225,7 +225,7 @@ const Footer = () => {
 
           {/* Block 3: OUR LOCATION */}
           <div
-            className={`flex-1 flex items-center justify-center md:justify-center gap-3.5 px-3 w-full sm:w-auto ${
+            className={`flex-1 flex items-center justify-start md:justify-center gap-3.5 px-2 sm:px-3 w-full md:w-auto ${
               inView ? 'footer-contact-item-3' : 'footer-fade-up-initial'
             }`}
           >
@@ -274,14 +274,14 @@ const Footer = () => {
         </div>
 
         {/* ── SECTION F: COPYRIGHT & BRANDING ── */}
-        <div className={`w-full flex flex-col items-center ${inView ? 'footer-copyright-enter' : 'footer-fade-up-initial'}`}>
-          <div className="w-full max-w-[85%] h-[1px] bg-white/10 mb-4" aria-hidden="true" />
+        <div className={`w-full flex flex-col items-center px-4 ${inView ? 'footer-copyright-enter' : 'footer-fade-up-initial'}`}>
+          <div className="w-full max-w-[85%] sm:max-w-[600px] h-[1px] bg-white/10 mb-4" aria-hidden="true" />
           
-          <p className="text-[11px] sm:text-xs text-gray-400 font-medium tracking-wide mb-1">
+          <p className="text-[11px] sm:text-xs text-gray-400 font-medium tracking-wide mb-1 text-center">
             Ax Aurix Events, 2026 © All Rights Reserved.
           </p>
 
-          <p className="text-[10px] sm:text-[11px] text-gray-500 font-medium tracking-wide">
+          <p className="text-[10px] sm:text-[11px] text-gray-500 font-medium tracking-wide text-center">
             Part of{' '}
             <a
               href="https://axaurix.com"

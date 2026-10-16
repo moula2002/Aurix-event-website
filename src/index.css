@@ -3163,91 +3163,19 @@ a, button {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   PREMIUM SKELETON SHIMMER SYSTEM (HIGH PERFORMANCE)
+   ANIMATED 1–100% PROGRESS LOADER (FUTURISTIC DIGITAL LED)
    ═══════════════════════════════════════════════════════════════ */
-@keyframes skeletonShimmer {
-  0% {
-    transform: translate3d(-100%, 0, 0);
-  }
-  100% {
-    transform: translate3d(100%, 0, 0);
-  }
-}
-
-.skeleton-shimmer,
-.skeleton-shimmer-amber,
-.skeleton-shimmer-dark {
-  position: relative;
-  overflow: hidden;
-  contain: paint layout;
-  transform: translateZ(0); /* create isolated GPU compositing layer */
-}
-
-.skeleton-shimmer {
-  background-color: #1a1a1a;
-}
-
-.skeleton-shimmer-amber {
-  background-color: rgba(245, 158, 11, 0.15);
-}
-
-.skeleton-shimmer-dark {
-  background-color: #141414;
-}
-
-.skeleton-shimmer::after,
-.skeleton-shimmer-amber::after,
-.skeleton-shimmer-dark::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  transform: translate3d(-100%, 0, 0);
-  animation: skeletonShimmer 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  content: '';
-  pointer-events: none;
-}
-
-.skeleton-shimmer::after {
-  background-image: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.05) 25%,
-    rgba(255, 255, 255, 0.12) 50%,
-    rgba(255, 255, 255, 0.05) 75%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-
-.skeleton-shimmer-amber::after {
-  background-image: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.35) 25%,
-    rgba(255, 255, 255, 0.75) 50%,
-    rgba(255, 255, 255, 0.35) 75%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-
-.skeleton-shimmer-dark::after {
-  background-image: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.08) 25%,
-    rgba(255, 255, 255, 0.18) 50%,
-    rgba(255, 255, 255, 0.08) 75%,
-    rgba(255, 255, 255, 0) 100%
-  );
+.font-digital {
+  font-family: 'Orbitron', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
+  font-feature-settings: 'tnum' 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .skeleton-shimmer::after,
-  .skeleton-shimmer-amber::after,
-  .skeleton-shimmer-dark::after {
+  .progress-loader-smooth {
+    transition: none !important;
     animation: none !important;
-    display: none !important;
   }
 }
 

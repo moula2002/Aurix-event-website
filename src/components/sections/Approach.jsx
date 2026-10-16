@@ -74,39 +74,39 @@ const Approach = () => {
       <div className="absolute -bottom-20 -left-6 w-[440px] h-[440px] rounded-full border border-white/[0.03] pointer-events-none hidden lg:block" />
 
       {/* ── MAIN TWO-COLUMN CONTAINER (Left ~32%, Right ~68%) ── */}
-      <div className="max-w-[1560px] mx-auto px-6 sm:px-8 lg:px-12 w-full relative z-10 flex flex-col lg:flex-row gap-12 lg:gap-14 items-center">
+      <div className="max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12 w-full relative z-10 flex flex-col lg:flex-row gap-10 sm:gap-12 lg:gap-14 items-start lg:items-center">
         
-        {/* ── LEFT COLUMN (~32% Width): Introduction with Pure White Heading (No outline/shadow) ── */}
+        {/* ── LEFT COLUMN (~32% Width): Heading & Methodology Intro ── */}
         <div className="w-full lg:w-[32%] shrink-0 text-left">
           <div className={inView ? 'footer-enter-1' : 'footer-fade-up-initial'}>
             
             {/* Small uppercase orange label */}
-            <span className="text-[#FFA500] font-black tracking-[0.22em] uppercase text-xs md:text-sm mb-3 block">
+            <span className="text-[#FFA500] font-black tracking-[0.2em] sm:tracking-[0.22em] uppercase text-xs sm:text-sm mb-2 sm:mb-3 block">
               OUR METHODOLOGY
             </span>
 
-            {/* Large Extra-Bold Pure White Heading split across 2 lines */}
-            <h2 className="text-4xl sm:text-5xl lg:text-[56px] xl:text-[62px] font-black text-white tracking-tight uppercase mb-5 leading-[0.92]">
-              OUR <br />
+            {/* Responsive Pure White Heading */}
+            <h2 className="text-[38px] xs:text-[44px] sm:text-5xl lg:text-[54px] xl:text-[62px] font-black text-white tracking-tight uppercase mb-4 sm:mb-5 leading-[0.94] lg:leading-[0.92]">
+              OUR <br className="hidden xs:inline" />
               APPROACH
             </h2>
 
             {/* Short thick golden-orange underline below the heading */}
-            <div className="w-16 h-1.5 bg-[#FFA500] rounded-full mb-6" />
+            <div className="w-14 sm:w-16 h-1.5 bg-[#FFA500] rounded-full mb-4 sm:mb-6" />
 
             {/* Introduction Text in Light Gray */}
-            <p className="text-[#E0E0E0] text-base md:text-[17px] leading-relaxed max-w-md font-normal">
+            <p className="text-[#E0E0E0] text-sm sm:text-base lg:text-[16px] xl:text-[17px] leading-relaxed max-w-xl lg:max-w-md font-normal">
               A seamless integration of planning, design, and execution. Scroll to explore how we bring your vision to life.
             </p>
           </div>
         </div>
 
-        {/* ── RIGHT COLUMN (~68% Width): Vertical Stack of 3 Identical Chevron Arrow Panels ── */}
+        {/* ── RIGHT COLUMN (~68% Width): Approach Cards ── */}
         <div className="w-full lg:w-[68%] relative">
           
-          <div className="relative pl-6 lg:pl-10">
+          <div className="relative pl-0 lg:pl-10">
             
-            {/* Thin Golden-Orange Vertical Timeline linking all 3 panels */}
+            {/* Thin Golden-Orange Vertical Timeline linking all 3 panels (Desktop only) */}
             <div 
               className={`hidden lg:block absolute w-[3px] bg-[#FFA500] pointer-events-none z-10 shadow-[0_0_8px_rgba(255,165,0,0.6)] ${
                 inView ? 'approach-timeline-line' : 'opacity-0'
@@ -118,7 +118,7 @@ const Approach = () => {
               }}
             />
 
-            <div className="flex flex-col gap-6 lg:gap-7 relative z-20">
+            <div className="flex flex-col gap-4 sm:gap-5 lg:gap-7 relative z-20 w-full max-w-2xl mx-auto lg:max-w-none">
               {stages.map((stage, idx) => {
                 const nodeAnimClass = `approach-node-${idx + 1}`;
 
@@ -129,7 +129,7 @@ const Approach = () => {
                       inView ? stage.animClass : 'opacity-0'
                     }`}
                   >
-                    {/* Small Square Node aligned on the vertical timeline */}
+                    {/* Small Square Node aligned on the vertical timeline (Desktop only) */}
                     <div
                       className={`hidden lg:block absolute z-30 w-4 h-4 bg-[#080808] border-2 border-[#FFA500] shadow-[0_0_10px_rgba(255,165,0,0.8)] pointer-events-none ${
                         inView ? nodeAnimClass : 'opacity-0'
@@ -141,19 +141,74 @@ const Approach = () => {
                       }}
                     />
 
-                    {/* Outer Card Glow/Shadow Wrapper */}
+                    {/* ══════════════════════════════════════════════════
+                        MOBILE & TABLET CARD (< lg screens)
+                        Clean, proportional golden-amber card with subtle angular chamfer
+                       ══════════════════════════════════════════════════ */}
+                    <div className="block lg:hidden relative w-full">
+                      <div
+                        className="relative w-full overflow-hidden transition-transform duration-200 active:scale-[0.99] rounded-lg"
+                        style={{
+                          filter: 'drop-shadow(0 6px 16px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 12px rgba(255, 165, 0, 0.16))',
+                          clipPath: 'polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%)',
+                        }}
+                      >
+                        {/* Golden-yellow Background Gradient matching desktop */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#FFA500] via-[#FFB300] to-[#FFC107] pointer-events-none" />
+
+                        {/* Top Dark Amber Bevel Edge */}
+                        <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#B45309] to-[#D97706] opacity-80 pointer-events-none" />
+
+                        {/* Bottom Dark Amber Edge */}
+                        <div className="absolute bottom-0 inset-x-0 h-0.5 bg-[#92400E] opacity-70 pointer-events-none" />
+
+                        {/* Top-Right Chamfer Corner Accent */}
+                        <div
+                          className="absolute top-0 right-0 w-3.5 h-3.5 bg-[#92400E] pointer-events-none opacity-85"
+                          style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}
+                        />
+
+                        {/* Inner Content */}
+                        <div className="relative z-10 p-4 sm:p-5">
+                          {/* Top Row: Number Badge + Divider + Icon + Title */}
+                          <div className="flex items-center gap-3 mb-2.5 sm:mb-3">
+                            {/* Number Badge */}
+                            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border-2 border-[#FFA500] bg-[#080808] flex items-center justify-center font-black text-sm sm:text-base text-white shrink-0 shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
+                              {stage.id}
+                            </div>
+
+                            {/* Thin Vertical Dark Divider */}
+                            <div className="w-[1.5px] h-7 bg-[#080808]/20 shrink-0" />
+
+                            {/* Icon & Title */}
+                            <div className="flex items-center gap-2 min-w-0">
+                              <div className="shrink-0">
+                                {React.cloneElement(stage.icon, { className: 'w-5 h-5 text-[#080808]', strokeWidth: 2.4 })}
+                              </div>
+                              <h3 className="text-[#080808] font-black text-base sm:text-lg tracking-wider uppercase truncate">
+                                {stage.title}
+                              </h3>
+                            </div>
+                          </div>
+
+                          {/* Description Text */}
+                          <p className="text-[#080808] text-[13px] sm:text-[14px] leading-relaxed font-semibold">
+                            {stage.desc}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* ══════════════════════════════════════════════════
+                        DESKTOP CARD (lg: and up)
+                        Preserved exact existing hex-chevron SVG arrows & 3D bevels
+                       ══════════════════════════════════════════════════ */}
                     <div
-                      className="relative w-full transition-all duration-300 group hover:translate-x-1"
+                      className="hidden lg:block relative w-full transition-all duration-300 group hover:translate-x-1"
                       style={{
                         filter: 'drop-shadow(0 10px 24px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 20px rgba(255, 165, 0, 0.22))',
                       }}
                     >
-                      {/* SVG Canvas Rendering the Exact Hex-Chevron Shape from Reference:
-                          - Left: Symmetrical outward-pointing angular edge (<)
-                          - Right: Symmetrical outward-pointing arrowhead (>)
-                          - Top & Bottom amber bevels
-                          - Right 3D inner triangular bevel
-                      */}
                       <div className="relative w-full">
                         <svg
                           className="absolute inset-0 w-full h-full pointer-events-none"
@@ -217,7 +272,7 @@ const Approach = () => {
                             opacity="0.75"
                           />
 
-                          {/* Right Arrowhead 3D Layered Triangular Highlight (matching reference glossy bevel) */}
+                          {/* Right Arrowhead 3D Layered Triangular Highlight */}
                           <polygon
                             points="92,0 100,50 92,100 86,94 93,50 86,6"
                             fill={`url(#grad-head-bevel-${stage.id})`}
@@ -225,26 +280,24 @@ const Approach = () => {
                           />
                         </svg>
 
-                        {/* Foreground Content:
-                            [Circular Black Badge (01)] | [Vertical Dark Divider] [Icon] [Bold Black Heading & Full Description]
-                        */}
-                        <div className="relative z-10 p-5 sm:p-6 lg:py-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 pl-8 sm:pl-12 pr-12 sm:pr-20">
+                        {/* Foreground Desktop Content */}
+                        <div className="relative z-10 py-6 px-8 flex items-center gap-6 pl-12 pr-20">
                           
                           {/* Left Group: Circular Black Number Badge + Divider + Icon */}
                           <div className="flex items-center gap-4 shrink-0">
                             
-                            {/* Circular Number Badge: Black fill with white text and crisp golden-orange border */}
+                            {/* Circular Number Badge */}
                             <div
-                              className="w-13 h-13 sm:w-14 sm:h-14 rounded-full border-2 border-[#FFA500] bg-[#080808] flex items-center justify-center font-black text-lg sm:text-xl text-white shrink-0 shadow-[0_0_12px_rgba(0,0,0,0.5)] group-hover:scale-105 transition-transform"
+                              className="w-14 h-14 rounded-full border-2 border-[#FFA500] bg-[#080808] flex items-center justify-center font-black text-xl text-white shrink-0 shadow-[0_0_12px_rgba(0,0,0,0.5)] group-hover:scale-105 transition-transform"
                             >
                               {stage.id}
                             </div>
 
                             {/* Thin Vertical Dark Divider */}
-                            <div className="w-[1.5px] h-12 bg-[#080808]/30 hidden sm:block shrink-0" />
+                            <div className="w-[1.5px] h-12 bg-[#080808]/30 shrink-0" />
 
-                            {/* Simple Black Outline Icon */}
-                            <div className="shrink-0 p-1.5 hidden sm:flex items-center justify-center">
+                            {/* Icon */}
+                            <div className="shrink-0 p-1.5 flex items-center justify-center">
                               {stage.icon}
                             </div>
                           </div>
@@ -252,17 +305,12 @@ const Approach = () => {
                           {/* Right Group: Bold Black Heading & Complete Description */}
                           <div className="text-left flex-1 min-w-0 pr-2">
                             <div className="flex items-center gap-2.5 mb-1.5">
-                              <div className="sm:hidden p-1 shrink-0">
-                                {stage.icon}
-                              </div>
-                              {/* Bold Black Uppercase Heading (No white outline, pure bold black) */}
-                              <h3 className="text-[#080808] font-black text-base sm:text-lg tracking-wider uppercase">
+                              <h3 className="text-[#080808] font-black text-lg tracking-wider uppercase">
                                 {stage.title}
                               </h3>
                             </div>
 
-                            {/* Complete Supporting Description in Solid Black */}
-                            <p className="text-[#080808] text-xs sm:text-[13px] lg:text-[13.5px] leading-relaxed font-semibold">
+                            <p className="text-[#080808] text-[13.5px] leading-relaxed font-semibold">
                               {stage.desc}
                             </p>
                           </div>

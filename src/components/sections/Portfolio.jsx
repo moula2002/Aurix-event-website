@@ -7,7 +7,6 @@ import AnimatedSection, { AnimatedItem } from '../layout/AnimatedSection';
 
 import SectionHeader from '../layout/SectionHeader';
 import SectionTitle from '../layout/SectionTitle';
-import { GalleryGridSkeleton } from '../skeleton/GallerySkeleton';
 
 const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -102,7 +101,9 @@ const Portfolio = () => {
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           {isLoading && projects.length === 0 ? (
-            <GalleryGridSkeleton count={isHome ? 4 : 8} />
+            <div className="py-20 flex flex-col items-center justify-center">
+              <div className="w-8 h-8 rounded-full border-2 border-[#FF8500]/20 border-t-[#FF8500] animate-spin" />
+            </div>
           ) : (
             /* Grid */
             <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

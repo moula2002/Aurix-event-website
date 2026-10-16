@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/layout/Navbar';
@@ -7,6 +7,7 @@ import SmoothScroll from './components/layout/SmoothScroll';
 import ScrollProgressBar from './components/layout/ScrollProgressBar';
 import CustomCursor from './components/layout/CustomCursor';
 import FloatingWhatsApp from './components/layout/FloatingWhatsApp';
+import ProgressLoader from './components/common/ProgressLoader';
 
 // Lazy loading page sections for code splitting and performance optimization
 const Hero = lazy(() => import('./components/sections/Hero'));
@@ -32,21 +33,6 @@ const Clients = lazy(() => import('./components/sections/Clients'));
 
 const OurGroup = lazy(() => import('./components/sections/OurGroup'));
 const OurGroupPage = lazy(() => import('./components/sections/OurGroupPage'));
-
-import RouteSkeleton from './components/skeleton/RouteSkeleton';
-import HomeSkeleton from './components/skeleton/HomeSkeleton';
-import AboutSkeleton from './components/skeleton/AboutSkeleton';
-import ApproachSkeleton from './components/skeleton/ApproachSkeleton';
-import {
-  ServicePageSkeleton,
-  TechnicalServicesSkeleton,
-  CreativeServicesSkeleton,
-  SupportServicesSkeleton
-} from './components/skeleton/ServicesSkeleton';
-import EventsSkeleton from './components/skeleton/EventsSkeleton';
-import GallerySkeleton from './components/skeleton/GallerySkeleton';
-import OurGroupSkeleton from './components/skeleton/OurGroupSkeleton';
-import ContactSkeleton from './components/skeleton/ContactSkeleton';
 
 /* ── Page transition variants ── */
 const pageVariants = {
@@ -80,81 +66,64 @@ const AnimatedRoutes = () => {
   }, [location.pathname]);
 
   return (
-    <Suspense fallback={<RouteSkeleton pathname={location.pathname} />}>
+    <Suspense fallback={<ProgressLoader isRoute />}>
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={
-            <Suspense fallback={<HomeSkeleton />}>
-              <PageWrapper addPadding={false}>
-                <Hero />
-                <Statistics />
-                <Services />
-                <AboutPreview />
-                <WhyChooseUs />
-                <Approach />
-                <Portfolio />
-                <SubServicesCarousel />
-
-                <Clients />
-                <Contact />
-              </PageWrapper>
-            </Suspense>
+            <PageWrapper addPadding={false}>
+              <Hero />
+              <Statistics />
+              <Services />
+              <AboutPreview />
+              <WhyChooseUs />
+              <Approach />
+              <Portfolio />
+              <SubServicesCarousel />
+              <Clients />
+              <Contact />
+            </PageWrapper>
           } />
 
           <Route path="/about" element={
-            <Suspense fallback={<PageWrapper><AboutSkeleton /></PageWrapper>}>
-              <PageWrapper>
-                <AboutPage />
-              </PageWrapper>
-            </Suspense>
+            <PageWrapper>
+              <AboutPage />
+            </PageWrapper>
           } />
 
           <Route path="/approach" element={
-            <Suspense fallback={<PageWrapper><ApproachSkeleton /></PageWrapper>}>
-              <PageWrapper>
-                <ApproachPage />
-              </PageWrapper>
-            </Suspense>
+            <PageWrapper>
+              <ApproachPage />
+            </PageWrapper>
           } />
 
           <Route path="/services" element={
-            <Suspense fallback={<PageWrapper><ServicePageSkeleton title="SERVICES" /></PageWrapper>}>
-              <PageWrapper>
-                <Services />
-              </PageWrapper>
-            </Suspense>
+            <PageWrapper>
+              <Services />
+            </PageWrapper>
           } />
 
           <Route path="/services/technical" element={
-            <Suspense fallback={<PageWrapper><TechnicalServicesSkeleton /></PageWrapper>}>
-              <PageWrapper>
-                <TechnicalServicesPage />
-              </PageWrapper>
-            </Suspense>
+            <PageWrapper>
+              <TechnicalServicesPage />
+            </PageWrapper>
           } />
 
           <Route path="/services/creative" element={
-            <Suspense fallback={<PageWrapper><CreativeServicesSkeleton /></PageWrapper>}>
-              <PageWrapper>
-                <CreativeServicesPage />
-              </PageWrapper>
-            </Suspense>
+            <PageWrapper>
+              <CreativeServicesPage />
+            </PageWrapper>
           } />
 
           <Route path="/services/support" element={
-            <Suspense fallback={<PageWrapper><SupportServicesSkeleton /></PageWrapper>}>
-              <PageWrapper>
-                <SupportServicesPage />
-              </PageWrapper>
-            </Suspense>
+            <PageWrapper>
+              <SupportServicesPage />
+            </PageWrapper>
           } />
 
           <Route path="/projects" element={
-            <Suspense fallback={<PageWrapper><GallerySkeleton /></PageWrapper>}>
-              <PageWrapper>
-                <Portfolio />
-              </PageWrapper>
-            </Suspense>
+            <PageWrapper>
+              <Portfolio />
+            </PageWrapper>
           } />
 
           <Route path="/gallery" element={
@@ -162,28 +131,22 @@ const AnimatedRoutes = () => {
           } />
 
           <Route path="/events" element={
-            <Suspense fallback={<PageWrapper><EventsSkeleton /></PageWrapper>}>
-              <PageWrapper>
-                <EventsPage />
-              </PageWrapper>
-            </Suspense>
+            <PageWrapper>
+              <EventsPage />
+            </PageWrapper>
           } />
 
           <Route path="/contact" element={
-            <Suspense fallback={<PageWrapper><ContactSkeleton /></PageWrapper>}>
-              <PageWrapper>
-                <Contact />
-                <Location />
-              </PageWrapper>
-            </Suspense>
+            <PageWrapper>
+              <Contact />
+              <Location />
+            </PageWrapper>
           } />
 
           <Route path="/our-group" element={
-            <Suspense fallback={<PageWrapper addPadding={false}><OurGroupSkeleton /></PageWrapper>}>
-              <PageWrapper addPadding={false}>
-                <OurGroupPage />
-              </PageWrapper>
-            </Suspense>
+            <PageWrapper addPadding={false}>
+              <OurGroupPage />
+            </PageWrapper>
           } />
         </Routes>
       </AnimatePresence>
@@ -192,24 +155,31 @@ const AnimatedRoutes = () => {
 };
 
 function App() {
+  const [initialLoading, setInitialLoading] = useState(true);
+
   return (
-    <Router>
-      {/* SmoothScroll must be inside Router (uses useLocation) */}
-      <SmoothScroll>
-        <div className="min-h-screen bg-[#000000] text-gray-100 font-sans selection:bg-amber-600/30">
-          {/* Global custom mouse cursor */}
-          <CustomCursor />
-          {/* Glowing amber scroll progress bar */}
-          <ScrollProgressBar />
-          <Navbar />
-          <main>
-            <AnimatedRoutes />
-          </main>
-          <Footer />
-          <FloatingWhatsApp />
-        </div>
-      </SmoothScroll>
-    </Router>
+    <>
+      {initialLoading && (
+        <ProgressLoader onComplete={() => setInitialLoading(false)} />
+      )}
+      <Router>
+        {/* SmoothScroll must be inside Router (uses useLocation) */}
+        <SmoothScroll>
+          <div className="min-h-screen bg-[#000000] text-gray-100 font-sans selection:bg-amber-600/30">
+            {/* Global custom mouse cursor */}
+            <CustomCursor />
+            {/* Glowing amber scroll progress bar */}
+            <ScrollProgressBar />
+            <Navbar />
+            <main>
+              <AnimatedRoutes />
+            </main>
+            <Footer />
+            <FloatingWhatsApp />
+          </div>
+        </SmoothScroll>
+      </Router>
+    </>
   );
 }
 

@@ -192,7 +192,7 @@ function App() {
   }, []);
 
   const handleComplete = useCallback(() => {
-    setIsInitialLoading(false);
+    setInitialLoading(false);
   }, []);
 
   return (
